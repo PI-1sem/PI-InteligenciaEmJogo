@@ -9,7 +9,7 @@ public class ConectionFactory {
     private String port= "24011";
     private String db= "defaultdb";
     private String user= "avnadmin";
-    private String password= "AVNS_86fkCYWmzq-dDh0o1iU";
+    private String password= "";
     
     public Connection obterConexão() throws Exception{
         var s= String.format("jdbc:mysql://%s:%s/%s", host, port, db);
