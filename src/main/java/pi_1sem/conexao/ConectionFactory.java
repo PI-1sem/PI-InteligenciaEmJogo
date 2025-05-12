@@ -14,7 +14,7 @@ public class ConectionFactory {
     private String user= "avnadmin";
     private String password= dotenv.get("passwordDb");
     
-    public Connection obterConexão() throws Exception{
+    public Connection obterConexao() throws Exception{
         var s= String.format("jdbc:mysql://%s:%s/%s", host, port, db);
         Connection c= DriverManager.getConnection(s, user, password);
         return c;
