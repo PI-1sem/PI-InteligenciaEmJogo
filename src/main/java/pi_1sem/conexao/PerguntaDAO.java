@@ -1,17 +1,17 @@
 package pi_1sem.conexao;
 
-public class AdministradorDAO {
-    public boolean cadastrar(Administrador administrador){
+public class PerguntaDAO {
+    public boolean adicionar(Pergunta pergunta){
         var conectionFactory= new ConectionFactory();
-        var sql= "INSERT INTO tb_usuarios(nome, email, senha, tipo) VALUES(?, ?, ?, administrador)";
+        var sql= "INSERT INTO tb_pergunta(enunciado, materia, nivel) VALUES(?, ?, ?)";
 
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-            ps.setString(1, administrador.getNome());
-            ps.setString(2, administrador.getEmail());
-            ps.setString(3, administrador.getSenha());
+            ps.setString(1, pergunta.getEnunciado());
+            ps.setString(2, pergunta.getMateria());
+            ps.setString(3, pergunta.getNivel());
             
             ps.execute();
             return true;
@@ -21,15 +21,15 @@ public class AdministradorDAO {
             return false;
         }
     }
-    public boolean remover(Administrador administrador){
+    public boolean remover(Pergunta pergunta){
         var conectionFactory= new ConectionFactory();
-        var sql= "DELETE FROM tb_usuario WHERE id_usuario= ? and tipo= administrador";
+        var sql= "DELETE FROM tb_pergunta WHERE id_pergunta= ?";
         
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-           ps.setInt(1, administrador.getCod());
+           ps.setInt(1, pergunta.getId());
            
            ps.execute();
            return true;
@@ -39,18 +39,18 @@ public class AdministradorDAO {
             return false;
         }
     }
-    public boolean atualizar(Administrador administrador){
+    public boolean atualizar(Pergunta pergunta){
         var conectionFactory= new ConectionFactory();
-        var sql= "UPDATE tb_usuario SET nome= ? email= ? senha= ? WHERE id_usuario= ? and tipo= administrador";
+        var sql= "UPDATE tb_pergunta SET enunciado= ? materia= ? nivel= ? WHERE id_pergunta= ? ";
         
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-            ps.setString(1, administrador.getNome());
-            ps.setString(2, administrador.getEmail());
-            ps.setString(3, administrador.getSenha());
-            ps.setInt(4, administrador.getCod());
+            ps.setString(1, pergunta.getEnunciado());
+            ps.setString(2, pergunta.getMateria());
+            ps.setString(3, pergunta.getNivel());
+            ps.setInt(4, pergunta.getId());
             
             ps.execute();
             return true;
@@ -62,7 +62,7 @@ public class AdministradorDAO {
     }
     public boolean listar(){
         var conectionFactory= new ConectionFactory();
-        var sql= "SELECT (id_usuario, nome, email, senha) FROM tb_usuario WHERE tipo= administrador";
+        var sql= "SELECT (id_pergunta, enunciado, materia, nivel) FROM tb_pergunta";
         
         try(
             var conexao= conectionFactory.obterConexao();
@@ -71,10 +71,10 @@ public class AdministradorDAO {
         ){
             while(rs.next()){
                 var id= rs.getInt("id");
-                var nome= rs.getString("nome");
-                var email= rs.getString("email");
-                var senha= rs.getString("senha");
-                System.out.printf("\n%s %s %s\n", id, nome, email, senha);
+                var enunciado= rs.getString("enunciado");
+                var materia= rs.getString("materia");
+                var nivel= rs.getString("nivel");
+                System.out.printf("\n%d %s %s %s\n", id, enunciado, materia, nivel);
             }
             return true;
         }
