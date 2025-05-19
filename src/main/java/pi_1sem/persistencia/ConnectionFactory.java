@@ -1,11 +1,11 @@
-package pi_1sem.conexao;
+package pi_1sem.persistencia;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import io.github.cdimascio.dotenv.Dotenv;
 
 
-public class ConectionFactory {
+public class ConnectionFactory {
 
     Dotenv dotenv = Dotenv.load();
     private String host= "pi1sem-inteligenciaemjogopi-3060.l.aivencloud.com";

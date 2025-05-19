@@ -1,17 +1,19 @@
-package pi_1sem.conexao;
+package pi_1sem.persistencia.jogo;
 
-public class PerguntaDAO {
-    public boolean adicionar(Pergunta pergunta){
-        var conectionFactory= new ConectionFactory();
-        var sql= "INSERT INTO tb_pergunta(enunciado, materia, nivel) VALUES(?, ?, ?)";
+import pi_1sem.persistencia.ConnectionFactory;
+
+public class AlternativaDAO {
+    public boolean adicionar(Alternativa alternativa){
+        var conectionFactory= new ConnectionFactory();
+        var sql= "INSERT INTO alternativas(id_pergunta, texto, correta) VALUES(?, ?, ?)";
 
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-            ps.setString(1, pergunta.getEnunciado());
-            ps.setString(2, pergunta.getMateria());
-            ps.setString(3, pergunta.getNivel());
+            ps.setString(1, alternativa.getEnunciado());
+            ps.setString(2, alternativa.getMateria());
+            ps.setString(3, alternativa.getNivel());
             
             ps.execute();
             return true;
@@ -21,15 +23,15 @@ public class PerguntaDAO {
             return false;
         }
     }
-    public boolean remover(Pergunta pergunta){
-        var conectionFactory= new ConectionFactory();
-        var sql= "DELETE FROM tb_pergunta WHERE id_pergunta= ?";
+    public boolean remover(Alternativa alternativa){
+        var conectionFactory= new ConnectionFactory();
+        var sql= "DELETE FROM alternativas WHERE id_alternativa= ?";
         
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-           ps.setInt(1, pergunta.getId());
+           ps.setInt(1, alternativa.getId());
            
            ps.execute();
            return true;
@@ -39,18 +41,18 @@ public class PerguntaDAO {
             return false;
         }
     }
-    public boolean atualizar(Pergunta pergunta){
-        var conectionFactory= new ConectionFactory();
-        var sql= "UPDATE tb_pergunta SET enunciado= ? materia= ? nivel= ? WHERE id_pergunta= ? ";
+    public boolean atualizar(Alternativa alternativa){
+        var conectionFactory= new ConnectionFactory();
+        var sql= "UPDATE alternativas SET texto= ? correta= ? WHERE id_alternativa= ? ";
         
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-            ps.setString(1, pergunta.getEnunciado());
-            ps.setString(2, pergunta.getMateria());
-            ps.setString(3, pergunta.getNivel());
-            ps.setInt(4, pergunta.getId());
+            ps.setString(1, alternativa.getTexto());
+            ps.setString(2, alternativa.getMateria());
+            ps.setString(3, alternativa.getNivel());
+            ps.setInt(4, alternativa.getId());
             
             ps.execute();
             return true;
@@ -61,8 +63,8 @@ public class PerguntaDAO {
         }
     }
     public boolean listar(){
-        var conectionFactory= new ConectionFactory();
-        var sql= "SELECT (id_pergunta, enunciado, materia, nivel) FROM tb_pergunta";
+        var conectionFactory= new ConnectionFactory();
+        var sql= "SELECT (id_alternativa, texto, materia, nivel) FROM alternativas";
         
         try(
             var conexao= conectionFactory.obterConexao();
@@ -71,10 +73,10 @@ public class PerguntaDAO {
         ){
             while(rs.next()){
                 var id= rs.getInt("id");
-                var enunciado= rs.getString("enunciado");
+                var texto= rs.getString("texto");
                 var materia= rs.getString("materia");
                 var nivel= rs.getString("nivel");
-                System.out.printf("\n%d %s %s %s\n", id, enunciado, materia, nivel);
+                System.out.printf("\n%d %s %s %s\n", id, texto, materia, nivel);
             }
             return true;
         }

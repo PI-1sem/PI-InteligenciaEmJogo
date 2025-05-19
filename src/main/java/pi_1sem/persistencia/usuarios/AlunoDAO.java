@@ -1,9 +1,12 @@
-package pi_1sem.conexao;
+package pi_1sem.persistencia.usuarios;
+
+import pi_1sem.classes.participantes.Aluno;
+import pi_1sem.persistencia.ConnectionFactory;
 
 public class AlunoDAO {
     public boolean cadastrar(Aluno aluno){
-        var conectionFactory= new ConectionFactory();
-        var sql= "INSERT INTO tb_usuario(nome, email, senha, tipo) VALUES(?, ?, ?, aluno)";
+        var conectionFactory= new ConnectionFactory();
+        var sql= "INSERT INTO usuarios(nome, email, senha, nivel_acesso) VALUES(?, ?, ?, aluno)";
 
         try(
             var conexao= conectionFactory.obterConexao();
@@ -22,14 +25,14 @@ public class AlunoDAO {
         }
     }
     public boolean remover(Aluno aluno){
-        var conectionFactory= new ConectionFactory();
-        var sql= "DELETE FROM tb_usuario WHERE id_usuario= ? and tipo= aluno";
+        var conectionFactory= new ConnectionFactory();
+        var sql= "DELETE FROM usuarios WHERE id_usuario= ? and nivel_acesso= aluno";
         
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-           ps.setInt(1, aluno.getCod());
+           ps.setInt(1, aluno.getId());
            
            ps.execute();
            return true;
@@ -40,8 +43,8 @@ public class AlunoDAO {
         }
     }
     public boolean atualizar(Aluno aluno){
-        var conectionFactory= new ConectionFactory();
-        var sql= "UPDATE tb_usuario SET nome= ? email= ? senha= ? WHERE id_aluno= ? and tipo= aluno";
+        var conectionFactory= new ConnectionFactory();
+        var sql= "UPDATE usuarios SET nome= ? email= ? senha= ? WHERE id_aluno= ? and nivel_acesso= aluno";
         
         try(
             var conexao= conectionFactory.obterConexao();
@@ -50,7 +53,7 @@ public class AlunoDAO {
             ps.setString(1, aluno.getNome());
             ps.setString(2, aluno.getEmail());
             ps.setString(3, aluno.getSenha());
-            ps.setInt(4, aluno.getCod());
+            ps.setInt(4, aluno.getId());
             
             ps.execute();
             return true;
@@ -61,8 +64,8 @@ public class AlunoDAO {
         }
     }
     public boolean listar(){
-        var conectionFactory= new ConectionFactory();
-        var sql= "SELECT (id_usuario, nome, email, senha) FROM tb_usuario WHERE tipo= aluno";
+        var conectionFactory= new ConnectionFactory();
+        var sql= "SELECT (id_usuario, nome, email, senha) FROM usuarios WHERE nivel_acesso= aluno";
         
         try(
             var conexao= conectionFactory.obterConexao();
@@ -72,8 +75,8 @@ public class AlunoDAO {
             while(rs.next()){
                 var id= rs.getInt("id");
                 var nome= rs.getString("nome");
-                var email= rs.getString("fone");
-                var senha= rs.getString("email");
+                var email= rs.getString("email");
+                var senha= rs.getString("senha");
                 System.out.printf("\n%s %s %s\n", id, nome, email, senha);
             }
             return true;
