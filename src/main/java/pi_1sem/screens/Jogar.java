@@ -174,6 +174,10 @@ public class Jogar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        new Materias().setVisible(true);
+        
+        // Fecha o frame atual
+    this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

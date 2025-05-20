@@ -94,7 +94,7 @@ public class Materias extends javax.swing.JFrame {
 
         jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\livro 2.png")); // NOI18N
 
-        jButton4.setBackground(new java.awt.Color(232, 0, 0));
+        jButton4.setBackground(new java.awt.Color(241, 22, 22));
         jButton4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\sainda 2.png")); // NOI18N
         jButton4.setText("Voltar");
