@@ -4,8 +4,14 @@
  */
 package pi_1sem.screens;
 
+
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import pi_1sem.classes.participantes.Administrador;
+import pi_1sem.persistencia.usuarios.AdministradorDAO;
 
 /**
  *
@@ -18,6 +24,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
      */
     public AdministradorEditar() {
         initComponents();
+        listarAdministradores();
     }
 
     /**
@@ -70,6 +77,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\usuario adm 2.png")); // NOI18N
 
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,10 +127,12 @@ public class AdministradorEditar extends javax.swing.JFrame {
         IDMatriculajTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDMatriculajTextField2ActionPerformed(evt);
+     
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+
         jLabel8.setText("E-mail :");
 
         DisciplinajTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -177,23 +187,22 @@ public class AdministradorEditar extends javax.swing.JFrame {
             .addGap(0, 98, Short.MAX_VALUE)
         );
 
-        jButton2.setBackground(new java.awt.Color(241, 22, 22));
-        jButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\sainda 2.png")); // NOI18N
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        voltarButton.setBackground(new java.awt.Color(241, 22, 22));
+        voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                voltarButtonActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 255));
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Excluir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        excluirButton.setBackground(new java.awt.Color(0, 0, 255));
+        excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        excluirButton.setForeground(new java.awt.Color(255, 255, 255));
+        excluirButton.setText("Excluir");
+        excluirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                excluirButtonActionPerformed(evt);
             }
         });
 
@@ -206,7 +215,8 @@ public class AdministradorEditar extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                              
+                        .addComponent(voltarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -269,8 +279,8 @@ public class AdministradorEditar extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(voltarButton)
+                            .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
@@ -298,16 +308,16 @@ public class AdministradorEditar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AdicionarProfessorjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarProfessorjButton2ActionPerformed
+    private void adicionarProfessorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarProfessorButtonActionPerformed
         // TODO add your handling code here:
         //Primeiramente, recuperar os preenchidos no form
-        String Nome = NomejTextField1.getText();
-        String IdMatricula = IDMatriculajTextField2.getText();
-        String Disciplina = DisciplinajTextField4.getText();
-        String Salas = SenhajTextField3.getText();       
+        String Nome = nomeTextField.getText();
+        String IdMatricula = idMatriculajTextField.getText();
+        String Disciplina = disciplinaTextField.getText();
+        String Salas = salasTextField.getText();       
       
         DefaultTableModel tabelaProfessor = 
-                        (DefaultTableModel)ProfessoresjTable1.getModel();
+                        (DefaultTableModel)todosProfessoresTable.getModel();
         
         Object[] novoProfessor = new Object[]{
             Nome,  //primeiro 
@@ -318,39 +328,39 @@ public class AdministradorEditar extends javax.swing.JFrame {
         
         tabelaProfessor.addRow(novoProfessor);
         //limparCampos
-        NomejTextField1.setText("");
-        IDMatriculajTextField2.setText("");
-        DisciplinajTextField4.setText("");
-        SenhajTextField3.setText("");
-    }//GEN-LAST:event_AdicionarProfessorjButton2ActionPerformed
+        nomeTextField.setText("");
+        idMatriculajTextField.setText("");
+        disciplinaTextField.setText("");
+        salasTextField.setText("");
+    }//GEN-LAST:event_adicionarProfessorButtonActionPerformed
 
-    private void NomejTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomejTextField1ActionPerformed
+    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NomejTextField1ActionPerformed
+    }//GEN-LAST:event_nomeTextFieldActionPerformed
 
-    private void IDMatriculajTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDMatriculajTextField2ActionPerformed
+    private void idMatriculajTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idMatriculajTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDMatriculajTextField2ActionPerformed
+    }//GEN-LAST:event_idMatriculajTextFieldActionPerformed
 
-    private void DisciplinajTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisciplinajTextField4ActionPerformed
+    private void disciplinaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DisciplinajTextField4ActionPerformed
+    }//GEN-LAST:event_disciplinaTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
         // TODO add your handling code here:
-        int linhaSelecionada = ProfessoresjTable1.getSelectedRow();
+        int linhaSelecionada = todosProfessoresTable.getSelectedRow();
         if (linhaSelecionada == 1){
         JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!");
     }
         else{
                DefaultTableModel tabelaProfessor = 
-                        (DefaultTableModel)ProfessoresjTable1.getModel(); 
+                        (DefaultTableModel)todosProfessoresTable.getModel(); 
                tabelaProfessor.removeRow(linhaSelecionada);
                JOptionPane.showMessageDialog(this, "Professor excluido!");
                 }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_excluirButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
 new OpcoesEditar().setVisible(true);
         
         // Fecha o frame atual
@@ -398,14 +408,18 @@ new OpcoesEditar().setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AdicionarProfessorjButton2;
-    private javax.swing.JTextField DisciplinajTextField4;
-    private javax.swing.JTextField IDMatriculajTextField2;
-    private javax.swing.JTextField NomejTextField1;
+
+    
+    
+    private javax.swing.JButton adicionarProfessorButton;
+    private javax.swing.JTextField disciplinaTextField;
+    private javax.swing.JButton excluirButton;
+    private javax.swing.JTextField idMatriculajTextField;
     private javax.swing.JTable ProfessoresjTable1;
     private javax.swing.JTextField SenhajTextField3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -419,5 +433,31 @@ new OpcoesEditar().setVisible(true);
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JTextField nomeTextField;
+    private javax.swing.JTable todosProfessoresTable;
+    private javax.swing.JButton voltarButton;
+   
+    private void listarAdministradores() {
+        try {
+            var admDAO= new AdministradorDAO();
+            DefaultTableModel model = (DefaultTableModel) todosProfessoresTable.getModel();
+            model.setNumRows(0);
+
+            ArrayList<Administrador> administradores = admDAO.listar();
+
+            for (Administrador i: administradores) {
+                model.addRow(new Object[]{
+                    i.getId(),
+                    i.getNome(),
+                    i.getEmail(),
+                    i.getSenha()
+                });
+            }
+        } 
+        
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao listar administradores: ");
+        }
+    }
 }
