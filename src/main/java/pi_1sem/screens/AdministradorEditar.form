@@ -123,11 +123,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\charl\Downloads\PI Mau&#xe1;\usuario adm 2.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -146,7 +141,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="voltarButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -160,7 +155,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="AdicionarProfessorjButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="adicionarProfessorButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -170,13 +165,13 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="NomejTextField1" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="IDMatriculajTextField2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="DisciplinajTextField4" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="SalasjTextField3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="nomeTextField" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="idMatriculajTextField" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="disciplinaTextField" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="salasTextField" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="jButton1" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                      <Component id="excluirButton" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
               </Group>
@@ -189,24 +184,24 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="NomejTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nomeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="IDMatriculajTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="idMatriculajTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="DisciplinajTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="disciplinaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="SalasjTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="salasTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AdicionarProfessorjButton2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="adicionarProfessorButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -216,7 +211,6 @@
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="308" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="0" pref="67" max="32767" attributes="0"/>
@@ -224,8 +218,8 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="voltarButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="excluirButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -252,9 +246,9 @@
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="NomejTextField1">
+        <Component class="javax.swing.JTextField" name="nomeTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomejTextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -265,9 +259,9 @@
             <Property name="text" type="java.lang.String" value="ID matr&#xed;cula:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="IDMatriculajTextField2">
+        <Component class="javax.swing.JTextField" name="idMatriculajTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IDMatriculajTextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idMatriculajTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -278,9 +272,9 @@
             <Property name="text" type="java.lang.String" value="Disciplina:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="DisciplinajTextField4">
+        <Component class="javax.swing.JTextField" name="disciplinaTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DisciplinajTextField4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disciplinaTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -291,9 +285,9 @@
             <Property name="text" type="java.lang.String" value="Salas:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="SalasjTextField3">
+        <Component class="javax.swing.JTextField" name="salasTextField">
         </Component>
-        <Component class="javax.swing.JButton" name="AdicionarProfessorjButton2">
+        <Component class="javax.swing.JButton" name="adicionarProfessorButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="33" red="33" type="rgb"/>
@@ -307,7 +301,7 @@
             <Property name="text" type="java.lang.String" value="+ adcionar professor"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AdicionarProfessorjButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarProfessorButtonActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -317,7 +311,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="ProfessoresjTable1">
+            <Component class="javax.swing.JTable" name="todosProfessoresTable">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -390,7 +384,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="voltarButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="16" green="16" red="f1" type="rgb"/>
@@ -398,16 +392,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Franklin Gothic Medium" size="14" style="2"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\charl\Downloads\PI Mau&#xe1;\sainda 2.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltarButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="excluirButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="0" red="0" type="rgb"/>
@@ -421,7 +412,7 @@
             <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="excluirButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

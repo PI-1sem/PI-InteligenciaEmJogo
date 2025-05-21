@@ -1,10 +1,12 @@
 package pi_1sem.persistencia.usuarios;
 
+import java.util.ArrayList;
+
 import pi_1sem.classes.participantes.Aluno;
 import pi_1sem.persistencia.ConnectionFactory;
 
 public class AlunoDAO {
-    public boolean cadastrar(Aluno aluno){
+    public void cadastrar(Aluno aluno){
         var conectionFactory= new ConnectionFactory();
         var sql= "INSERT INTO usuarios(nome, email, senha, nivel_acesso) VALUES(?, ?, ?, aluno)";
 
@@ -17,14 +19,12 @@ public class AlunoDAO {
             ps.setString(3, aluno.getSenha());
             
             ps.execute();
-            return true;
         }
         catch (Exception e) {
-            e.printStackTrace();
-            return false;
+            e.printStackTrace(); 
         }
     }
-    public boolean remover(Aluno aluno){
+    public void remover(Aluno aluno){
         var conectionFactory= new ConnectionFactory();
         var sql= "DELETE FROM usuarios WHERE id_usuario= ? and nivel_acesso= aluno";
         
@@ -35,14 +35,13 @@ public class AlunoDAO {
            ps.setInt(1, aluno.getId());
            
            ps.execute();
-           return true;
+ 
         }
         catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
     }
-    public boolean atualizar(Aluno aluno){
+    public void atualizar(Aluno aluno){
         var conectionFactory= new ConnectionFactory();
         var sql= "UPDATE usuarios SET nome= ? email= ? senha= ? WHERE id_aluno= ? and nivel_acesso= aluno";
         
@@ -56,16 +55,15 @@ public class AlunoDAO {
             ps.setInt(4, aluno.getId());
             
             ps.execute();
-            return true;
         }
         catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
     }
-    public boolean listar(){
+    public ArrayList<Aluno> listar(){
         var conectionFactory= new ConnectionFactory();
         var sql= "SELECT (id_usuario, nome, email, senha) FROM usuarios WHERE nivel_acesso= aluno";
+        ArrayList<Aluno> alunos= new ArrayList<>();
         
         try(
             var conexao= conectionFactory.obterConexao();
@@ -73,17 +71,18 @@ public class AlunoDAO {
             var rs= ps.executeQuery();
         ){
             while(rs.next()){
-                var id= rs.getInt("id");
+                var id= rs.getInt("id_usuario");
                 var nome= rs.getString("nome");
                 var email= rs.getString("email");
                 var senha= rs.getString("senha");
-                System.out.printf("\n%s %s %s\n", id, nome, email, senha);
+
+                alunos.add(new Aluno(id, email, senha, nome));
             }
-            return true;
+            return alunos;
         }
         catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 }
