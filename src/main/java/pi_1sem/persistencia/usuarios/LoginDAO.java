@@ -3,8 +3,9 @@ package pi_1sem.persistencia.usuarios;
 import pi_1sem.classes.participantes.Usuario;
 import pi_1sem.persistencia.ConnectionFactory;
 
-public class Login {
-    public boolean existe (Usuario usuario) throws Exception{
+public class LoginDAO {
+
+    public Usuario existe (Usuario usuario) throws Exception{
         var sql= "SELECT email, senha FROM usuarios WHERE login=? AND senha=?";
         try(
             var conexao= new ConnectionFactory().obterConexao();
@@ -16,9 +17,14 @@ public class Login {
             try(
                 var rs= ps.executeQuery();
              ){
-                return rs.next();
+                if (rs.next()){
+                    String nivelAcesso= rs.getString("nivelAcesso");
+                    return new Usuario(nivelAcesso);
+                }
+                else{
+                    return null;
+                }
             }
-            
         }
     }
 }

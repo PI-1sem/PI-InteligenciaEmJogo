@@ -4,7 +4,6 @@
  */
 package pi_1sem.screens;
 
-
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -46,17 +45,17 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        idMatriculajTextField = new javax.swing.JTextField();
+        idMatriculaTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        disciplinaTextField = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        salasTextField = new javax.swing.JTextField();
+        senhaTextField = new javax.swing.JTextField();
         adicionarProfessorButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         todosProfessoresTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         voltarButton = new javax.swing.JButton();
-        excluirButton = new javax.swing.JButton();
+        excuirButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +73,8 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Turmas");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\usuario adm 2.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,23 +122,29 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel7.setText("ID matrícula:");
 
-        idMatriculajTextField.addActionListener(new java.awt.event.ActionListener() {
+        idMatriculaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idMatriculajTextFieldActionPerformed(evt);
+                idMatriculaTextFieldActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel8.setText("Disciplina:");
+        jLabel8.setText("E-mail :");
 
-        disciplinaTextField.addActionListener(new java.awt.event.ActionListener() {
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                disciplinaTextFieldActionPerformed(evt);
+                emailTextFieldActionPerformed(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel9.setText("Salas:");
+        jLabel9.setText("Senha");
+
+        senhaTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                senhaTextFieldActionPerformed(evt);
+            }
+        });
 
         adicionarProfessorButton.setBackground(new java.awt.Color(51, 51, 255));
         adicionarProfessorButton.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
@@ -157,7 +164,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "ID matrícula", "Disciplina", "Salas"
+                "ID matrícula ", "Nome ", "E-mail ", "Senha"
             }
         ));
         todosProfessoresTable.setToolTipText("");
@@ -178,6 +185,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
 
         voltarButton.setBackground(new java.awt.Color(241, 22, 22));
         voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
+        voltarButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\sainda 2.png")); // NOI18N
         voltarButton.setText("Voltar");
         voltarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,13 +193,13 @@ public class AdministradorEditar extends javax.swing.JFrame {
             }
         });
 
-        excluirButton.setBackground(new java.awt.Color(0, 0, 255));
-        excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        excluirButton.setForeground(new java.awt.Color(255, 255, 255));
-        excluirButton.setText("Excluir");
-        excluirButton.addActionListener(new java.awt.event.ActionListener() {
+        excuirButton.setBackground(new java.awt.Color(0, 0, 255));
+        excuirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        excuirButton.setForeground(new java.awt.Color(255, 255, 255));
+        excuirButton.setText("Excluir");
+        excuirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirButtonActionPerformed(evt);
+                excuirButtonActionPerformed(evt);
             }
         });
 
@@ -210,50 +218,54 @@ public class AdministradorEditar extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(adicionarProfessorButton)
                                 .addGap(107, 107, 107)
                                 .addComponent(jLabel9))
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idMatriculajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(disciplinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(idMatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(excuirButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(165, 165, 165))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel7)
+                            .addComponent(idMatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idMatriculajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel6)
+                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(disciplinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(salasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
                             .addComponent(adicionarProfessorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel5)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,7 +276,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(voltarButton)
-                            .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(excuirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
@@ -286,7 +298,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         pack();
@@ -295,42 +307,55 @@ public class AdministradorEditar extends javax.swing.JFrame {
     private void adicionarProfessorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarProfessorButtonActionPerformed
         // TODO add your handling code here:
         //Primeiramente, recuperar os preenchidos no form
-        String Nome = nomeTextField.getText();
-        String IdMatricula = idMatriculajTextField.getText();
-        String Disciplina = disciplinaTextField.getText();
-        String Salas = salasTextField.getText();       
-      
+        String nome = nomeTextField.getText();
+        String idMatricula = idMatriculaTextField.getText();
+        String email = emailTextField.getText();
+        String senha = senhaTextField.getText();
+        
+        try{
+            var adm= new Administrador(nome, email, senha);
+            var admDAO= new AdministradorDAO();
+            
+            admDAO.cadastrar(adm);
+
+            JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso!");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar o professor");
+        }
+        
         DefaultTableModel tabelaProfessor = 
                         (DefaultTableModel)todosProfessoresTable.getModel();
         
         Object[] novoProfessor = new Object[]{
-            Nome,  //primeiro 
-            IdMatricula, //segundo
-            Disciplina,  // terceiro
-            Salas, // quarto
+            nome,  //primeiro 
+            idMatricula, //segundo
+            email,  // terceiro
+            senha, // quarto
         };
         
         tabelaProfessor.addRow(novoProfessor);
         //limparCampos
         nomeTextField.setText("");
-        idMatriculajTextField.setText("");
-        disciplinaTextField.setText("");
-        salasTextField.setText("");
+        idMatriculaTextField.setText("");
+        emailTextField.setText("");
+        senhaTextField.setText("");
     }//GEN-LAST:event_adicionarProfessorButtonActionPerformed
 
     private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTextFieldActionPerformed
 
-    private void idMatriculajTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idMatriculajTextFieldActionPerformed
+    private void idMatriculaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idMatriculaTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idMatriculajTextFieldActionPerformed
+    }//GEN-LAST:event_idMatriculaTextFieldActionPerformed
 
-    private void disciplinaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaTextFieldActionPerformed
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_disciplinaTextFieldActionPerformed
+    }//GEN-LAST:event_emailTextFieldActionPerformed
 
-    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
+    private void excuirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excuirButtonActionPerformed
         // TODO add your handling code here:
         int linhaSelecionada = todosProfessoresTable.getSelectedRow();
         if (linhaSelecionada == 1){
@@ -342,7 +367,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
                tabelaProfessor.removeRow(linhaSelecionada);
                JOptionPane.showMessageDialog(this, "Professor excluido!");
                 }
-    }//GEN-LAST:event_excluirButtonActionPerformed
+    }//GEN-LAST:event_excuirButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
 new OpcoesEditar().setVisible(true);
@@ -350,6 +375,10 @@ new OpcoesEditar().setVisible(true);
         // Fecha o frame atual
     this.dispose();
     }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void senhaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_senhaTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,6 +406,13 @@ new OpcoesEditar().setVisible(true);
             java.util.logging.Logger.getLogger(AdministradorEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -386,11 +422,15 @@ new OpcoesEditar().setVisible(true);
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton adicionarProfessorButton;
-    private javax.swing.JTextField disciplinaTextField;
-    private javax.swing.JButton excluirButton;
-    private javax.swing.JTextField idMatriculajTextField;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JTextField idMatriculaTextField;
+    private javax.swing.JTextField nomeTextField;
+    private javax.swing.JTable todosProfessoresTable;
+    private javax.swing.JTextField senhaTextField;
+    private javax.swing.JButton excuirButton;
+    private javax.swing.JButton voltarButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -404,12 +444,7 @@ new OpcoesEditar().setVisible(true);
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nomeTextField;
-    private javax.swing.JTextField salasTextField;
-    private javax.swing.JTable todosProfessoresTable;
-    private javax.swing.JButton voltarButton;
-    // End of variables declaration//GEN-END:variables
-
+    
     private void listarAdministradores() {
         try {
             var admDAO= new AdministradorDAO();
@@ -429,7 +464,7 @@ new OpcoesEditar().setVisible(true);
         } 
         
         catch (Exception e) {
-            e.printStackTrace();
+           e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Erro ao listar administradores: ");
         }
     }
