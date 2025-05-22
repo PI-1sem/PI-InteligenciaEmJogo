@@ -4,12 +4,12 @@ import lombok.Getter;
 
 @Getter
 public class Usuario{
-   protected String email;
-   protected String senha;
-   protected String nome;
-   protected String nivelAcesso;
-   protected int pontuacao;
-   protected int id;
+   private String email;
+   private String senha;
+   private String nome;
+   private String nivelAcesso;
+   private int pontuacao;
+   private int id;
 
      protected Usuario(String nome, String email, String senha, String nivelAcesso){
           this.nome = nome;

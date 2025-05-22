@@ -25,7 +25,7 @@ public class AdministradorDAO {
         }
     }
     
-    public void remover(Administrador administrador){
+    public void remover(Integer id){
         var conectionFactory= new ConnectionFactory();
         var sql= "DELETE FROM usuarios WHERE id_usuario= ? and nivel_acesso= administrador";
         
@@ -33,7 +33,7 @@ public class AdministradorDAO {
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-           ps.setInt(1, administrador.getId());
+           ps.setInt(1, id);
            
            ps.execute();
         }
@@ -87,4 +87,42 @@ public class AdministradorDAO {
             return null;
         }
     }
+    // public Integer getPontuacao(){
+    //     var conectionFactory= new ConnectionFactory();
+    //     var sql= "SELECT pontuacao FROM usuarios WHERE id_usuario= ? and nivel_acesso= administrador";
+
+    //     try(
+    //         var conexao= conectionFactory.obterConexao();
+    //         var ps= conexao.prepareStatement(sql);
+    //     ){
+    //         ps.setInt(1, administrador.getId());
+    //         var rs= ps.executeQuery();
+    //         if(rs.next()){
+    //             return rs.getInt("pontuacao");
+    //         }
+    //         else{
+    //             return null;
+    //         }
+    //     }
+    //     catch (Exception e) {
+    //         e.printStackTrace();
+    //         return null;
+    //     }
+    // }
+    // public void setPontuacao(Integer pontuacao){
+    //     var conectionFactory= new ConnectionFactory();
+    //     var sql= "UPDATE usuarios SET pontuacao= ? WHERE id_usuario= ? and nivel_acesso= administrador";
+    //     try(
+    //         var conexao= conectionFactory.obterConexao();
+    //         var ps= conexao.prepareStatement(sql);
+    //     ){
+    //         ps.setInt(1, pontuacao);
+    //         ps.setInt(2, administrador.getId());
+
+    //         ps.execute();
+    //     }
+    //     catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 }

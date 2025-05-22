@@ -319,28 +319,29 @@ public class AdministradorEditar extends javax.swing.JFrame {
             admDAO.cadastrar(adm);
 
             JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso!");
+            listarAdministradores();
         }
         catch(Exception e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar o professor");
         }
         
-        DefaultTableModel tabelaProfessor = 
-                        (DefaultTableModel)todosProfessoresTable.getModel();
+        // DefaultTableModel tabelaProfessor = 
+        //                 (DefaultTableModel)todosProfessoresTable.getModel();
         
-        Object[] novoProfessor = new Object[]{
-            nome,  //primeiro 
-            idMatricula, //segundo
-            email,  // terceiro
-            senha, // quarto
-        };
+        // Object[] novoProfessor = new Object[]{
+        //     nome,  //primeiro 
+        //     idMatricula, //segundo
+        //     email,  // terceiro
+        //     senha, // quarto
+        // };
         
-        tabelaProfessor.addRow(novoProfessor);
-        //limparCampos
-        nomeTextField.setText("");
-        idMatriculaTextField.setText("");
-        emailTextField.setText("");
-        senhaTextField.setText("");
+        // tabelaProfessor.addRow(novoProfessor);
+        // //limparCampos
+        // nomeTextField.setText("");
+        // idMatriculaTextField.setText("");
+        // emailTextField.setText("");
+        // senhaTextField.setText("");
     }//GEN-LAST:event_adicionarProfessorButtonActionPerformed
 
     private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
@@ -359,14 +360,24 @@ public class AdministradorEditar extends javax.swing.JFrame {
         // TODO add your handling code here:
         int linhaSelecionada = todosProfessoresTable.getSelectedRow();
         if (linhaSelecionada == 1){
-        JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!");
-    }
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!");
+        }
         else{
-               DefaultTableModel tabelaProfessor = 
-                        (DefaultTableModel)todosProfessoresTable.getModel(); 
-               tabelaProfessor.removeRow(linhaSelecionada);
-               JOptionPane.showMessageDialog(this, "Professor excluido!");
-                }
+            try {
+                int idExcluir= pegarCampoId();
+                var admDAO = new AdministradorDAO();
+                admDAO.remover(idExcluir);
+                listarAdministradores();
+                //    DefaultTableModel tabelaProfessor = 
+                //             (DefaultTableModel)todosProfessoresTable.getModel(); 
+                //    tabelaProfessor.removeRow(linhaSelecionada);
+                JOptionPane.showMessageDialog(this, "Professor excluido!");
+            } 
+            catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Erro ao excluir o professor!");
+            }
+        }
     }//GEN-LAST:event_excuirButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
@@ -468,4 +479,20 @@ new OpcoesEditar().setVisible(true);
             JOptionPane.showMessageDialog(this, "Erro ao listar administradores: ");
         }
     }
+    private Integer pegarCampoId(){
+        int linhaSelecionada = todosProfessoresTable.getSelectedRow();   
+        int idSelecionado= Integer.parseInt(todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 0).toString());
+
+        return idSelecionado;
+    }
+    // private Administrador pegarAdministradorSelecionado(){
+    //     int linhaSelecionada = todosProfessoresTable.getSelectedRow();
+    //     int idSelecionado = Integer.parseInt(todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 0).toString());
+    //     String nomeSelecionado = todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 1).toString();
+    //     String emailSelecionado = todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 2).toString();
+    //     String senhaSelecionada = todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 3).toString();
+    //     Administrador adm = new Administrador(idSelecionado, nomeSelecionado, emailSelecionado, senhaSelecionada);
+    //     return adm;
+    // }
+
 }

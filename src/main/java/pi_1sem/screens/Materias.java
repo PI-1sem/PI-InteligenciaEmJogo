@@ -4,6 +4,8 @@
  */
 package pi_1sem.screens;
 
+import pi_1sem.classes.participantes.Usuario;
+
 /**
  *
  * @author charl
