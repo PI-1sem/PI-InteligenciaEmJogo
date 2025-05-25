@@ -37,13 +37,13 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        NomejTextField1 = new javax.swing.JTextField();
+        nomeTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        IDMatriculajTextField2 = new javax.swing.JTextField();
+        idMatriculaTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        DisciplinajTextField4 = new javax.swing.JTextField();
+        disciplinaTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        SenhajTextField3 = new javax.swing.JTextField();
+        senhaTextField = new javax.swing.JTextField();
         AdicionarProfessorjButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ProfessoresjTable1 = new javax.swing.JTable();
@@ -107,36 +107,36 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel6.setText("Nome:");
 
-        NomejTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomejTextField1ActionPerformed(evt);
+                nomeTextFieldActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel7.setText("ID matrícula:");
 
-        IDMatriculajTextField2.addActionListener(new java.awt.event.ActionListener() {
+        idMatriculaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDMatriculajTextField2ActionPerformed(evt);
+                idMatriculaTextFieldActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel8.setText("E-mail :");
 
-        DisciplinajTextField4.addActionListener(new java.awt.event.ActionListener() {
+        disciplinaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DisciplinajTextField4ActionPerformed(evt);
+                disciplinaTextFieldActionPerformed(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel9.setText("Senha");
 
-        SenhajTextField3.addActionListener(new java.awt.event.ActionListener() {
+        senhaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SenhajTextField3ActionPerformed(evt);
+                senhaTextFieldActionPerformed(evt);
             }
         });
 
@@ -223,8 +223,8 @@ public class AdministradorEditar extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IDMatriculajTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SenhajTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(idMatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -232,8 +232,8 @@ public class AdministradorEditar extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DisciplinajTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NomejTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(disciplinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(165, 165, 165))
         );
         jPanel2Layout.setVerticalGroup(
@@ -244,18 +244,18 @@ public class AdministradorEditar extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(IDMatriculajTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(idMatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(NomejTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DisciplinajTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(disciplinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(SenhajTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
                             .addComponent(AdicionarProfessorjButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -301,10 +301,10 @@ public class AdministradorEditar extends javax.swing.JFrame {
     private void AdicionarProfessorjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarProfessorjButton2ActionPerformed
         // TODO add your handling code here:
         //Primeiramente, recuperar os preenchidos no form
-        String Nome = NomejTextField1.getText();
-        String IdMatricula = IDMatriculajTextField2.getText();
-        String Disciplina = DisciplinajTextField4.getText();
-        String Salas = SenhajTextField3.getText();       
+        String Nome = nomeTextField.getText();
+        String IdMatricula = idMatriculaTextField.getText();
+        String Disciplina = disciplinaTextField.getText();
+        String Salas = senhaTextField.getText();       
       
         DefaultTableModel tabelaProfessor = 
                         (DefaultTableModel)ProfessoresjTable1.getModel();
@@ -318,23 +318,23 @@ public class AdministradorEditar extends javax.swing.JFrame {
         
         tabelaProfessor.addRow(novoProfessor);
         //limparCampos
-        NomejTextField1.setText("");
-        IDMatriculajTextField2.setText("");
-        DisciplinajTextField4.setText("");
-        SenhajTextField3.setText("");
+        nomeTextField.setText("");
+        idMatriculaTextField.setText("");
+        disciplinaTextField.setText("");
+        senhaTextField.setText("");
     }//GEN-LAST:event_AdicionarProfessorjButton2ActionPerformed
 
-    private void NomejTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomejTextField1ActionPerformed
+    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NomejTextField1ActionPerformed
+    }//GEN-LAST:event_nomeTextFieldActionPerformed
 
-    private void IDMatriculajTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDMatriculajTextField2ActionPerformed
+    private void idMatriculaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idMatriculaTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDMatriculajTextField2ActionPerformed
+    }//GEN-LAST:event_idMatriculaTextFieldActionPerformed
 
-    private void DisciplinajTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisciplinajTextField4ActionPerformed
+    private void disciplinaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DisciplinajTextField4ActionPerformed
+    }//GEN-LAST:event_disciplinaTextFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -357,9 +357,9 @@ new OpcoesEditar().setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void SenhajTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhajTextField3ActionPerformed
+    private void senhaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SenhajTextField3ActionPerformed
+    }//GEN-LAST:event_senhaTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,11 +399,9 @@ new OpcoesEditar().setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdicionarProfessorjButton2;
-    private javax.swing.JTextField DisciplinajTextField4;
-    private javax.swing.JTextField IDMatriculajTextField2;
-    private javax.swing.JTextField NomejTextField1;
     private javax.swing.JTable ProfessoresjTable1;
-    private javax.swing.JTextField SenhajTextField3;
+    private javax.swing.JTextField disciplinaTextField;
+    private javax.swing.JTextField idMatriculaTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -419,5 +417,7 @@ new OpcoesEditar().setVisible(true);
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField nomeTextField;
+    private javax.swing.JTextField senhaTextField;
     // End of variables declaration//GEN-END:variables
 }

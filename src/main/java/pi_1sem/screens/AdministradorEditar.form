@@ -168,8 +168,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="IDMatriculajTextField2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="SenhajTextField3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="idMatriculaTextField" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="senhaTextField" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jButton1" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
@@ -180,8 +180,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="DisciplinajTextField4" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="NomejTextField1" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="disciplinaTextField" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="nomeTextField" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -197,21 +197,21 @@
                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="IDMatriculajTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="idMatriculaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="NomejTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nomeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="DisciplinajTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="disciplinaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="SenhajTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="senhaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="AdicionarProfessorjButton2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
@@ -258,9 +258,9 @@
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="NomejTextField1">
+        <Component class="javax.swing.JTextField" name="nomeTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomejTextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -271,9 +271,9 @@
             <Property name="text" type="java.lang.String" value="ID matr&#xed;cula:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="IDMatriculajTextField2">
+        <Component class="javax.swing.JTextField" name="idMatriculaTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IDMatriculajTextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idMatriculaTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -284,9 +284,9 @@
             <Property name="text" type="java.lang.String" value="E-mail :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="DisciplinajTextField4">
+        <Component class="javax.swing.JTextField" name="disciplinaTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DisciplinajTextField4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disciplinaTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -297,9 +297,9 @@
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="SenhajTextField3">
+        <Component class="javax.swing.JTextField" name="senhaTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SenhajTextField3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="senhaTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="AdicionarProfessorjButton2">
