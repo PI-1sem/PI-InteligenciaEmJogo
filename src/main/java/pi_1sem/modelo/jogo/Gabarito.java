@@ -1,3 +1,4 @@
+package pi_1sem.modelo.jogo;
 //package pi_1sem.classes.jogo;
 
 //import java.util.ArrayList;

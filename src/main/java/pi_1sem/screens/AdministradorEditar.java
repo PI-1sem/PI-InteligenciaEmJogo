@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import pi_1sem.classes.participantes.Administrador;
+import pi_1sem.modelo.participantes.Administrador;
 import pi_1sem.persistencia.usuarios.AdministradorDAO;
 
 /**

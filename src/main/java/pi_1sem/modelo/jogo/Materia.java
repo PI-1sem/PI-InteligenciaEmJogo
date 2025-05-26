@@ -1,4 +1,4 @@
-package pi_1sem.classes.jogo;
+package pi_1sem.modelo.jogo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,13 +8,12 @@ public class Materia {
     private int id;
     private String nome;
      
-    public Materia(int id, String nome){
-        this.id = id;
+    public Materia(String nome){
         this.nome = nome;
     }
 
     @Override
     public String toString() {
-        return "Materia{" + "id=" + id + "nome=" + nome +'}';
+        return "Materia{" + "nome=" + nome +'}';
     }
 }

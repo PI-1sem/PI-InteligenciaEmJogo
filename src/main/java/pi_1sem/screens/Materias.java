@@ -4,7 +4,12 @@
  */
 package pi_1sem.screens;
 
-import pi_1sem.classes.participantes.Usuario;
+import javax.swing.JOptionPane;
+
+import pi_1sem.modelo.jogo.Materia;
+import pi_1sem.modelo.jogo.Partida;
+// import pi_1sem.modelo.participantes.Usuario;
+import pi_1sem.persistencia.usuarios.UsuarioDAO;
 
 /**
  *
@@ -37,17 +42,17 @@ public class Materias extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        iniciarButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        saldoLabel = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        matematicaToggleButton = new javax.swing.JToggleButton();
+        biologiaToggleButton = new javax.swing.JToggleButton();
+        quimicaToggleButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,72 +75,65 @@ public class Materias extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
         jLabel6.setText("cada uma tem algo  increvel para  te ensinar ");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\richard grande 3.png")); // NOI18N
-
         jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel8.setText("Materias:");
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 255));
-        jButton3.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("INICIAR QUIZ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        iniciarButton.setBackground(new java.awt.Color(0, 0, 255));
+        iniciarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
+        iniciarButton.setForeground(new java.awt.Color(255, 255, 255));
+        iniciarButton.setText("INICIAR QUIZ");
+        iniciarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                iniciarButtonActionPerformed(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel9.setText("Estatisticas :");
 
-        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
-        jLabel10.setText("Saldo : R$10.000,00");
+        saldoLabel.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
+        saldoLabel.setText("Saldo : R$10.000,00");
 
         jLabel11.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jLabel11.setText("Quiz completo : 1 /3");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\livro 2.png")); // NOI18N
-
-        jButton4.setBackground(new java.awt.Color(241, 22, 22));
-        jButton4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\sainda 2.png")); // NOI18N
-        jButton4.setText("Voltar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        voltarButton.setBackground(new java.awt.Color(241, 22, 22));
+        voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                voltarButtonActionPerformed(evt);
             }
         });
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\Personagem.tela.jogar.png")); // NOI18N
-
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\chapeu escolar.png")); // NOI18N
-
-        jToggleButton1.setBackground(new java.awt.Color(255, 153, 51));
-        jToggleButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\calculadora.png")); // NOI18N
-        jToggleButton1.setSelected(true);
-        jToggleButton1.setText("Matematica");
-
-        jToggleButton2.setBackground(new java.awt.Color(9, 218, 218));
-        jToggleButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
-        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\icone biologia 6.png")); // NOI18N
-        jToggleButton2.setText("Biologia");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        matematicaToggleButton.setBackground(new java.awt.Color(255, 153, 51));
+        matematicaToggleButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        matematicaToggleButton.setForeground(new java.awt.Color(255, 255, 255));
+        matematicaToggleButton.setSelected(true);
+        matematicaToggleButton.setText("Matematica");
+        matematicaToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                matematicaToggleButtonActionPerformed(evt);
             }
         });
 
-        jToggleButton3.setBackground(new java.awt.Color(204, 0, 255));
-        jToggleButton3.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
-        jToggleButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\icone quimica 2.png")); // NOI18N
-        jToggleButton3.setText("Quimica");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        biologiaToggleButton.setBackground(new java.awt.Color(9, 218, 218));
+        biologiaToggleButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
+        biologiaToggleButton.setForeground(new java.awt.Color(255, 255, 255));
+        biologiaToggleButton.setText("Biologia");
+        biologiaToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                biologiaToggleButtonActionPerformed(evt);
+            }
+        });
+
+        quimicaToggleButton.setBackground(new java.awt.Color(204, 0, 255));
+        quimicaToggleButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
+        quimicaToggleButton.setForeground(new java.awt.Color(255, 255, 255));
+        quimicaToggleButton.setText("Quimica");
+        quimicaToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quimicaToggleButtonActionPerformed(evt);
             }
         });
 
@@ -156,13 +154,13 @@ public class Materias extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel10)
+                            .addComponent(saldoLabel)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(matematicaToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
-                                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(biologiaToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(46, 46, 46)
-                                .addComponent(jToggleButton3))
+                                .addComponent(quimicaToggleButton))
                             .addComponent(jLabel11))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -192,9 +190,9 @@ public class Materias extends javax.swing.JFrame {
                 .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addComponent(jButton4)
+                .addComponent(voltarButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iniciarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,19 +226,19 @@ public class Materias extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jToggleButton1)
-                            .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(matematicaToggleButton)
+                            .addComponent(biologiaToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(quimicaToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel10)))
+                        .addComponent(saldoLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(iniciarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltarButton))
                 .addGap(85, 85, 85))
         );
 
@@ -264,29 +262,34 @@ public class Materias extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
         // TODO add your handling code here:
         
         new Jogar().setVisible(true);
             // Fecha o frame atual
     this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void iniciarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarButtonActionPerformed
         // TODO add your handling code here:
         
-        new Perguntas().setVisible(true);
+        // new Perguntas().setVisible(true);
             // Fecha o frame atual
     this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_iniciarButtonActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void biologiaToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biologiaToggleButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_biologiaToggleButtonActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void quimicaToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quimicaToggleButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_quimicaToggleButtonActionPerformed
+
+    private void matematicaToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matematicaToggleButtonActionPerformed
+        var partida= new Partida(new Materia("Matematica"));
+        new Perguntas(partida).setVisible(true);
+    }//GEN-LAST:event_matematicaToggleButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,10 +327,9 @@ public class Materias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JToggleButton biologiaToggleButton;
+    private javax.swing.JButton iniciarButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -341,8 +343,23 @@ public class Materias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton matematicaToggleButton;
+    private javax.swing.JToggleButton quimicaToggleButton;
+    private javax.swing.JLabel saldoLabel;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
+
+    // private Double retornaSaldo(){
+    //     try {
+    //         var usuarioDao= new UsuarioDAO();
+    //         var usuarioPont= usuarioDao.pegarPontuacao();
+
+    //         return usuarioPont;
+    //     } 
+    //     catch (Exception e) {
+    //         e.printStackTrace();
+    //         JOptionPane.showMessageDialog(null, "Erro ao retornar saldo");
+    //         return null;
+    //     }
+    // }
 }

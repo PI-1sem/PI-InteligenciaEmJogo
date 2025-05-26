@@ -1,6 +1,6 @@
 package pi_1sem.persistencia.usuarios;
 
-import pi_1sem.classes.participantes.Usuario;
+import pi_1sem.modelo.participantes.Usuario;
 import pi_1sem.persistencia.ConnectionFactory;
 
 public class LoginDAO {
@@ -19,7 +19,13 @@ public class LoginDAO {
              ){
                 if (rs.next()){
                     String nivelAcesso= rs.getString("nivelAcesso");
-                    return new Usuario(nivelAcesso);
+                    int id= rs.getInt("id_usuario");
+
+                    var usuarioLogado= Usuario.usuarioLogado;
+                    usuarioLogado.setNivelAcesso(nivelAcesso);
+                    usuarioLogado.setId(id);
+                    
+                    return usuarioLogado;
                 }
                 else{
                     return null;

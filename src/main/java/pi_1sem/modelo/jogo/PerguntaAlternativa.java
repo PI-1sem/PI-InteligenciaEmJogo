@@ -1,4 +1,4 @@
-package pi_1sem.classes.jogo;
+package pi_1sem.modelo.jogo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,12 +9,14 @@ import lombok.Setter;
 @AllArgsConstructor 
 public class PerguntaAlternativa {
     private Pergunta pergunta;
+    // private char letra;
     private Alternativa alternativa;
     private boolean correta;
+    
 
     @Override
     public String toString() {
-        return "PerguntaAlternativa{" + "pergunta=" + pergunta.getEnunciado() + ", alternativa=" + alternativa.getTexto()
+        return "PerguntaAlternativa{" + "pergunta=" + pergunta.getEnunciado() + ", nivel"+ pergunta.getNivel() + ", letra=" + alternativa.getLetra() + ", alternativa=" + alternativa.getTexto()
          + ", correta=" + correta + '}';
     }
     

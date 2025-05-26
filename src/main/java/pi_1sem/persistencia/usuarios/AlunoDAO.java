@@ -2,11 +2,11 @@ package pi_1sem.persistencia.usuarios;
 
 import java.util.ArrayList;
 
-import pi_1sem.classes.participantes.Aluno;
+import pi_1sem.modelo.participantes.Aluno;
 import pi_1sem.persistencia.ConnectionFactory;
 
 public class AlunoDAO {
-    public void cadastrar(Aluno aluno){
+    public void cadastrar(Aluno aluno) throws Exception{
         var conectionFactory= new ConnectionFactory();
         var sql= "INSERT INTO usuarios(nome, email, senha, nivel_acesso) VALUES(?, ?, ?, aluno)";
 
@@ -20,11 +20,8 @@ public class AlunoDAO {
             
             ps.execute();
         }
-        catch (Exception e) {
-            e.printStackTrace(); 
-        }
     }
-    public void remover(Aluno aluno){
+    public void remover(Aluno aluno)throws Exception{
         var conectionFactory= new ConnectionFactory();
         var sql= "DELETE FROM usuarios WHERE id_usuario= ? and nivel_acesso= aluno";
         
@@ -37,11 +34,8 @@ public class AlunoDAO {
            ps.execute();
  
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
     }
-    public void atualizar(Aluno aluno){
+    public void atualizar(Aluno aluno)throws Exception{
         var conectionFactory= new ConnectionFactory();
         var sql= "UPDATE usuarios SET nome= ? email= ? senha= ? WHERE id_aluno= ? and nivel_acesso= aluno";
         
@@ -56,11 +50,8 @@ public class AlunoDAO {
             
             ps.execute();
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
     }
-    public ArrayList<Aluno> listar(){
+    public ArrayList<Aluno> listar() throws Exception{
         var conectionFactory= new ConnectionFactory();
         var sql= "SELECT (id_usuario, nome, email, senha) FROM usuarios WHERE nivel_acesso= aluno";
         ArrayList<Aluno> alunos= new ArrayList<>();
@@ -79,10 +70,6 @@ public class AlunoDAO {
                 alunos.add(new Aluno(id, email, senha, nome));
             }
             return alunos;
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return null;
         }
     }
 }

@@ -3,7 +3,7 @@ package pi_1sem.persistencia.ranking;
 import pi_1sem.persistencia.ConnectionFactory;
 
 public class RankingDAO {
-    public boolean listar(){
+    public boolean listar() throws Exception{
         var conectionFactory= new ConnectionFactory();
         var sql= "SELECT (codigo de INNerJoin do diego)";
         
@@ -20,10 +20,6 @@ public class RankingDAO {
                 System.out.printf("\n%s %s %s\n", posicao, nome, pontuacao);
             }
             return true;
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return false;
         }
     }
 }

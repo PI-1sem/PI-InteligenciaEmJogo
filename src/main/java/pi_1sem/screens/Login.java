@@ -6,7 +6,7 @@ package pi_1sem.screens;
 
 import javax.swing.JOptionPane;
 
-import pi_1sem.classes.participantes.Usuario;
+import pi_1sem.modelo.participantes.Usuario;
 import pi_1sem.persistencia.usuarios.LoginDAO;
 
 /**
@@ -220,12 +220,12 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");  
             }
             else{
-                var usuarioDB= login.existe(usuario);
-                if(usuarioDB.getNivelAcesso().equals("professor")){
+                var usuarioLogado= login.existe(usuario);
+                if(usuarioLogado.getNivelAcesso().equals("professor")){
                     new TelaInicioADM().setVisible(true);
                     dispose();
                 }
-                else if(usuarioDB.getNivelAcesso().equals("aluno")){
+                else if(usuarioLogado.getNivelAcesso().equals("aluno")){
                     new Jogar().setVisible(true);
                     dispose();
                 }

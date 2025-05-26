@@ -1,4 +1,4 @@
-package pi_1sem.classes.participantes;
+package pi_1sem.modelo.participantes;
 
 public class Aluno extends Usuario{
     public Aluno(String email, String senha, String nome){

@@ -1,8 +1,10 @@
-package pi_1sem.classes.participantes;
+package pi_1sem.modelo.participantes;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Usuario{
    private String email;
    private String senha;
@@ -10,14 +12,16 @@ public class Usuario{
    private String nivelAcesso;
    private int pontuacao;
    private int id;
+   public static Usuario usuarioLogado= new Usuario();
 
+     private Usuario(){          
+     }
      protected Usuario(String nome, String email, String senha, String nivelAcesso){
           this.nome = nome;
           this.email = email;
           this.senha = senha;
           this.nivelAcesso = nivelAcesso;
      }
-
      protected Usuario(int id, String email, String senha, String nome){
           this.id = id;
           this.email = email;
@@ -29,8 +33,9 @@ public class Usuario{
           this.email = email;
           this.senha = senha;
     }
-     public Usuario(String nivelAcesso){
+     public Usuario(String nivelAcesso, int id){
           this.nivelAcesso = nivelAcesso;
+          this.id = id;
     }
 
      void setSenha(String senha){
