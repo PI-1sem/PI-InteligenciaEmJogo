@@ -52,12 +52,12 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("E-mail :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, -1, 20));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, 30));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("Nome :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, -1, 30));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
