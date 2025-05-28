@@ -7,6 +7,7 @@ package pi_1sem.screens;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import pi_1sem.modelo.participantes.Administrador;
@@ -24,6 +25,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
     public AdministradorEditar() {
         initComponents();
         listarAdministradores();
+        capturarAlterções();
     }
 
     /**
@@ -166,7 +168,19 @@ public class AdministradorEditar extends javax.swing.JFrame {
             new String [] {
                 "ID matrícula ", "Nome ", "E-mail ", "Senha"
             }
-        ));
+        ){
+            @Override
+                public boolean isCellEditable(int row, int column) {
+                    return column != 0;
+            }
+        });
+
+        for (int i = 1; i < todosProfessoresTable.getColumnCount(); i++) {
+            javax.swing.table.TableColumn column = todosProfessoresTable.getColumnModel().getColumn(i);
+            if (column.getCellEditor() instanceof javax.swing.DefaultCellEditor) {
+                ((javax.swing.DefaultCellEditor) column.getCellEditor()).setClickCountToStart(2);
+            }
+        }
         todosProfessoresTable.setToolTipText("");
         jScrollPane1.setViewportView(todosProfessoresTable);
 
@@ -358,26 +372,26 @@ public class AdministradorEditar extends javax.swing.JFrame {
 
     private void excuirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excuirButtonActionPerformed
         // TODO add your handling code here:
-        int linhaSelecionada = todosProfessoresTable.getSelectedRow();
-        if (linhaSelecionada == 1){
-            JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!");
+        // int linhaSelecionada = todosProfessoresTable.getSelectedRow();
+        // if (linhaSelecionada == 1){
+        //     JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!");
+        // }
+        // else{
+        try {
+            int idExcluir= pegarCampoId();
+            var admDAO = new AdministradorDAO();
+            admDAO.remover(idExcluir);
+            listarAdministradores();
+            //    DefaultTableModel tabelaProfessor = 
+            //             (DefaultTableModel)todosProfessoresTable.getModel(); 
+            //    tabelaProfessor.removeRow(linhaSelecionada);
+            JOptionPane.showMessageDialog(this, "Professor excluido!");
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao excluir o professor!");
         }
-        else{
-            try {
-                int idExcluir= pegarCampoId();
-                var admDAO = new AdministradorDAO();
-                admDAO.remover(idExcluir);
-                listarAdministradores();
-                //    DefaultTableModel tabelaProfessor = 
-                //             (DefaultTableModel)todosProfessoresTable.getModel(); 
-                //    tabelaProfessor.removeRow(linhaSelecionada);
-                JOptionPane.showMessageDialog(this, "Professor excluido!");
-            } 
-            catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Erro ao excluir o professor!");
-            }
-        }
+        
     }//GEN-LAST:event_excuirButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
@@ -471,7 +485,7 @@ new OpcoesEditar().setVisible(true);
                     i.getEmail(),
                     i.getSenha()
                 });
-            }
+            }   
         } 
         
         catch (Exception e) {
@@ -485,14 +499,53 @@ new OpcoesEditar().setVisible(true);
 
         return idSelecionado;
     }
-    // private Administrador pegarAdministradorSelecionado(){
-    //     int linhaSelecionada = todosProfessoresTable.getSelectedRow();
-    //     int idSelecionado = Integer.parseInt(todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 0).toString());
-    //     String nomeSelecionado = todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 1).toString();
-    //     String emailSelecionado = todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 2).toString();
-    //     String senhaSelecionada = todosProfessoresTable.getModel().getValueAt(linhaSelecionada, 3).toString();
-    //     Administrador adm = new Administrador(idSelecionado, nomeSelecionado, emailSelecionado, senhaSelecionada);
-    //     return adm;
-    // }
+    private void capturarAlterções(){
+        var model = (javax.swing.table.DefaultTableModel) todosProfessoresTable.getModel();
+        model.addTableModelListener(e -> {
+            int row = e.getFirstRow();
+            int col = e.getColumn();
+            var valorAlterado = model.getValueAt(row, col).toString();
+
+            var id =Integer.parseInt(model.getValueAt(row, 0).toString());
+
+
+            if (col == 1) {
+                try{
+                    AdministradorDAO admDAO = new AdministradorDAO();
+                    admDAO.atualizarNome(valorAlterado, id);
+
+                    JOptionPane.showMessageDialog(null, "O nome foi alterado com sucesso");
+                }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar o nome");
+                }
+            }
+            if (col == 2) {
+                try{
+                    AdministradorDAO admDAO = new AdministradorDAO();
+                    admDAO.atualizarEmail(valorAlterado, id);
+
+                    JOptionPane.showMessageDialog(null, "O email foi alterado com sucesso");
+                }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar o email");
+                }
+            }
+            if (col == 3) {
+                try{
+                    AdministradorDAO admDAO = new AdministradorDAO();
+                    admDAO.atualizarSenha(valorAlterado, id);
+                    JOptionPane.showMessageDialog(null, "A senha foi alterada com sucesso");
+                }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar a senha");
+                }
+            }
+            jScrollPane1.setViewportView(todosProfessoresTable);
+        });
+    }
 
 }

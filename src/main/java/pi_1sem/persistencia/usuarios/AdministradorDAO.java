@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import pi_1sem.modelo.participantes.Administrador;
 import pi_1sem.persistencia.ConnectionFactory;
+import pi_1sem.persistencia.ConnectionFactoryTest;
 
 public class AdministradorDAO {
     public void cadastrar(Administrador administrador) throws Exception{
-        var conectionFactory= new ConnectionFactory();
-        var sql= "INSERT INTO usuarios(nome, email, senha, nivel_acesso) VALUES(?, ?, ?, administrador)";
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "INSERT INTO usuario (nome, email, senha, nivel_acesso) VALUES(?, ?, ?, 'admin')";
 
         try(
             var conexao= conectionFactory.obterConexao();
@@ -23,8 +24,8 @@ public class AdministradorDAO {
     }
     
     public void remover(Integer id) throws Exception{
-        var conectionFactory= new ConnectionFactory();
-        var sql= "DELETE FROM usuarios WHERE id_usuario= ? and nivel_acesso= administrador";
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "DELETE FROM usuario WHERE id_usuario= ? and nivel_acesso= 'admin'";
         
         try(
             var conexao= conectionFactory.obterConexao();
@@ -37,26 +38,50 @@ public class AdministradorDAO {
 
     }
 
-    public void atualizar(Administrador administrador) throws Exception{
-        var conectionFactory= new ConnectionFactory();
-        var sql= "UPDATE usuarios SET nome= ? email= ? senha= ? WHERE id_usuario= ? and nivel_acesso= administrador";
+    public void atualizarNome(String nome, int id) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "UPDATE usuario SET nome= ? WHERE id_usuario= ? and nivel_acesso= 'admin'";
         
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-            ps.setString(1, administrador.getNome());
-            ps.setString(2, administrador.getEmail());
-            ps.setString(3, administrador.getSenha());
-            ps.setInt(4, administrador.getId());
-            
+            ps.setString(1, nome);
+            ps.setInt(2, id);
+            ps.execute();
+        }
+    }
+    public void atualizarEmail(String email, int id) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "UPDATE usuario SET email= ? WHERE id_usuario= ? and nivel_acesso= 'admin'";
+
+        try(
+            var conexao= conectionFactory.obterConexao();
+            var ps= conexao.prepareStatement(sql);
+        ){
+            ps.setString(1, email);
+            ps.setInt(2, id);
+
+            ps.execute();
+        }
+    }
+    public void atualizarSenha(String senha, int id) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "UPDATE usuario SET senha= ? WHERE id_usuario= ? and nivel_acesso= 'admin'";
+        try(
+            var conexao= conectionFactory.obterConexao();
+            var ps= conexao.prepareStatement(sql);
+        ){
+            ps.setString(1, senha);
+            ps.setInt(2, id);
+
             ps.execute();
         }
     }
 
     public ArrayList<Administrador> listar()throws Exception{
-        var conectionFactory= new ConnectionFactory();
-        var sql= "SELECT (id_usuario, nome, email, senha) FROM usuarios WHERE nivel_acesso= administrador";
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "SELECT id_usuario, nome, email, senha FROM usuario WHERE nivel_acesso= 'admin'";
         ArrayList<Administrador> administradores= new ArrayList<>();
         
         try(
