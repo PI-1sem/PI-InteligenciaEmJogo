@@ -38,18 +38,16 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        idMatriculaTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        disciplinaTextField = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         senhaTextField = new javax.swing.JTextField();
         AdicionarProfessorjButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ProfessoresjTable1 = new javax.swing.JTable();
+        ProfessoresTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        excluirButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,21 +111,12 @@ public class AdministradorEditar extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel7.setText("ID matrícula:");
-
-        idMatriculaTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idMatriculaTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel8.setText("E-mail :");
 
-        disciplinaTextField.addActionListener(new java.awt.event.ActionListener() {
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                disciplinaTextFieldActionPerformed(evt);
+                emailTextFieldActionPerformed(evt);
             }
         });
 
@@ -140,7 +129,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
             }
         });
 
-        AdicionarProfessorjButton2.setBackground(new java.awt.Color(51, 51, 255));
+        AdicionarProfessorjButton2.setBackground(new java.awt.Color(71, 71, 215));
         AdicionarProfessorjButton2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         AdicionarProfessorjButton2.setForeground(new java.awt.Color(255, 255, 255));
         AdicionarProfessorjButton2.setText("+ adcionar professor");
@@ -150,19 +139,68 @@ public class AdministradorEditar extends javax.swing.JFrame {
             }
         });
 
-        ProfessoresjTable1.setBackground(new java.awt.Color(204, 204, 204));
-        ProfessoresjTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ProfessoresjTable1.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        ProfessoresjTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ProfessoresTable.setBackground(new java.awt.Color(204, 204, 204));
+        ProfessoresTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ProfessoresTable.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        ProfessoresTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "ID matrícula ", "Nome ", "E-mail ", "Senha"
             }
         ));
-        ProfessoresjTable1.setToolTipText("");
-        jScrollPane1.setViewportView(ProfessoresjTable1);
+        ProfessoresTable.setToolTipText("");
+        jScrollPane1.setViewportView(ProfessoresTable);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -178,8 +216,8 @@ public class AdministradorEditar extends javax.swing.JFrame {
         );
 
         jButton2.setBackground(new java.awt.Color(241, 22, 22));
-        jButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\sainda 2.png")); // NOI18N
+        jButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,13 +225,13 @@ public class AdministradorEditar extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 255));
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Excluir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        excluirButton.setBackground(new java.awt.Color(71, 71, 215));
+        excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        excluirButton.setForeground(new java.awt.Color(255, 255, 255));
+        excluirButton.setText("Excluir");
+        excluirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                excluirButtonActionPerformed(evt);
             }
         });
 
@@ -206,34 +244,29 @@ public class AdministradorEditar extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(78, 78, 78)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(AdicionarProfessorjButton2)
-                                .addGap(107, 107, 107)
-                                .addComponent(jLabel9))
-                            .addComponent(jLabel7))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(AdicionarProfessorjButton2)
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idMatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(disciplinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(165, 165, 165))
         );
         jPanel2Layout.setVerticalGroup(
@@ -241,17 +274,16 @@ public class AdministradorEditar extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel6))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(idMatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(disciplinaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -263,15 +295,13 @@ public class AdministradorEditar extends javax.swing.JFrame {
                         .addComponent(jLabel5)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 67, Short.MAX_VALUE)
+                        .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -292,7 +322,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         pack();
@@ -301,26 +331,23 @@ public class AdministradorEditar extends javax.swing.JFrame {
     private void AdicionarProfessorjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarProfessorjButton2ActionPerformed
         // TODO add your handling code here:
         //Primeiramente, recuperar os preenchidos no form
-        String Nome = nomeTextField.getText();
-        String IdMatricula = idMatriculaTextField.getText();
-        String Disciplina = disciplinaTextField.getText();
+        String Nome = nomeTextField.getText();        
+        String Disciplina = emailTextField.getText();
         String Salas = senhaTextField.getText();       
       
         DefaultTableModel tabelaProfessor = 
-                        (DefaultTableModel)ProfessoresjTable1.getModel();
+                        (DefaultTableModel)ProfessoresTable.getModel();
         
         Object[] novoProfessor = new Object[]{
-            Nome,  //primeiro 
-            IdMatricula, //segundo
-            Disciplina,  // terceiro
-            Salas, // quarto
+            Nome,  //primeiro            
+            Disciplina,  // Segundo
+            Salas, // Terceiro
         };
         
         tabelaProfessor.addRow(novoProfessor);
         //limparCampos
-        nomeTextField.setText("");
-        idMatriculaTextField.setText("");
-        disciplinaTextField.setText("");
+        nomeTextField.setText("");                
+        emailTextField.setText("");
         senhaTextField.setText("");
     }//GEN-LAST:event_AdicionarProfessorjButton2ActionPerformed
 
@@ -328,27 +355,23 @@ public class AdministradorEditar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTextFieldActionPerformed
 
-    private void idMatriculaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idMatriculaTextFieldActionPerformed
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idMatriculaTextFieldActionPerformed
+    }//GEN-LAST:event_emailTextFieldActionPerformed
 
-    private void disciplinaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disciplinaTextFieldActionPerformed
+    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_disciplinaTextFieldActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int linhaSelecionada = ProfessoresjTable1.getSelectedRow();
+        int linhaSelecionada = ProfessoresTable.getSelectedRow();
         if (linhaSelecionada == 1){
         JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!");
     }
         else{
                DefaultTableModel tabelaProfessor = 
-                        (DefaultTableModel)ProfessoresjTable1.getModel(); 
+                        (DefaultTableModel)ProfessoresTable.getModel(); 
                tabelaProfessor.removeRow(linhaSelecionada);
                JOptionPane.showMessageDialog(this, "Professor excluido!");
                 }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_excluirButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 new OpcoesEditar().setVisible(true);
@@ -399,10 +422,9 @@ new OpcoesEditar().setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdicionarProfessorjButton2;
-    private javax.swing.JTable ProfessoresjTable1;
-    private javax.swing.JTextField disciplinaTextField;
-    private javax.swing.JTextField idMatriculaTextField;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable ProfessoresTable;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JButton excluirButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -410,7 +432,6 @@ new OpcoesEditar().setVisible(true);
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
