@@ -1,6 +1,11 @@
 package pi_1sem.screens;
 
+import java.awt.Color;
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
+import javax.swing.JToggleButton;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,12 +35,12 @@ public class Perguntas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        DicajButton1 = new javax.swing.JButton();
+        DicaButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        enviarButton = new javax.swing.JButton();
         opcaoCToggleButton = new javax.swing.JToggleButton();
         opcaoAToggleButton = new javax.swing.JToggleButton();
         opcaoBToggleButton = new javax.swing.JToggleButton();
@@ -45,10 +50,10 @@ public class Perguntas extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(64, 133, 224));
 
-        DicajButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\lampada 1.6.png")); // NOI18N
-        DicajButton1.addActionListener(new java.awt.event.ActionListener() {
+        DicaButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\lampada 1.6.png")); // NOI18N
+        DicaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DicajButton1ActionPerformed(evt);
+                DicaButtonActionPerformed(evt);
             }
         });
 
@@ -73,23 +78,28 @@ public class Perguntas extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(707, Short.MAX_VALUE))
+                .addContainerGap(771, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jButton7.setBackground(new java.awt.Color(255, 0, 0));
         jButton7.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
         jButton7.setText("Parar");
 
-        jButton8.setBackground(new java.awt.Color(51, 204, 0));
-        jButton8.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        jButton8.setText("Enviar");
+        enviarButton.setBackground(new java.awt.Color(51, 204, 0));
+        enviarButton.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        enviarButton.setText("Enviar");
+        enviarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enviarButtonActionPerformed(evt);
+            }
+        });
 
         opcaoCToggleButton.setBackground(new java.awt.Color(64, 133, 224));
         opcaoCToggleButton.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
@@ -117,62 +127,58 @@ public class Perguntas extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(DicajButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(DicaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(204, 204, 204)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(opcaoBToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(opcaoDToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(opcaoAToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(opcaoCToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(198, 198, 198))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(146, 146, 146)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(opcaoBToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                                    .addComponent(opcaoAToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(opcaoCToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(opcaoDToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(155, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(1056, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enviarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(37, 37, 37)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DicajButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(143, 143, 143))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DicaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(opcaoAToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcaoCToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
+                    .addComponent(opcaoAToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcaoCToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(opcaoBToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(opcaoDToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                    .addComponent(opcaoDToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opcaoBToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(444, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enviarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
@@ -181,15 +187,13 @@ public class Perguntas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -199,22 +203,121 @@ public class Perguntas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void DicajButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DicajButton1ActionPerformed
-        // TODO add your handling code here:
-        // Esconde duas opções de resposta (por exemplo, C e D)
-    opcaoBToggleButton.setVisible(false); // Opção B
-    opcaoAToggleButton.setVisible(false); // Opção A
+    private void DicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DicaButtonActionPerformed
+
+    // 1. Lista de todas as respostas erradas (excluindo a correta)
+   java.util.List<JToggleButton> respostasErradas = new java.util.ArrayList<>();
     
+    // Supondo que 'opcaoCToggleButton' é a resposta correta
+    JToggleButton respostaCorreta = opcaoCToggleButton; // Altere para o seu botão correto
     
-    // Atualiza a interface
+    // Adiciona apenas as respostas erradas e visíveis à lista
+    if (opcaoAToggleButton != respostaCorreta && opcaoAToggleButton.isVisible()) {
+        respostasErradas.add(opcaoAToggleButton);
+    }
+    if (opcaoBToggleButton != respostaCorreta && opcaoBToggleButton.isVisible()) {
+        respostasErradas.add(opcaoBToggleButton);
+    }
+    if (opcaoDToggleButton != respostaCorreta && opcaoDToggleButton.isVisible()) {
+        respostasErradas.add(opcaoDToggleButton);
+    }
+
+    // 2. Calcula quantas esconder (metade das erradas, arredondando para baixo)
+    int qtdParaEsconder = respostasErradas.size() / 2;
+
+    // 3. Embaralha as respostas erradas aleatoriamente
+    Collections.shuffle(respostasErradas);
+
+    // 4. Esconde as respostas selecionadas
+    for (int i = 0; i < qtdParaEsconder && i < respostasErradas.size(); i++) {
+        respostasErradas.get(i).setVisible(false);
+    }
+
+    // 5. Atualiza a interface
     revalidate();
     repaint();
+
+    // 6. Feedback para o usuário
+    JOptionPane.showMessageDialog(this, 
+        "Dica usada! " + qtdParaEsconder + " opção(ões) errada(s) foram removidas.",
+        "Dica", 
+        JOptionPane.INFORMATION_MESSAGE);
+
+    // 7. Desabilita o botão da dica após o uso (opcional)
+    DicaButton.setEnabled(false);
+
+        
+        
+    }//GEN-LAST:event_DicaButtonActionPerformed
+
+    private void enviarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarButtonActionPerformed
+        // TODO add your handling code here:
+       
+    // 1. Verifica qual resposta está selecionada
+    JToggleButton respostaSelecionada = null;
     
-    // Opcional: Mostrar mensagem
-    JOptionPane.showMessageDialog(this, "Duas opções foram removidas!");
+    // Lista de todas as opções de resposta
+    JToggleButton[] todasRespostas = {
+        opcaoAToggleButton, 
+        opcaoBToggleButton, 
+        opcaoCToggleButton, 
+        opcaoDToggleButton  // Adicione mais se necessário
+    };
+    
+    // Procura qual está selecionada
+    for (JToggleButton resposta : todasRespostas) {
+        if (resposta.isSelected()) {
+            respostaSelecionada = resposta;
+            break;
+        }
+    }
+    
+    // 2. Verifica se alguma resposta foi selecionada
+    if (respostaSelecionada == null) {
+        JOptionPane.showMessageDialog(this, 
+            "Selecione uma resposta antes de enviar!", 
+            "Aviso", 
+            JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    // 3. Define qual é a resposta correta (ajuste para o seu caso)
+    JToggleButton respostaCorreta = opcaoCToggleButton; // Exemplo: C é a correta
+    
+    // 4. Verifica se acertou
+    boolean acertou = (respostaSelecionada == respostaCorreta);
+    
+    // 5. Mostra o feedback visual
+    if (acertou) {
+        respostaSelecionada.setBackground(Color.GREEN);
+        JOptionPane.showMessageDialog(this, 
+            "✅ Resposta Correta!", 
+            "Parabéns", 
+            JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        respostaSelecionada.setBackground(Color.RED);
+        respostaCorreta.setBackground(Color.GREEN);
+        JOptionPane.showMessageDialog(this, 
+            "❌ Resposta Incorreta!\nA resposta correta é: " + respostaCorreta.getText(), 
+            "Resultado", 
+            JOptionPane.ERROR_MESSAGE);
+    
+    
+    // 6. Desabilita todas as respostas após enviar (opcional)
+    for (JToggleButton resposta : todasRespostas) {
+        resposta.setEnabled(false);
+    }
+    
+    // 7. Desabilita o botão de enviar (opcional)
+    enviarButton.setEnabled(false);
+}
         
         
-    }//GEN-LAST:event_DicajButton1ActionPerformed
+        
+        
+        
+        
+    }//GEN-LAST:event_enviarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,10 +356,10 @@ public class Perguntas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton DicajButton1;
+    private javax.swing.JButton DicaButton;
+    private javax.swing.JButton enviarButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

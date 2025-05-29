@@ -26,6 +26,9 @@ public class Materias extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -109,6 +112,7 @@ public class Materias extends javax.swing.JFrame {
         jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\chapeu escolar.png")); // NOI18N
 
         jToggleButton4.setBackground(new java.awt.Color(255, 153, 51));
+        buttonGroup1.add(jToggleButton4);
         jToggleButton4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jToggleButton4.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\calculadora.png")); // NOI18N
@@ -116,6 +120,7 @@ public class Materias extends javax.swing.JFrame {
         jToggleButton4.setBorder(null);
 
         jToggleButton5.setBackground(new java.awt.Color(9, 218, 218));
+        buttonGroup1.add(jToggleButton5);
         jToggleButton5.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
         jToggleButton5.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\icone biologia 6.png")); // NOI18N
@@ -123,6 +128,7 @@ public class Materias extends javax.swing.JFrame {
         jToggleButton5.setBorder(null);
 
         jToggleButton6.setBackground(new java.awt.Color(204, 0, 255));
+        buttonGroup1.add(jToggleButton6);
         jToggleButton6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
         jToggleButton6.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\icone quimica 2.png")); // NOI18N
@@ -216,10 +222,11 @@ public class Materias extends javax.swing.JFrame {
                                 .addComponent(jLabel12))
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(39, 39, 39)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18))
@@ -304,6 +311,9 @@ public class Materias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
