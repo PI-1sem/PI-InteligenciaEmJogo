@@ -3,7 +3,6 @@ package pi_1sem.persistencia.usuarios;
 import java.util.ArrayList;
 
 import pi_1sem.modelo.participantes.Administrador;
-import pi_1sem.persistencia.ConnectionFactory;
 import pi_1sem.persistencia.ConnectionFactoryTest;
 
 public class AdministradorDAO {

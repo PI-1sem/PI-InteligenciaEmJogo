@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import pi_1sem.modelo.participantes.Aluno;
 import pi_1sem.persistencia.ConnectionFactory;
+import pi_1sem.persistencia.ConnectionFactoryTest;
 
 public class AlunoDAO {
     public void cadastrar(Aluno aluno) throws Exception{
-        var conectionFactory= new ConnectionFactory();
-        var sql= "INSERT INTO usuarios(nome, email, senha, nivel_acesso) VALUES(?, ?, ?, aluno)";
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "INSERT INTO usuario(nome, email, senha, nivel_acesso) VALUES(?, ?, ?, 'aluno')";
 
         try(
             var conexao= conectionFactory.obterConexao();
@@ -21,39 +22,63 @@ public class AlunoDAO {
             ps.execute();
         }
     }
-    public void remover(Aluno aluno)throws Exception{
-        var conectionFactory= new ConnectionFactory();
-        var sql= "DELETE FROM usuarios WHERE id_usuario= ? and nivel_acesso= aluno";
+    public void remover(Integer id)throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "DELETE FROM usuario WHERE id_usuario= ? and nivel_acesso= 'aluno'";
         
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-           ps.setInt(1, aluno.getId());
+           ps.setInt(1, id);
            
            ps.execute();
  
         }
     }
-    public void atualizar(Aluno aluno)throws Exception{
-        var conectionFactory= new ConnectionFactory();
-        var sql= "UPDATE usuarios SET nome= ? email= ? senha= ? WHERE id_aluno= ? and nivel_acesso= aluno";
+    public void atualizarNome(String nome, int id) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "UPDATE usuario SET nome= ? WHERE id_usuario= ? and nivel_acesso= 'aluno'";
         
         try(
             var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
         ){
-            ps.setString(1, aluno.getNome());
-            ps.setString(2, aluno.getEmail());
-            ps.setString(3, aluno.getSenha());
-            ps.setInt(4, aluno.getId());
-            
+            ps.setString(1, nome);
+            ps.setInt(2, id);
+            ps.execute();
+        }
+    }
+    public void atualizarEmail(String email, int id) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "UPDATE usuario SET email= ? WHERE id_usuario= ? and nivel_acesso= 'aluno'";
+
+        try(
+            var conexao= conectionFactory.obterConexao();
+            var ps= conexao.prepareStatement(sql);
+        ){
+            ps.setString(1, email);
+            ps.setInt(2, id);
+
+            ps.execute();
+        }
+    }
+    public void atualizarSenha(String senha, int id) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "UPDATE usuario SET senha= ? WHERE id_usuario= ? and nivel_acesso= 'aluno'";
+        try(
+            var conexao= conectionFactory.obterConexao();
+            var ps= conexao.prepareStatement(sql);
+        ){
+            ps.setString(1, senha);
+            ps.setInt(2, id);
+
             ps.execute();
         }
     }
     public ArrayList<Aluno> listar() throws Exception{
-        var conectionFactory= new ConnectionFactory();
-        var sql= "SELECT (id_usuario, nome, email, senha) FROM usuarios WHERE nivel_acesso= aluno";
+        var conectionFactory= new ConnectionFactoryTest();
+        var sql= "SELECT id_usuario, nome, email, senha FROM usuario WHERE nivel_acesso= 'aluno'";
         ArrayList<Aluno> alunos= new ArrayList<>();
         
         try(

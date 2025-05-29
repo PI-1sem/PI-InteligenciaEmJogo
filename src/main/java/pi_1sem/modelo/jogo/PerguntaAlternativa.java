@@ -16,9 +16,10 @@ public class PerguntaAlternativa {
 
     @Override
     public String toString() {
-        return "PerguntaAlternativa{" + "pergunta=" + pergunta.getEnunciado() + ", nivel"+ pergunta.getNivel() + ", letra=" + alternativa.getLetra() + ", alternativa=" + alternativa.getTexto()
+        return "PerguntaAlternativa{" + "id_pergunta=" + pergunta.getId() + ", pergunta=" + pergunta.getEnunciado() + ", nivel="+ pergunta.getNivel() + ", letra=" + alternativa.getLetra() + ", alternativa=" + alternativa.getTexto()
          + ", correta=" + correta + '}';
     }
+    
     
     
 }

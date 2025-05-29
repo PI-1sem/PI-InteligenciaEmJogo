@@ -20,11 +20,18 @@ public class Pergunta {
         this.nivel= nivel;
         // alternativas= new ArrayList<>();
     }
+    public Pergunta(int id, String enunciado, Materia materia, String nivel){
+        this.id= id;
+        this.enunciado= enunciado;
+        this.materia= materia;
+        this.nivel= nivel;
+    }
 
     @Override
     public String toString() {
-        return "Pergunta{" + "enunciado=" + enunciado + ", materia="+ materia + ", nivel=" + nivel + "}";
+        return "Pergunta{" + "id=" + id + ", enunciado=" + enunciado + ", materia="+ materia + ", nivel=" + nivel + "}";
     }
+
     
 }
     

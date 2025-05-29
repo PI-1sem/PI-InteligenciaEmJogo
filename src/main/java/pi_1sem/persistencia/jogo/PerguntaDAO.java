@@ -38,9 +38,4 @@ public class PerguntaDAO {
         }
     }
 
-    // public static void main(String[] args) throws Exception{
-    //     var resposta= bancoDeQuestoes("fácil", new Materia("Matematica"));
-    //     System.out.println(resposta.get(0).getPergunta());
-    // }
-
 }
