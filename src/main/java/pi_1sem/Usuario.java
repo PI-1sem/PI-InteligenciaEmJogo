@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pi_1sem.screens;
+package pi_1sem;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -263,8 +263,7 @@ public class Usuario extends javax.swing.JFrame {
                 }
     }   
         
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        //GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,6 +296,8 @@ public class Usuario extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                new Usuario().setVisible(true);
+                
             }
         });
     }
