@@ -67,7 +67,7 @@ public class CheckPoint extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 255, 102));
-        jLabel7.setText("Saldo atual : R$ 10.000,00");
+        jLabel7.setText("Seu saldo : R$ 10.000,00");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

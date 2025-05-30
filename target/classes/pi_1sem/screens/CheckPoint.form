@@ -204,7 +204,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="ff" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Saldo atual : R$ 10.000,00"/>
+            <Property name="text" type="java.lang.String" value="Seu saldo : R$ 10.000,00"/>
           </Properties>
         </Component>
       </SubComponents>
