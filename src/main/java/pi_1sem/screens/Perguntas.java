@@ -34,17 +34,20 @@ public class Perguntas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         DicaButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         enviarButton = new javax.swing.JButton();
         opcaoCToggleButton = new javax.swing.JToggleButton();
         opcaoAToggleButton = new javax.swing.JToggleButton();
         opcaoBToggleButton = new javax.swing.JToggleButton();
         opcaoDToggleButton = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,31 +67,7 @@ public class Perguntas extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPanel2.setOpaque(false);
-
-        jLabel1.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel1.setText("1-)Pergunta");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(771, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
-
-        jButton7.setBackground(new java.awt.Color(255, 0, 0));
+        jButton7.setBackground(new java.awt.Color(255, 51, 51));
         jButton7.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
         jButton7.setText("Parar");
 
@@ -102,24 +81,32 @@ public class Perguntas extends javax.swing.JFrame {
         });
 
         opcaoCToggleButton.setBackground(new java.awt.Color(64, 133, 224));
-        opcaoCToggleButton.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        opcaoCToggleButton.setForeground(new java.awt.Color(255, 153, 0));
+        buttonGroup1.add(opcaoCToggleButton);
+        opcaoCToggleButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        opcaoCToggleButton.setForeground(new java.awt.Color(255, 255, 255));
         opcaoCToggleButton.setText("C-)Resposta");
 
         opcaoAToggleButton.setBackground(new java.awt.Color(64, 133, 224));
-        opcaoAToggleButton.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        opcaoAToggleButton.setForeground(new java.awt.Color(255, 153, 0));
+        buttonGroup1.add(opcaoAToggleButton);
+        opcaoAToggleButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        opcaoAToggleButton.setForeground(new java.awt.Color(255, 255, 255));
         opcaoAToggleButton.setText("A-)Resposta");
 
         opcaoBToggleButton.setBackground(new java.awt.Color(64, 133, 224));
-        opcaoBToggleButton.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        opcaoBToggleButton.setForeground(new java.awt.Color(255, 153, 0));
+        buttonGroup1.add(opcaoBToggleButton);
+        opcaoBToggleButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        opcaoBToggleButton.setForeground(new java.awt.Color(255, 255, 255));
         opcaoBToggleButton.setText("B-)Resposta");
 
         opcaoDToggleButton.setBackground(new java.awt.Color(64, 133, 224));
-        opcaoDToggleButton.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        opcaoDToggleButton.setForeground(new java.awt.Color(255, 153, 0));
+        buttonGroup1.add(opcaoDToggleButton);
+        opcaoDToggleButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        opcaoDToggleButton.setForeground(new java.awt.Color(255, 255, 255));
         opcaoDToggleButton.setText("D-)Resposta");
+
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("1:Pergunta");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,15 +129,15 @@ public class Perguntas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(opcaoBToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opcaoAToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(opcaoDToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opcaoCToggleButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(183, 183, 183))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addGap(271, 271, 271)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,21 +146,21 @@ public class Perguntas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DicaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 472, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(enviarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(42, 42, 42))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2)
+                        .addGap(161, 161, 161)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(opcaoCToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(opcaoAToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(opcaoBToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(opcaoDToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -352,12 +339,15 @@ public class Perguntas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DicaButton;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton enviarButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton opcaoAToggleButton;
     private javax.swing.JToggleButton opcaoBToggleButton;
     private javax.swing.JToggleButton opcaoCToggleButton;
