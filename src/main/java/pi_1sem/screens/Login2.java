@@ -49,22 +49,14 @@ public class Login2 extends javax.swing.JFrame {
         senhaPasswordField.setText("Senha : ");
         senhaPasswordField.setBorder(null);
         senhaPasswordField.setOpaque(false);
-        senhaPasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaPasswordFieldActionPerformed(evt);
-            }
-        });
+        
         getContentPane().add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 300, 50));
 
         emailTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         emailTextField.setText("E-mail :");
         emailTextField.setBorder(null);
         emailTextField.setOpaque(true);
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
-            }
-        });
+    
         getContentPane().add(emailTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 290, 50));
 
         entrarButton.setBackground(new java.awt.Color(0, 102, 255));
@@ -84,13 +76,6 @@ public class Login2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void senhaPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaPasswordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaPasswordFieldActionPerformed
-
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
     private void entrarButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String email = emailTextField.getText();
         var senha = senhaPasswordField.getPassword();
@@ -106,11 +91,12 @@ public class Login2 extends javax.swing.JFrame {
 
             var login = new LoginDAO();
 
-            if(login.existe(usuario) == null){
+            var usuarioLogado= login.existe(usuario);
+
+            if(usuarioLogado == null){
                 JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");  
             }
             else{
-                var usuarioLogado= login.existe(usuario);
                 if(usuarioLogado.getNivelAcesso().equals("admin")){
                     new TelaInicioADM().setVisible(true);
                     dispose();

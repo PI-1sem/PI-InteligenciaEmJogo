@@ -288,7 +288,7 @@ public class Materias extends javax.swing.JFrame {
 
     private void matematicaToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matematicaToggleButtonActionPerformed
         var partida= new Partida(new Materia("Matematica"));
-        new Perguntas(partida).setVisible(true);
+        new PerguntasTeste(partida).setVisible(true);
     }//GEN-LAST:event_matematicaToggleButtonActionPerformed
 
     /**

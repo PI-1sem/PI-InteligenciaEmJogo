@@ -307,6 +307,11 @@ public class Perguntas extends javax.swing.JFrame {
                     questao.add(banco.get((indexSorteado+ 1)).getAlternativa().getTexto());
                     questao.add(banco.get((indexSorteado+ 2)).getAlternativa().getTexto());
                     questao.add(banco.get((indexSorteado+ 3)).getAlternativa().getTexto());
+                    for(int j = indexSorteado; j < (indexSorteado+4); j++){
+                        if(banco.get(j).isCorreta() == true){
+                            questao.add(banco.get(j).getAlternativa().getTexto());
+                        }
+                    }
                     break;
                 }
             } while(true);
@@ -318,6 +323,5 @@ public class Perguntas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao selecionar a pergunta");
             return null;
         }
-
     }
 }

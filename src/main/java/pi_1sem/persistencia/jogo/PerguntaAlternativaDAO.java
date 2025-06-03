@@ -38,17 +38,4 @@ public class PerguntaAlternativaDAO {
             return todasPerguntasAlternativas;
         }
     }
-    public static void main(String[] args) {
-        try{
-            var perguntasAlternativas= PerguntaAlternativaDAO.listarPerguntasAlternativas();
-            for(var perguntaAlternativa: perguntasAlternativas){
-                if (perguntaAlternativa.isCorreta()){
-                    System.out.println(perguntaAlternativa.getAlternativa());
-                }
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
 }
