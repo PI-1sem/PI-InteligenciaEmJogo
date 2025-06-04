@@ -1,6 +1,7 @@
 package pi_1sem.screens;
 
 import java.util.List;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
@@ -29,6 +30,7 @@ public class PerguntasTeste extends javax.swing.JFrame {
         setarPontuacao(partida);
         initComponents(base, partida);
         pararButton.setEnabled(partida.getPosicao() >= 2);
+        dicaButton.setEnabled(partida.getOpcoesDicas() != null);
         
     }
 
@@ -60,7 +62,7 @@ public class PerguntasTeste extends javax.swing.JFrame {
         dicaButton.setIcon(new javax.swing.ImageIcon("src//main//java//pi_1sem//images//lampada 1.6.png")); // NOI18N
         dicaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dicaButtonActionPerformed(evt);
+                dicaButtonActionPerformed(evt, base, partida);
             }
         });
 
@@ -96,7 +98,7 @@ public class PerguntasTeste extends javax.swing.JFrame {
         pararButton.setText("Parar");
         pararButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pararButtonActionPerformed(evt);
+                pararButtonActionPerformed(evt, partida);
             }
         });
 
@@ -207,49 +209,101 @@ public class PerguntasTeste extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dicaButtonActionPerformed
-
-        // 1. Lista de todas as respostas erradas (excluindo a correta)
-        java.util.List<JToggleButton> respostasErradas = new java.util.ArrayList<>();
+    private void dicaButtonActionPerformed(java.awt.event.ActionEvent evt, List<String> base, Partida partida) {
         
-        // Supondo que 'opcaoCToggleButton' é a resposta correta
-        JToggleButton respostaCorreta = opcaoCToggleButton; // Altere para o seu botão correto
+        var opcoesDica= partida.getOpcoesDicas();
+
+        int escolha = JOptionPane.showOptionDialog(
+        this, 
+        "Escolha o tipo de dica que deseja usar:", 
+        "Tipos de Dica", 
+        JOptionPane.DEFAULT_OPTION, 
+        JOptionPane.QUESTION_MESSAGE, 
+        null, 
+        opcoesDica,
+        null
+        );
+
+        if (opcoesDica[escolha].equals("Pular pergunta")){
+            if (partida.getOpcoesDicas().length == 2){
+                partida.setOpcoesDicas(new Object[]{"Filtro da sorte"});
+            }
+            else if (partida.getOpcoesDicas().length == 1){
+                partida.setOpcoesDicas(null);
+            }
+            JOptionPane.showMessageDialog(this, "Você pulou a pergunta!");
+
+            proximaPergunta(partida);
+            
+        }
+
+        if (opcoesDica[escolha].equals("Filtro da sorte")){
+            if (partida.getOpcoesDicas().length == 2){
+                partida.setOpcoesDicas(new Object[]{"Pular pergunta"});
+            }
+            else if (partida.getOpcoesDicas().length == 1){
+                partida.setOpcoesDicas(null);
+            }
+            // 1. Obter a resposta correta
+            String respostaCorreta = base.get(5);
+            
+            // 2. Lista de todas as alternativas erradas e visíveis
+            List<JToggleButton> alternativasErradas = new ArrayList<>();
+            
+            // Verificar cada botão
+            JToggleButton[] todosBotoes = {
+                opcaoAToggleButton, 
+                opcaoBToggleButton, 
+                opcaoCToggleButton, 
+                opcaoDToggleButton
+            };
+            
+            for (JToggleButton botao : todosBotoes) {
+                if (!botao.getText().equals(respostaCorreta)) {
+                    alternativasErradas.add(botao);
+                }
+            }
+            
+            // 3. Sortear quantas alternativas serão removidas (0-3)
+            int numeroParaRemover = (int) (Math.random() * 4); // Gera 0, 1, 2 ou 3
+            
+            // 4. Embaralhar a lista de alternativas erradas
+            Collections.shuffle(alternativasErradas);
+            
+            // 5. Remover as alternativas selecionadas
+            for (int i = 0; i < numeroParaRemover && i < alternativasErradas.size(); i++) {
+                alternativasErradas.get(i).setVisible(false);
+            }
+            
+            // 6. Atualizar a interface
+            revalidate();
+            repaint();
+            
+            // 7. Feedback para o usuário
+            String mensagem;
+            switch (numeroParaRemover) {
+                case 0:
+                    mensagem = "A dica não removeu nenhuma alternativa errada. Boa sorte!";
+                    break;
+                case 1:
+                    mensagem = "Dica usada! 1 opção errada foi removida.";
+                    break;
+                default:
+                    mensagem = "Dica usada! " + numeroParaRemover + " opções erradas foram removidas.";
+                    break;
+            }
+            
+            JOptionPane.showMessageDialog(this, 
+                mensagem,
+                "Dica", 
+                JOptionPane.INFORMATION_MESSAGE);
+    
+            // 8. Desabilita o botão da dica após o uso
+            dicaButton.setEnabled(false);
+
+        }
+    }
         
-        // Adiciona apenas as respostas erradas e visíveis à lista
-        if (opcaoAToggleButton != respostaCorreta && opcaoAToggleButton.isVisible()) {
-            respostasErradas.add(opcaoAToggleButton);
-        }
-        if (opcaoBToggleButton != respostaCorreta && opcaoBToggleButton.isVisible()) {
-            respostasErradas.add(opcaoBToggleButton);
-        }
-        if (opcaoDToggleButton != respostaCorreta && opcaoDToggleButton.isVisible()) {
-            respostasErradas.add(opcaoDToggleButton);
-        }
-
-        // 2. Calcula quantas esconder (metade das erradas, arredondando para baixo)
-        int qtdParaEsconder = respostasErradas.size() / 2;
-
-        // 3. Embaralha as respostas erradas aleatoriamente
-        Collections.shuffle(respostasErradas);
-
-        // 4. Esconde as respostas selecionadas
-        for (int i = 0; i < qtdParaEsconder && i < respostasErradas.size(); i++) {
-            respostasErradas.get(i).setVisible(false);
-        }
-
-        // 5. Atualiza a interface
-        revalidate();
-        repaint();
-
-        // 6. Feedback para o usuário
-        JOptionPane.showMessageDialog(this, 
-            "Dica usada! " + qtdParaEsconder + " opção(ões) errada(s) foram removidas.",
-            "Dica", 
-            JOptionPane.INFORMATION_MESSAGE);
-
-        // 7. Desabilita o botão da dica após o uso (opcional)
-        dicaButton.setEnabled(false);
-    }//GEN-LAST:event_dicaButtonActionPerformed
 
     private void enviarButtonActionPerformed(java.awt.event.ActionEvent evt, List<String> base, Partida partida) {
         JToggleButton respostaSelecionada = null;
@@ -305,53 +359,7 @@ public class PerguntasTeste extends javax.swing.JFrame {
                         "Parabéns", 
                         JOptionPane.INFORMATION_MESSAGE);
 
-                    var posicaoAtual= partida.getPosicao();
-
-                    if(posicaoAtual== 4 || posicaoAtual == 8 || posicaoAtual == 12) {
-                        try{
-                            var usuarioDao= new UsuarioDAO();
-    
-                            var pontuacaoDoBanco= usuarioDao.pegarPontuacao();
-                            
-                            if (partida.getPontuacaoSeguro() != 0){
-                                var pontuacaoNova=  pontuacaoDoBanco + (partida.getPontuacaoPartida() - partida.getPontuacaoSeguro());
-    
-                                usuarioDao.atualizarPontuacao(pontuacaoNova);
-                                
-                            }
-                            else{
-                                var pontuacaoNova=  pontuacaoDoBanco + partida.getPontuacaoPartida();
-    
-                                usuarioDao.atualizarPontuacao(pontuacaoNova);
-                            }
-    
-                            partida.setPontuacaoSeguro(partida.getPontuacaoPartida());
-    
-                            var posicaoNova= posicaoAtual + 1;
-                            partida.setPosicao(posicaoNova);
-    
-                            if (posicaoAtual == 4 || posicaoAtual == 8){
-                                // new TelaPortoSeguro(partida).setVisible(true);
-                                // this.dispose();
-                            }
-                            else if(posicaoAtual == 12){
-                                // new TelaDeVitoria(partida).setVisible(true);
-                                // this.dispose();
-                            }
-                        }
-                        catch(Exception e){
-                            JOptionPane.showMessageDialog(null, "Erro ao atualizar pontuação");
-                            e.printStackTrace();
-
-                        }
-                    }
-
-                    var posicaoNova= posicaoAtual + 1;
-
-                    partida.setPosicao(posicaoNova);
-
-                    new PerguntasTeste(partida).setVisible(true);
-                    this.dispose();
+                    proximaPergunta(partida);
 
                 } 
                 else {
@@ -363,25 +371,43 @@ public class PerguntasTeste extends javax.swing.JFrame {
                         "❌ Resposta Incorreta!\nA resposta correta é: " + respostaCorretaButton.getText(), 
                         "Resultado", 
                         JOptionPane.ERROR_MESSAGE);
+
+                    // new TelaFinalizacao(partida).setVisible(true);
+                    // this.dispose();
                 }
-                
-                // 6. Desabilita todas as respostas após enviar (opcional)
-                for (JToggleButton resposta : todasRespostas) {
-                    resposta.setEnabled(false);
-                }
-                
-                // 7. Desabilita o botão de enviar (opcional)
-                enviarButton.setEnabled(false);
             }
         }
     }
         
-        
-        
 
-    private void pararButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(this, "Tem certeza que deseja parar?");
-          
+    private void pararButtonActionPerformed(java.awt.event.ActionEvent evt, Partida partida) {
+
+        var parar= JOptionPane.showConfirmDialog(null, "Deseja parar na pergunta " + partida.getPosicao() + "?" + "\nVocê sairá com o dinheiro da ultima rodada R$" + partida.getPontuacaoUltimaRodada(), "Tem certeza que deseja parar? ", JOptionPane.OK_CANCEL_OPTION);
+
+        if(JOptionPane.OK_OPTION == parar){
+            try{
+                var usuarioDao= new UsuarioDAO();
+    
+                var pontuacaoDoBanco= usuarioDao.pegarPontuacao();
+
+                if (partida.getPontuacaoSeguro() != 0){
+                    var pontuacaoNova=  pontuacaoDoBanco + (partida.getPontuacaoUltimaRodada() - partida.getPontuacaoSeguro());
+        
+                    usuarioDao.atualizarPontuacao(pontuacaoNova);
+                }
+                else{
+                    var pontuacaoNova=  pontuacaoDoBanco + partida.getPontuacaoUltimaRodada();
+
+                    usuarioDao.atualizarPontuacao(pontuacaoNova);
+                }
+                // new TelaFinalizacao(partida).setVisible(true);
+                // this.dispose();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao atualizar pontuação");
+                e.printStackTrace();
+            }    
+        }  
     }
 
     /**
@@ -512,6 +538,60 @@ public class PerguntasTeste extends javax.swing.JFrame {
         
             default -> JOptionPane.showMessageDialog(null, "Posição inválida");
                 
+        }
+    }
+    private void proximaPergunta(Partida partida){
+        var posicaoAtual= partida.getPosicao();
+
+        if(posicaoAtual== 4 || posicaoAtual == 8 || posicaoAtual == 12) {
+            try{
+                var usuarioDao= new UsuarioDAO();
+
+                var pontuacaoDoBanco= usuarioDao.pegarPontuacao();
+                
+                if (partida.getPontuacaoSeguro() != 0){
+                    var pontuacaoNova=  pontuacaoDoBanco + (partida.getPontuacaoPartida() - partida.getPontuacaoSeguro());
+
+                    usuarioDao.atualizarPontuacao(pontuacaoNova);
+                    
+                }
+                else{
+                    var pontuacaoNova=  pontuacaoDoBanco + partida.getPontuacaoPartida();
+
+                    usuarioDao.atualizarPontuacao(pontuacaoNova);
+                }
+
+                partida.setPontuacaoSeguro(partida.getPontuacaoPartida());
+
+                partida.setPontuacaoUltimaRodada(partida.getPontuacaoPartida());
+
+                var posicaoNova= posicaoAtual + 1;
+                partida.setPosicao(posicaoNova);
+
+                if (posicaoAtual == 4 || posicaoAtual == 8){
+                    // new TelaPortoSeguro(partida).setVisible(true);
+                    // this.dispose();
+                }
+                else if(posicaoAtual == 12){
+                    // new TelaDeVitoria(partida).setVisible(true);
+                    // this.dispose();
+                }
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao atualizar pontuação");
+                e.printStackTrace();
+
+            }
+        }
+        else{
+            partida.setPontuacaoUltimaRodada(partida.getPontuacaoPartida());
+
+            var posicaoNova= posicaoAtual + 1;
+
+            partida.setPosicao(posicaoNova);
+
+            new PerguntasTeste(partida).setVisible(true);
+            this.dispose();
         }
     }
 }

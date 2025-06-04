@@ -5,7 +5,7 @@ import pi_1sem.persistencia.ConnectionFactory;
 
 public class UsuarioDAO {
     public Double pegarPontuacao() throws Exception{
-        var sql= "SELECT pontuacao FROM usuario WHERE id_usuario=? and nivelAesso=?";
+        var sql= "SELECT pontuacao_total FROM usuario WHERE id_usuario=? and nivel_acesso=?";
         try(
             var conexao= new ConnectionFactory().obterConexao();
             var ps= conexao.prepareCall(sql);
@@ -17,7 +17,7 @@ public class UsuarioDAO {
                 var rs= ps.executeQuery();
              ){
                 if (rs.next()){
-                    return rs.getDouble("pontuacao");
+                    return rs.getDouble("pontuacao_total");
                 }
                 else{
                     return null;
@@ -27,7 +27,7 @@ public class UsuarioDAO {
     }
     
     public String pegarNome() throws Exception{
-        var sql= "SELECT nome FROM usuario WHERE id_usuario=? and nivelAesso=?";
+        var sql= "SELECT nome FROM usuario WHERE id_usuario=? and nivel_acesso=?";
         try(
             var conexao= new ConnectionFactory().obterConexao();
             var ps= conexao.prepareCall(sql);
@@ -48,7 +48,7 @@ public class UsuarioDAO {
     }
 
     public void atualizarPontuacao(Double pontuacao) throws Exception{
-        var sql= "UPDATE usuario SET pontuacao=? WHERE id_usuario=? and nivelAesso=?";
+        var sql= "UPDATE usuario SET pontuacao_total=? WHERE id_usuario=? and nivel_acesso=?";
         try(
             var conexao= new ConnectionFactory().obterConexao();
             var ps= conexao.prepareCall(sql);

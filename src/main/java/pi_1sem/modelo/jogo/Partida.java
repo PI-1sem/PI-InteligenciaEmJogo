@@ -10,13 +10,18 @@ public class Partida {
     private Materia materia; 
     private int posicao;
     private int pontuacaoPartida;
+    private int pontuacaoUltimaRodada;
     private int pontuacaoSeguro;
+    private Object[] opcoesDicas = {"Pular pergunta", "Filtro da sorte"};
     private List<Integer> perguntasSorteadas;
 
     public void setPosicao(int posicao) {
         this.posicao = posicao;
     }
     
+    public void setOpcoesDicas(Object[] opcoesDicas) {
+        this.opcoesDicas = opcoesDicas;
+    }
     public void setPontuacaoPartida(int pontuacaoPartida) {
         this.pontuacaoPartida = pontuacaoPartida;
     }
@@ -24,11 +29,16 @@ public class Partida {
     public void setPontuacaoSeguro(int pontuacaoSeguro) {
         this.pontuacaoSeguro = pontuacaoSeguro;
     }
+
+    public void setPontuacaoUltimaRodada(int pontuacaoUltimaRodada) {
+        this.pontuacaoUltimaRodada = pontuacaoUltimaRodada;
+    }
      
     public Partida(Materia materia){
         this.materia = materia;
         this.posicao= 1;
         this.pontuacaoPartida = 0;
+        this.pontuacaoUltimaRodada = 0;
         this.pontuacaoSeguro = 0;
         this.perguntasSorteadas = new ArrayList<>();
     }
