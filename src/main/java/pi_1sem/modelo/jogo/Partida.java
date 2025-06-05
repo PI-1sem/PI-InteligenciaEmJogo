@@ -12,13 +12,13 @@ public class Partida {
     private int pontuacaoPartida;
     private int pontuacaoUltimaRodada;
     private int pontuacaoSeguro;
-    private Object[] opcoesDicas = {"Pular pergunta", "Filtro da sorte"};
+    private Object[] opcoesDicas = {"Pular pergunta", "Eliminação por sorte"};
     private List<Integer> perguntasSorteadas;
 
     public void setPosicao(int posicao) {
         this.posicao = posicao;
     }
-    
+
     public void setOpcoesDicas(Object[] opcoesDicas) {
         this.opcoesDicas = opcoesDicas;
     }

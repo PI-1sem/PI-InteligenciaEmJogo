@@ -226,7 +226,7 @@ public class PerguntasTeste extends javax.swing.JFrame {
 
         if (opcoesDica[escolha].equals("Pular pergunta")){
             if (partida.getOpcoesDicas().length == 2){
-                partida.setOpcoesDicas(new Object[]{"Filtro da sorte"});
+                partida.setOpcoesDicas(new Object[]{"Eliminação por sorte"});
             }
             else if (partida.getOpcoesDicas().length == 1){
                 partida.setOpcoesDicas(null);
@@ -237,7 +237,7 @@ public class PerguntasTeste extends javax.swing.JFrame {
             
         }
 
-        if (opcoesDica[escolha].equals("Filtro da sorte")){
+        if (opcoesDica[escolha].equals("Eliminação por sorte")){
             if (partida.getOpcoesDicas().length == 2){
                 partida.setOpcoesDicas(new Object[]{"Pular pergunta"});
             }

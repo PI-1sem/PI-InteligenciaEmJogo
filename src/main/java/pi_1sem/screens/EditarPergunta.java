@@ -4,23 +4,49 @@
  */
 package pi_1sem.screens;
 
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.SwingUtilities;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
+import pi_1sem.modelo.jogo.Materia;
+import pi_1sem.persistencia.jogo.MateriaDAO;
 import pi_1sem.persistencia.jogo.PerguntaAlternativaDAO;
+import pi_1sem.modelo.jogo.PerguntaAlternativa;
+import pi_1sem.persistencia.jogo.AlternativaDAO;
+import pi_1sem.persistencia.jogo.PerguntaDAO;
 
 /**
  *
  * @author charl
  */
 public class EditarPergunta extends javax.swing.JFrame {
-
+    private String filtroAtual = "Todas";
     /**
      * Creates new form EditarPergunta
      */
     public EditarPergunta() {
         initComponents();
-        listarPerguntas();
+        listarPerguntas(this.filtroAtual);
+        capturarAltercoes();
     }
 
     /**
@@ -55,10 +81,52 @@ public class EditarPergunta extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Pergunta", "Enuciado", "Materia", "Dificuldade", "Opção A", "Opção B", "Opção C", "Opção D", "Alternativa Correta"
+                "ID Pergunta", 
+                "Enuciado", 
+                "Materia ▼", 
+                "Dificuldade", 
+                "Opção A", 
+                "Opção B", 
+                "Opção C", 
+                "Opção D", 
+                "Alternativa Correta",
+                "ID Alternaativa A",
+                "ID Alternaativa B",
+                "ID Alternaativa C",
+                "ID Alternaativa D",
+                "ID Alternaativa Correta"
             }
-        ));
+        ){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column != 0 && column < 9;
+            }
+        });
+        for (int i = 1; i < todasPerguntasTable.getColumnCount(); i++) {
+            javax.swing.table.TableColumn column = todasPerguntasTable.getColumnModel().getColumn(i);
+            if (column.getCellEditor() instanceof javax.swing.DefaultCellEditor) {
+                ((javax.swing.DefaultCellEditor) column.getCellEditor()).setClickCountToStart(2);
+            }
+        }
         jScrollPane1.setViewportView(todasPerguntasTable);
+        todasPerguntasTable.setComponentPopupMenu(criaMateriaPopup());
+        JTableHeader header = todasPerguntasTable.getTableHeader();
+        header.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Converter o ponto de clique para o sistema de coordenadas do cabeçalho
+                Point point = e.getPoint();
+                int colIndex = header.columnAtPoint(point);
+                
+                if (colIndex >= 0) {
+                    String columnName = todasPerguntasTable.getColumnName(colIndex);
+                    
+                    if ("Materia ▼".equals(columnName)) { // Verifique o nome exato da coluna
+                        showFilterDialog();
+                    }
+                }
+            }
+        });
 
         excluirButton.setBackground(new java.awt.Color(255, 51, 51));
         excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -209,52 +277,237 @@ public class EditarPergunta extends javax.swing.JFrame {
     private javax.swing.JTable todasPerguntasTable;
     // End of variables declaration//GEN-END:variables
 
-    private void listarPerguntas() {
-        try{
-            var perguntaAlternativadao= new PerguntaAlternativaDAO();
-            var perguntas= perguntaAlternativadao.listarPerguntasAlternativas();
-            DefaultTableModel model = (DefaultTableModel) todasPerguntasTable.getModel();
-            model.setRowCount(0);
-            int id;
-            String enunciado;
-            String materia;
-            String nivel;
-            String alternativaA;
-            String alternativaB;
-            String alternativaC;
-            String alternativaD;
-            String alternativaCorreta= "";
-
-            for(int i = 0; i < perguntas.size(); i += 4){
-                id= perguntas.get(i).getPergunta().getId();
-                enunciado= perguntas.get(i).getPergunta().getEnunciado();
-                materia= perguntas.get(i).getPergunta().getMateria().getNome();
-                nivel= perguntas.get(i).getPergunta().getNivel();
-                alternativaA = perguntas.get(i).getAlternativa().getTexto();
-                alternativaB = perguntas.get(i+1).getAlternativa().getTexto();
-                alternativaC = perguntas.get(i+2).getAlternativa().getTexto();
-                alternativaD = perguntas.get(i+3).getAlternativa().getTexto();
-
-                for(int j = i; j < (i+4); j++){
-                    if(perguntas.get(j).isCorreta() == true){
-                        alternativaCorreta = perguntas.get(j).getAlternativa().getLetra();
-                    }
-                }
-                model.addRow(new Object[]{
-                    id, 
-                    enunciado, 
-                    materia, 
-                    nivel, 
-                    alternativaA, 
-                    alternativaB, 
-                    alternativaC, 
-                    alternativaD, 
-                    alternativaCorreta});
+    private void listarPerguntas(String filtroMateria) {
+        if (filtroMateria.equals("Todas")){
+            try{
+                var perguntaAlternativadao= new PerguntaAlternativaDAO();
+                var perguntas= perguntaAlternativadao.listarPerguntasAlternativas();
+                listarBasico(perguntas);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao listar as perguntas");
             }
         }
-        catch(Exception e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro ao listar perguntas");
+        else{
+            try{
+                var perguntaAlternativadao= new PerguntaAlternativaDAO();
+                var perguntas= perguntaAlternativadao.listarPerguntasAlternativasExpecificas(filtroMateria);
+                this.filtroAtual= filtroMateria;
+                listarBasico(perguntas);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao listar as perguntas");
+            }
         }
+    }
+    private void listarBasico (List<PerguntaAlternativa> perguntas){
+        DefaultTableModel model = (DefaultTableModel) todasPerguntasTable.getModel();
+        model.setRowCount(0);
+
+        String alternativaCorreta= "";
+        int idAltCorreta= 0;
+
+        for(int i = 0; i < perguntas.size(); i += 4){
+            var id= perguntas.get(i).getPergunta().getId();
+            var enunciado= perguntas.get(i).getPergunta().getEnunciado();
+            var materia= perguntas.get(i).getPergunta().getMateria().getNome();
+            var nivel= perguntas.get(i).getPergunta().getNivel();
+            var alternativaA = perguntas.get(i).getAlternativa().getTexto();
+            var alternativaB = perguntas.get(i+1).getAlternativa().getTexto();
+            var alternativaC = perguntas.get(i+2).getAlternativa().getTexto();
+            var alternativaD = perguntas.get(i+3).getAlternativa().getTexto();
+
+            var idAltA = perguntas.get(i).getAlternativa().getId();
+            var idAltB = perguntas.get(i+1).getAlternativa().getId();
+            var idAltC = perguntas.get(i+2).getAlternativa().getId();
+            var idAltD = perguntas.get(i+3).getAlternativa().getId();
+
+            for(int j = i; j < (i+4); j++){
+                if(perguntas.get(j).isCorreta() == true){
+                    alternativaCorreta = perguntas.get(j).getAlternativa().getLetra();
+                    idAltCorreta = perguntas.get(j).getAlternativa().getId();
+                }
+            }
+            model.addRow(new Object[]{
+                id, 
+                enunciado, 
+                materia, 
+                nivel, 
+                alternativaA, 
+                alternativaB, 
+                alternativaC, 
+                alternativaD, 
+                alternativaCorreta,
+                idAltA,
+                idAltB,
+                idAltC,
+                idAltD,
+                idAltCorreta
+
+            });
+        }
+        if(todasPerguntasTable.getColumnCount() > 9){
+            ocultarColunasIds();
+        }
+    }
+    private JPopupMenu criaMateriaPopup() {
+        var popupMenu = new JPopupMenu();
+        var filterMenuItem = new JMenuItem("Filtrar por Matéria");
+        filterMenuItem.addActionListener(e -> showFilterDialog());
+        popupMenu.add(filterMenuItem);
+        return popupMenu;
+    }
+    private void showFilterDialog() {
+        JDialog filterDialog = new JDialog(this, "Filtrar Matérias", true);
+        filterDialog.setLayout(new BorderLayout());
+        
+        // Painel principal
+        JPanel panel = new JPanel(new GridLayout(3, 1, 5, 5));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        // Combo box de matérias
+        JLabel label = new JLabel("Selecione a matéria:");
+        JComboBox<String> materiasComboBox = new JComboBox<>();
+        materiasComboBox.addItem("Todas");
+        
+        try {
+            var materiadao= new MateriaDAO();
+            var materias= materiadao.listarMaterias();
+            for (Materia materia : materias) {
+                materiasComboBox.addItem(materia.getNome());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        // Botões
+        JButton applyButton = new JButton("Aplicar Filtro");
+        applyButton.addActionListener(e -> {
+            listarPerguntas((String) materiasComboBox.getSelectedItem());
+            filterDialog.dispose();
+        });
+        
+        JButton cancelButton = new JButton("Cancelar");
+        cancelButton.addActionListener(e -> filterDialog.dispose());
+        
+        // Adicionar componentes
+        panel.add(label);
+        panel.add(materiasComboBox);
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.add(cancelButton);
+        buttonPanel.add(applyButton);
+        
+        filterDialog.add(panel, BorderLayout.CENTER);
+        filterDialog.add(buttonPanel, BorderLayout.SOUTH);
+        
+        filterDialog.pack();
+        filterDialog.setLocationRelativeTo(this);
+        filterDialog.setVisible(true);
+    }
+    private void capturarAltercoes(){
+        var model = (DefaultTableModel) todasPerguntasTable.getModel();
+
+        model.removeTableModelListener(this::handleTableUpdate);
+        model.addTableModelListener(this::handleTableUpdate);
+    }
+    private void handleTableUpdate(TableModelEvent e) {
+        if (e.getType() != TableModelEvent.UPDATE || e.getColumn() < 1) return;
+        
+        int row = e.getFirstRow();
+        int col = e.getColumn();
+        
+        if (row < 0 || row >= todasPerguntasTable.getRowCount()) return;
+    
+        var valorAlterado = todasPerguntasTable.getModel().getValueAt(row, col).toString();
+        if(valorAlterado.equals("")){
+            JOptionPane.showMessageDialog(null, "Não é possível alterar para um campo vazio");
+            return;
+        }
+        
+        var id = Integer.parseInt(todasPerguntasTable.getModel().getValueAt(row, 0).toString());
+
+        if (col == 1){
+            var enunciado = valorAlterado;
+            try{
+                var perguntadao = new PerguntaDAO();
+                perguntadao.editarPergunta(enunciado, id);
+                JOptionPane.showMessageDialog(null, "Enunciado alterado com sucesso");
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao editar a pergunta");
+            }
+        }
+
+        // Altera todas as colunas de alternativa menos a alternativa correta
+        if (col >= 4 && col <= 7) {
+            var altIndex= col - 4;
+
+            int posAltCol = 9 + altIndex; // Colunas 9,10,11,12 correspondem às alternativas
+            int idAlternativa = (int) todasPerguntasTable.getModel().getValueAt(row, posAltCol);
+
+            JOptionPane.showMessageDialog(null, "alteracao sucesso " + idAlternativa);
+            try{
+                var alternativadao = new AlternativaDAO();
+                alternativadao.editarAlternativa(valorAlterado, id, idAlternativa);
+
+                JOptionPane.showMessageDialog(null, "a pergunta foi alterada com sucesso");            
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao editar alternativa");
+            }
+        }
+
+        //Altera a alternativa correta
+        if (col == 8 ) {
+            var valorAlteradoMaiusculo=valorAlterado.toUpperCase();
+
+            if (valorAlteradoMaiusculo.equals("A") || valorAlteradoMaiusculo.equals("B") || valorAlteradoMaiusculo.equals("C") || valorAlteradoMaiusculo.equals("D")) {
+                int idNovaAlternativaCorreta=0;
+                if(valorAlteradoMaiusculo.equals("A")){
+                    idNovaAlternativaCorreta = (int) todasPerguntasTable.getModel().getValueAt(row, 9);
+                }
+                else if(valorAlteradoMaiusculo.equals("B")){
+                    idNovaAlternativaCorreta = (int) todasPerguntasTable.getModel().getValueAt(row, 10);
+                }
+                else if(valorAlteradoMaiusculo.equals("C")){
+                    idNovaAlternativaCorreta = (int) todasPerguntasTable.getModel().getValueAt(row, 11);
+                }
+                else if(valorAlteradoMaiusculo.equals("D")){
+                    idNovaAlternativaCorreta = (int) todasPerguntasTable.getModel().getValueAt(row, 12);
+                }
+
+                int idAntigaAlternativaCorreta = (int) todasPerguntasTable.getModel().getValueAt(row, 13);
+    
+                try{
+                    var alternativadao = new AlternativaDAO();
+                    alternativadao.removerAlternativaCorreta(id, idAntigaAlternativaCorreta);
+                    alternativadao.adicionarAlternativaCorreta(id, idNovaAlternativaCorreta);
+                    
+                    listarPerguntas(filtroAtual);
+                   
+
+                    JOptionPane.showMessageDialog(null, "a alternativa correta foi alterada com sucesso");
+                }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao editar alternativa correta");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "ERRO!!! alteração não salva no banco. Adicione como alternativa correta algum valor que esteja no intervalo de A até D");
+            }
+        }
+    }
+    private void ocultarColunasIds() {
+        todasPerguntasTable.removeColumn(todasPerguntasTable.getColumnModel().getColumn(13)); // ID Pergunta
+        todasPerguntasTable.removeColumn(todasPerguntasTable.getColumnModel().getColumn(12)); // ID Alt D
+        todasPerguntasTable.removeColumn(todasPerguntasTable.getColumnModel().getColumn(11)); // ID Alt C
+        todasPerguntasTable.removeColumn(todasPerguntasTable.getColumnModel().getColumn(10)); // ID Alt B
+        todasPerguntasTable.removeColumn(todasPerguntasTable.getColumnModel().getColumn(9)); // ID Alt A
     }
 }

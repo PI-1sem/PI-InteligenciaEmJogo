@@ -14,10 +14,15 @@ public class Alternativa {
         this.letra= letra;
         this.texto= texto;
     }
+    public Alternativa(int id, String letra, String texto){
+        this.id= id;
+        this.letra= letra;
+        this.texto= texto;
+    }
 
     @Override
     public String toString() {
-        return "Alternativa{" +"letra=" + letra + ", texto=" + texto +'}';
+        return "Alternativa{" + "id="+ id + "letra=" + letra + ", texto=" + texto +'}';
     }
     
 }

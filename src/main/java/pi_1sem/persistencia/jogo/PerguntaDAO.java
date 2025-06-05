@@ -2,7 +2,6 @@ package pi_1sem.persistencia.jogo;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import pi_1sem.modelo.jogo.Alternativa;
 import pi_1sem.modelo.jogo.Materia;
 import pi_1sem.modelo.jogo.Pergunta;
@@ -36,6 +35,26 @@ public class PerguntaDAO {
             }
             return todasPerguntas;
         }
+    }
+    public void editarPergunta(String enunciado, int idPergunta) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+
+        var sql= "UPDATE pergunta p JOIN pergunta_alternativa USING (id_pergunta) JOIN alternativa a USING (id_alternativa) SET p.enunciado=? WHERE p.id_pergunta=?";
+        
+        try(
+            var conexao= conectionFactory.obterConexao();
+            var ps= conexao.prepareStatement(sql);
+        ){
+            ps.setString(1, enunciado);
+            ps.setInt(2, idPergunta);
+            ps.execute();
+        }
+    }
+    // PAREI AQUI
+    public void excluirPergunta(int idPergunta) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+
+        var sql= "DELETE FROM pergunta WHERE id_pergunta=?";
     }
 
 }
