@@ -62,7 +62,7 @@ public class Login1 extends javax.swing.JFrame {
         jButton1.setText("ENTRAR");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 350, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\Cadastro 4.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("src\\main\\java\\pi_1sem\\images\\Cadastro4.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 530, -1));
 
         pack();

@@ -30,20 +30,22 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         popupMenu1 = new java.awt.PopupMenu();
         popupMenu2 = new java.awt.PopupMenu();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
+        opcoesButtonGroup = new javax.swing.ButtonGroup();
+        opcaoBRadioButton = new javax.swing.JRadioButton();
+        escolherMateriaComboBox = new javax.swing.JComboBox<>();
+        opcaoCTextField = new javax.swing.JTextField();
+        opcaoBTextField = new javax.swing.JTextField();
+        opcaoDTextField = new javax.swing.JTextField();
+        opcaoATextField = new javax.swing.JTextField();
+        opcaoDRadioButton = new javax.swing.JRadioButton();
+        opcaoARadioButton = new javax.swing.JRadioButton();
+        opcaoCRadioButton = new javax.swing.JRadioButton();
+        perguntaTextField = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -52,10 +54,8 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        salvarPerguntaButton = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -71,78 +71,58 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jRadioButton2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jRadioButton2.setText("Opção B");
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+        opcoesButtonGroup.add(opcaoBRadioButton);
+        opcaoBRadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        opcaoBRadioButton.setText("Opção B");
+        getContentPane().add(opcaoBRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matematica", "Biologia", "Quimica" }));
-        jComboBox1.setBorder(null);
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox1.setOpaque(true);
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 120, 40));
+        escolherMateriaComboBox.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        escolherMateriaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matematica", "Biologia", "Quimica" }));
+        escolherMateriaComboBox.setBorder(null);
+        escolherMateriaComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        escolherMateriaComboBox.setOpaque(true);
+        getContentPane().add(escolherMateriaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 120, 40));
 
-        jTextField6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jTextField6.setBorder(null);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 260, 30));
+        opcaoCTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        opcaoCTextField.setBorder(null);
+        
+        getContentPane().add(opcaoCTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 260, 30));
 
-        jTextField5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jTextField5.setBorder(null);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 260, 30));
+        opcaoBTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        opcaoBTextField.setBorder(null);
+        
+        getContentPane().add(opcaoBTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 260, 30));
 
-        jTextField4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 260, 30));
+        opcaoDTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        opcaoDTextField.setBorder(null);
+        
+        getContentPane().add(opcaoDTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 260, 30));
 
-        jTextField3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 260, 30));
+        opcaoATextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        opcaoATextField.setBorder(null);
+        
+        getContentPane().add(opcaoATextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 260, 30));
 
-        jRadioButton4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jRadioButton4.setText("Opção D");
-        getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+        opcoesButtonGroup.add(opcaoDRadioButton);
+        opcaoDRadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        opcaoDRadioButton.setText("Opção D");
+        getContentPane().add(opcaoDRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
 
-        jRadioButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jRadioButton1.setText("Opção A");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+        opcoesButtonGroup.add(opcaoARadioButton);
+        opcaoARadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        opcaoARadioButton.setText("Opção A");
+        
+        getContentPane().add(opcaoARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        jRadioButton3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jRadioButton3.setText("Opção C");
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 383, -1, 60));
+        opcoesButtonGroup.add(opcaoCRadioButton);
+        opcaoCRadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        opcaoCRadioButton.setText("Opção C");
+        getContentPane().add(opcaoCRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 383, -1, 60));
 
-        jTextField1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 520, 30));
+        perguntaTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        perguntaTextField.setBorder(null);
+        
+        getContentPane().add(perguntaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 520, 30));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
@@ -153,9 +133,13 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
 
         jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\usuario adm 5.png")); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 36)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Professor");
+        jLabel11.setText("Professor do professor *");
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("ID matricula *");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,10 +147,15 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 668, Short.MAX_VALUE)
-                .addComponent(jLabel11)
-                .addGap(52, 52, 52)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 599, Short.MAX_VALUE)
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel12)))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addContainerGap())
         );
@@ -176,13 +165,15 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12)
+                        .addGap(31, 31, 31))))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 90));
@@ -204,7 +195,7 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         jLabel8.setText("Adicionar Pergunta");
 
         jLabel9.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        jLabel9.setText("Bem-vindo ao painel de controle. Adcionar sua pergunta !!! ");
+        jLabel9.setText("Bem-vindo ao painel de controle. Adcione sua pergunta !!! ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -244,36 +235,25 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 255));
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Salvar");
-        jButton1.setBorder(null);
-        jButton1.setFocusPainted(false);
-
-        jButton2.setBackground(new java.awt.Color(255, 51, 51));
-        jButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Cancelar");
-        jButton2.setBorder(null);
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        salvarPerguntaButton.setBackground(new java.awt.Color(0, 102, 255));
+        salvarPerguntaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        salvarPerguntaButton.setForeground(new java.awt.Color(255, 255, 255));
+        salvarPerguntaButton.setText("Salvar");
+        salvarPerguntaButton.setBorder(null);
+        salvarPerguntaButton.setFocusPainted(false);
+        salvarPerguntaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                salvarPerguntaButtonActionPerformed(evt);
             }
         });
-
-        jButton3.setBackground(new java.awt.Color(255, 51, 51));
-        jButton3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Excluir Pergunta");
-        jButton3.setBorder(null);
-        jButton3.setFocusPainted(false);
-
-        jButton4.setBackground(new java.awt.Color(146, 198, 243));
-        jButton4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(51, 51, 51));
-        jButton4.setText("Voltar");
+        voltarButton.setBackground(new java.awt.Color(146, 198, 243));
+        voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -281,24 +261,18 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 454, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(salvarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 829, Short.MAX_VALUE)
+                .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salvarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(311, Short.MAX_VALUE))
         );
 
@@ -324,35 +298,10 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+    private void salvarPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarPerguntaButtonActionPerformed
+    }
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
@@ -390,14 +339,12 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.ButtonGroup opcoesButtonGroup;
+    private javax.swing.JComboBox<String> escolherMateriaComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -411,16 +358,18 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JRadioButton opcaoARadioButton;
+    private javax.swing.JTextField opcaoATextField;
+    private javax.swing.JRadioButton opcaoBRadioButton;
+    private javax.swing.JTextField opcaoBTextField;
+    private javax.swing.JRadioButton opcaoCRadioButton;
+    private javax.swing.JTextField opcaoCTextField;
+    private javax.swing.JRadioButton opcaoDRadioButton;
+    private javax.swing.JTextField opcaoDTextField;
+    private javax.swing.JTextField perguntaTextField;
     private java.awt.PopupMenu popupMenu1;
     private java.awt.PopupMenu popupMenu2;
+    private javax.swing.JButton salvarPerguntaButton;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

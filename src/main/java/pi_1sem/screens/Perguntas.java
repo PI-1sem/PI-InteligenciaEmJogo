@@ -41,7 +41,7 @@ public class Perguntas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         DicaButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        pararButton = new javax.swing.JButton();
         enviarButton = new javax.swing.JButton();
         opcaoCToggleButton = new javax.swing.JToggleButton();
         opcaoAToggleButton = new javax.swing.JToggleButton();
@@ -67,9 +67,9 @@ public class Perguntas extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(255, 51, 51));
-        jButton7.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        jButton7.setText("Parar");
+        pararButton.setBackground(new java.awt.Color(255, 51, 51));
+        pararButton.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        pararButton.setText("Parar");
 
         enviarButton.setBackground(new java.awt.Color(51, 204, 0));
         enviarButton.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
@@ -120,7 +120,7 @@ public class Perguntas extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pararButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(enviarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
@@ -151,7 +151,7 @@ public class Perguntas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 472, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(enviarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pararButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(42, 42, 42))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
@@ -345,12 +345,12 @@ public class Perguntas extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton enviarButton;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton opcaoAToggleButton;
     private javax.swing.JToggleButton opcaoBToggleButton;
     private javax.swing.JToggleButton opcaoCToggleButton;
     private javax.swing.JToggleButton opcaoDToggleButton;
+    private javax.swing.JButton pararButton;
     // End of variables declaration//GEN-END:variables
 }
