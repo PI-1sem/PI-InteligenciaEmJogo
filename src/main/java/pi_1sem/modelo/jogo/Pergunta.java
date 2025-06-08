@@ -18,7 +18,6 @@ public class Pergunta {
         this.enunciado= enunciado;
         this.materia= materia;
         this.nivel= nivel;
-        // alternativas= new ArrayList<>();
     }
     public Pergunta(int id, String enunciado, Materia materia, String nivel){
         this.id= id;

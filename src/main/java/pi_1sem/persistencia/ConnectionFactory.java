@@ -10,7 +10,7 @@ public class ConnectionFactory {
     Dotenv dotenv = Dotenv.load();
     private String host= "pi1sem-inteligenciaemjogopi-3060.l.aivencloud.com";
     private String port= "28398";
-    private String db= "defaultdb";
+    private String db= "inteligencia_em_jogo";
     private String user= "avnadmin";
     private String password= dotenv.get("passwordDb");
     

@@ -19,6 +19,10 @@ public class Alternativa {
         this.letra= letra;
         this.texto= texto;
     }
+    public Alternativa(int id, String texto){
+        this.id= id;
+        this.texto= texto;
+    }
 
     @Override
     public String toString() {

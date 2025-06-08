@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -21,12 +22,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.SwingUtilities;
 import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import pi_1sem.modelo.jogo.Alternativa;
 import pi_1sem.modelo.jogo.Materia;
 import pi_1sem.persistencia.jogo.MateriaDAO;
 import pi_1sem.persistencia.jogo.PerguntaAlternativaDAO;
@@ -61,7 +61,7 @@ public class EditarPergunta extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         todasPerguntasTable = new javax.swing.JTable();
-        excluirButton = new javax.swing.JButton();
+        excluirPerguntaButton = new javax.swing.JButton();
         adicionarPerguntaButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -82,7 +82,7 @@ public class EditarPergunta extends javax.swing.JFrame {
             },
             new String [] {
                 "ID Pergunta", 
-                "Enuciado", 
+                "Enunciado", 
                 "Materia ▼", 
                 "Dificuldade", 
                 "Opção A", 
@@ -99,7 +99,7 @@ public class EditarPergunta extends javax.swing.JFrame {
         ){
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column != 0 && column < 9;
+                return column != 0 && column < 9 && column!=2;
             }
         });
         for (int i = 1; i < todasPerguntasTable.getColumnCount(); i++) {
@@ -128,11 +128,16 @@ public class EditarPergunta extends javax.swing.JFrame {
             }
         });
 
-        excluirButton.setBackground(new java.awt.Color(255, 51, 51));
-        excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        excluirButton.setForeground(new java.awt.Color(255, 255, 255));
-        excluirButton.setText("Excluir ");
-        excluirButton.setBorder(null);
+        excluirPerguntaButton.setBackground(new java.awt.Color(255, 51, 51));
+        excluirPerguntaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        excluirPerguntaButton.setForeground(new java.awt.Color(255, 255, 255));
+        excluirPerguntaButton.setText("Excluir ");
+        excluirPerguntaButton.setBorder(null);
+        excluirPerguntaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirPerguntaButtonActionPerformed(evt);
+            }
+        });
 
         adicionarPerguntaButton.setBackground(new java.awt.Color(0, 102, 255));
         adicionarPerguntaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -184,7 +189,7 @@ public class EditarPergunta extends javax.swing.JFrame {
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(excluirPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(adicionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))
@@ -202,7 +207,7 @@ public class EditarPergunta extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(excluirPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(adicionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
@@ -230,6 +235,32 @@ public class EditarPergunta extends javax.swing.JFrame {
     private void adicionarPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarPerguntaButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adicionarPerguntaButtonActionPerformed
+
+    public void excluirPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        var resposta= JOptionPane.showConfirmDialog(null, "Deseja excluir a pergunta e suas alternativas?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
+
+        if(resposta == JOptionPane.OK_OPTION){
+            try{
+                var perguntadao = new PerguntaDAO();
+                var alternativaDao = new AlternativaDAO();
+    
+                var idPergunta= pegarCampoId();
+                perguntadao.excluirPergunta(idPergunta);
+
+                List<Integer> idsAlternativa = Arrays.asList(pegarCampoIdAlternativa('A'), pegarCampoIdAlternativa('B'), pegarCampoIdAlternativa('C'), pegarCampoIdAlternativa('D'));
+
+                alternativaDao.excluirAlternativas(idsAlternativa);
+    
+                listarPerguntas(filtroAtual);
+    
+                JOptionPane.showMessageDialog(null, "Pergunta e alternativas excluida com sucesso");
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao excluir pergunta e altenrativas");
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -267,7 +298,7 @@ public class EditarPergunta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton excluirButton;
+    private javax.swing.JButton excluirPerguntaButton;
     private javax.swing.JButton adicionarPerguntaButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -277,6 +308,28 @@ public class EditarPergunta extends javax.swing.JFrame {
     private javax.swing.JTable todasPerguntasTable;
     // End of variables declaration//GEN-END:variables
 
+    private Integer pegarCampoIdAlternativa(char letra){
+        int col=0;
+        switch (letra) {
+            case 'A' -> col=9;
+                
+            case 'B' -> col=10;
+
+            case 'C' -> col=11;
+
+            case 'D'-> col=12;
+        }
+        int linhaSelecionada = todasPerguntasTable.getSelectedRow();
+        var idAlternativa=(int) todasPerguntasTable.getModel().getValueAt(linhaSelecionada, col);
+
+        return idAlternativa;
+    }
+    private Integer pegarCampoId(){
+        int linhaSelecionada = todasPerguntasTable.getSelectedRow();   
+        int idSelecionado= Integer.parseInt(todasPerguntasTable.getModel().getValueAt(linhaSelecionada, 0).toString());
+
+        return idSelecionado;
+    }
     private void listarPerguntas(String filtroMateria) {
         if (filtroMateria.equals("Todas")){
             try{
@@ -373,8 +426,8 @@ public class EditarPergunta extends javax.swing.JFrame {
         materiasComboBox.addItem("Todas");
         
         try {
-            var materiadao= new MateriaDAO();
-            var materias= materiadao.listarMaterias();
+            var materiaDao= new MateriaDAO();
+            var materias= materiaDao.listarMaterias();
             for (Materia materia : materias) {
                 materiasComboBox.addItem(materia.getNome());
             }
@@ -426,14 +479,14 @@ public class EditarPergunta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não é possível alterar para um campo vazio");
             return;
         }
-        
-        var id = Integer.parseInt(todasPerguntasTable.getModel().getValueAt(row, 0).toString());
+
+        var idPergunta= pegarCampoId();
 
         if (col == 1){
             var enunciado = valorAlterado;
             try{
                 var perguntadao = new PerguntaDAO();
-                perguntadao.editarPergunta(enunciado, id);
+                perguntadao.editarPergunta(enunciado, idPergunta);
                 JOptionPane.showMessageDialog(null, "Enunciado alterado com sucesso");
             }
             catch(Exception ex){
@@ -441,20 +494,37 @@ public class EditarPergunta extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro ao editar a pergunta");
             }
         }
+        if (col== 3){
+            var dificuldade = valorAlterado.toLowerCase();
+            if (dificuldade.equals("fácil") || dificuldade.equals("médio") || dificuldade.equals("difícil")){
+                try{
+                    var perguntadao = new PerguntaDAO();
+                    perguntadao.editarDificuldade(dificuldade, idPergunta);
+                    JOptionPane.showMessageDialog(null, "Dificuldade alterada com sucesso");
+                }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao editar a dificuldade");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "ERRO! inclua uma dificuldade válida e/ou cheque os acentos");
+            }
+        }
 
         // Altera todas as colunas de alternativa menos a alternativa correta
         if (col >= 4 && col <= 7) {
             var altIndex= col - 4;
 
-            int posAltCol = 9 + altIndex; // Colunas 9,10,11,12 correspondem às alternativas
+            int posAltCol = 9 + altIndex; // Colunas 9,10,11,12 correspondem as alternativas
             int idAlternativa = (int) todasPerguntasTable.getModel().getValueAt(row, posAltCol);
 
-            JOptionPane.showMessageDialog(null, "alteracao sucesso " + idAlternativa);
             try{
+                var alternativa= new Alternativa(idAlternativa, valorAlterado);
                 var alternativadao = new AlternativaDAO();
-                alternativadao.editarAlternativa(valorAlterado, id, idAlternativa);
+                alternativadao.editarAlternativa(alternativa, idPergunta);
 
-                JOptionPane.showMessageDialog(null, "a pergunta foi alterada com sucesso");            
+                JOptionPane.showMessageDialog(null, "A altenativa foi alterada com sucesso");            
             }
             catch(Exception ex){
                 ex.printStackTrace();
@@ -484,9 +554,9 @@ public class EditarPergunta extends javax.swing.JFrame {
                 int idAntigaAlternativaCorreta = (int) todasPerguntasTable.getModel().getValueAt(row, 13);
     
                 try{
-                    var alternativadao = new AlternativaDAO();
-                    alternativadao.removerAlternativaCorreta(id, idAntigaAlternativaCorreta);
-                    alternativadao.adicionarAlternativaCorreta(id, idNovaAlternativaCorreta);
+                    var perguntaAlternativaDAO = new PerguntaAlternativaDAO();
+                    perguntaAlternativaDAO.removerAlternativaCorreta(idPergunta, idAntigaAlternativaCorreta);
+                    perguntaAlternativaDAO.adicionarAlternativaCorreta(idPergunta, idNovaAlternativaCorreta);
                     
                     listarPerguntas(filtroAtual);
                    
@@ -499,7 +569,7 @@ public class EditarPergunta extends javax.swing.JFrame {
                 }
             }
             else{
-                JOptionPane.showMessageDialog(null, "ERRO!!! alteração não salva no banco. Adicione como alternativa correta algum valor que esteja no intervalo de A até D");
+                JOptionPane.showMessageDialog(null, "ERRO!!! Adicione como alternativa correta algum valor que esteja no intervalo de A até D");
             }
         }
     }

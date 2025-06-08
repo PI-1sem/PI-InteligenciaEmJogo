@@ -9,7 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor 
 public class PerguntaAlternativa {
     private Pergunta pergunta;
-    // private char letra;
     private Alternativa alternativa;
     private boolean correta;
     

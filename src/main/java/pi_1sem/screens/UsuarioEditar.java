@@ -104,12 +104,6 @@ public class UsuarioEditar extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jLabel6.setText("Senha : ");
 
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
-            }
-        });
-
         adicionarAlunoButton.setBackground(new java.awt.Color(71, 71, 215));
         adicionarAlunoButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         adicionarAlunoButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -244,52 +238,66 @@ public class UsuarioEditar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
-
-    private void adicionarAlunoButtonActionPerformed(java.awt.event.ActionEvent evt) {//
-        String nome = nomeTextField.getText();
-        String email = emailTextField.getText();
-        String senha = senhaTextField.getText();
-        
-        try{
-            var aluno= new Aluno(nome, email, senha);
-            var alunoDAO= new AlunoDAO();
-            alunoDAO.cadastrar(aluno);
-
-            JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
-            listarAlunos();
-        
-            nomeTextField.setText("");                
-            emailTextField.setText("");
-            senhaTextField.setText("");
+    private void adicionarAlunoButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        var resposta= JOptionPane.showConfirmDialog(null, "Deseja adicionar o Aluno?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
+        if(resposta == JOptionPane.OK_OPTION){
+            String [] campos={
+                nomeTextField.getText(),
+                emailTextField.getText(),
+                senhaTextField.getText()
+            };
+            for (int i= 0; i < campos.length; i++) {
+                if(campos[i].isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+                    return;
+                }
+                if(i == 1 && !campos[i].contains("@")){
+                    JOptionPane.showMessageDialog(null, "Email inválido!");
+                    return;
+                }
+                if(i == 2 && campos[i].length()<8){
+                    JOptionPane.showMessageDialog(null, "A senha deve ter no mínimo 8 caracteres!");
+                    return;
+                }
+            }
+            try{
+                var aluno= new Aluno(campos[0], campos[1], campos[2]);
+                var alunoDAO= new AlunoDAO();
+                alunoDAO.cadastrar(aluno);
+    
+                JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
+                listarAlunos();
+            
+                nomeTextField.setText("");                
+                emailTextField.setText("");
+                senhaTextField.setText("");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar o aluno");
+            } 
         }
-        catch(Exception e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar o aluno");
-        }
-        
-        
-        
     }//GEN-LAST:event_adicionarAlunoButtonActionPerformed
 
-    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
-        try {
-            int idExcluir= pegarCampoId();
-            var alunoDAO = new AlunoDAO();
-            alunoDAO.remover(idExcluir);
-            listarAlunos();
+    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        var resposta= JOptionPane.showConfirmDialog(null, "Deseja excluir o Aluno?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
 
-            JOptionPane.showMessageDialog(this, "Aluno excluido!");
-        } 
-        catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Erro ao excluir o aluno!");
+        if(resposta == JOptionPane.OK_OPTION){
+            try {
+                int idExcluir= pegarCampoId();
+                var alunoDAO = new AlunoDAO();
+                alunoDAO.remover(idExcluir);
+                listarAlunos();
+    
+                JOptionPane.showMessageDialog(this, "Aluno excluido!");
+            } 
+            catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Erro ao excluir o aluno!");
+            }
+
         }
     }
-        
-        
     //GEN-LAST:event_excluirButtonActionPerformed
 
     /**
@@ -369,7 +377,7 @@ public class UsuarioEditar extends javax.swing.JFrame {
         
         catch (Exception e) {
            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Erro ao listar alunos: ");
+            JOptionPane.showMessageDialog(this, "Erro ao listar alunos");
         }
     }
     private Integer pegarCampoId(){
@@ -411,6 +419,10 @@ public class UsuarioEditar extends javax.swing.JFrame {
             }
         }
         if (col == 2) {
+            if(!valorAlterado.contains("@")){
+                JOptionPane.showMessageDialog(null, "ERRO! O email deve conter @");
+                return;
+            }
             try{
                 AlunoDAO alunoDAO = new AlunoDAO();
                 alunoDAO.atualizarEmail(valorAlterado, id);
@@ -423,6 +435,10 @@ public class UsuarioEditar extends javax.swing.JFrame {
             }
         }
         if (col == 3) {
+            if(valorAlterado.length() < 8){
+                JOptionPane.showMessageDialog(null, "ERRO! A senha deve conter no mínimo 8 caracteres");
+                return;
+            }
             try{
                 AlunoDAO alunoDAO = new AlunoDAO();
                 alunoDAO.atualizarSenha(valorAlterado, id);

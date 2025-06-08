@@ -9,7 +9,7 @@ public class ConnectionFactoryTest {
     Dotenv dotenv = Dotenv.load();
     private String host= "mysql-pi-pi1sem.l.aivencloud.com";
     private String port= "24011";
-    private String db= "jogo_do_milhao";
+    private String db= "inteligencia_em_jogo";
     private String user= "avnadmin";
     private String password= dotenv.get("senhaTeste");
     

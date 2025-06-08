@@ -113,29 +113,13 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel6.setText("Nome:");
 
-        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel8.setText("E-mail :");
 
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel9.setText("Senha");
 
-        senhaTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaTextFieldActionPerformed(evt);
-            }
-        });
 
         adicionarProfessorButton.setBackground(new java.awt.Color(71, 71, 215));
         adicionarProfessorButton.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
@@ -301,49 +285,64 @@ public class AdministradorEditar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adicionarProfessorButtonActionPerformed(java.awt.event.ActionEvent evt) {//
-        String nome = nomeTextField.getText();
-        String email = emailTextField.getText();
-        String senha = senhaTextField.getText();
-        
-        try{
-            var adm= new Administrador(nome, email, senha);
-            var admDAO= new AdministradorDAO();
-            admDAO.cadastrar(adm);
+        var resposta= JOptionPane.showConfirmDialog(null, "Deseja adicionar o Professor?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
 
-            JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso!");
-            listarAdministradores();
-
-            nomeTextField.setText("");
-            emailTextField.setText("");
-            senhaTextField.setText("");
-
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar o professor");
+        if(resposta==JOptionPane.OK_OPTION){
+            String [] campos={
+                nomeTextField.getText(),
+                emailTextField.getText(),
+                senhaTextField.getText()
+            };
+            for (int i= 0; i < campos.length; i++) {
+                if(campos[i].isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+                    return;
+                }
+                if(i == 1 && !campos[i].contains("@")){
+                    JOptionPane.showMessageDialog(null, "Email inválido!");
+                    return;
+                }
+                if(i == 2 && campos[i].length()<8){
+                    JOptionPane.showMessageDialog(null, "A senha deve ter no mínimo 8 caracteres!");
+                    return;
+                }
+            }
+            try{
+                var adm= new Administrador(campos[0], campos[1], campos[2]);
+                var admDAO= new AdministradorDAO();
+                admDAO.cadastrar(adm);
+    
+                JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso!");
+                listarAdministradores();
+    
+                nomeTextField.setText("");
+                emailTextField.setText("");
+                senhaTextField.setText("");
+    
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar o professor");
+            }
         }
     }
 
-    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomeTextFieldActionPerformed
-
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
-
     private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
-            int idExcluir= pegarCampoId();
-            var admDAO = new AdministradorDAO();
-            admDAO.remover(idExcluir);
-            listarAdministradores();
+        var resposta= JOptionPane.showConfirmDialog(null, "Deseja excluir o Professor?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
 
-            JOptionPane.showMessageDialog(this, "Professor excluido!");
-        } 
-        catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Erro ao excluir o professor!");
+        if(resposta == JOptionPane.OK_OPTION){
+            try {
+                int idExcluir= pegarCampoId();
+                var admDAO = new AdministradorDAO();
+                admDAO.remover(idExcluir);
+                listarAdministradores();
+    
+                JOptionPane.showMessageDialog(this, "Professor excluido!");
+            } 
+            catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Erro ao excluir o professor!");
+            }
         }
     }
 
@@ -352,10 +351,6 @@ public class AdministradorEditar extends javax.swing.JFrame {
 
         this.dispose();
     }
-
-    private void senhaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -464,6 +459,11 @@ public class AdministradorEditar extends javax.swing.JFrame {
         var valorAlterado = professoresTable.getModel().getValueAt(row, col).toString();
         var id = Integer.parseInt(professoresTable.getModel().getValueAt(row, 0).toString());
 
+        if(valorAlterado.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Não é possível alterar para um campo vazio");
+            return;
+        }
+
         if (col == 1) {
             try{
                 AdministradorDAO admDAO = new AdministradorDAO();
@@ -477,6 +477,10 @@ public class AdministradorEditar extends javax.swing.JFrame {
             }
         }
         if (col == 2) {
+            if(!valorAlterado.contains("@")){
+                JOptionPane.showMessageDialog(null, "ERRO! O email deve conter @");
+                return;
+            }
             try{
                 AdministradorDAO admDAO = new AdministradorDAO();
                 admDAO.atualizarEmail(valorAlterado, id);
@@ -489,6 +493,10 @@ public class AdministradorEditar extends javax.swing.JFrame {
             }
         }
         if (col == 3) {
+            if(valorAlterado.length() < 8){
+                JOptionPane.showMessageDialog(null, "ERRO! A senha deve conter no mínimo 8 caracteres");
+                return;
+            }
             try{
                 AdministradorDAO admDAO = new AdministradorDAO();
                 admDAO.atualizarSenha(valorAlterado, id);

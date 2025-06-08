@@ -7,6 +7,7 @@ import pi_1sem.modelo.jogo.Materia;
 import pi_1sem.modelo.jogo.Pergunta;
 import pi_1sem.modelo.jogo.PerguntaAlternativa;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 public class PerguntaDAO {
    public List<PerguntaAlternativa> bancoDeQuestoes(String nivel, Materia materia) throws Exception{
@@ -36,6 +37,7 @@ public class PerguntaDAO {
             return todasPerguntas;
         }
     }
+
     public void editarPergunta(String enunciado, int idPergunta) throws Exception{
         var conectionFactory= new ConnectionFactoryTest();
 
@@ -50,11 +52,46 @@ public class PerguntaDAO {
             ps.execute();
         }
     }
-    // PAREI AQUI
     public void excluirPergunta(int idPergunta) throws Exception{
         var conectionFactory= new ConnectionFactoryTest();
 
         var sql= "DELETE FROM pergunta WHERE id_pergunta=?";
-    }
 
+        try(
+            var conexao= conectionFactory.obterConexao();
+            var ps= conexao.prepareStatement(sql);
+        ){
+            ps.setInt(1, idPergunta);
+            ps.execute();
+        }
+    }
+    public void adicionarPergunta(Pergunta pergunta)throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+
+        var sql= "INSERT INTO pergunta (enunciado, id_materia, nivel_dificuldade) VALUES (?, ?, ?)";
+
+        try(
+            var conexao= conectionFactory.obterConexao();
+            var ps= conexao.prepareStatement(sql);
+        ){
+            ps.setString(1, pergunta.getEnunciado());
+            ps.setInt(2, pergunta.getMateria().getId());
+            ps.setString(3, pergunta.getNivel());
+        }
+
+    }
+    public void editarDificuldade(String dificuldade, int idPergunta) throws Exception{
+        var conectionFactory= new ConnectionFactoryTest();
+
+        var sql= "UPDATE pergunta SET nivel_dificuldade=? WHERE id_pergunta=?";
+        
+        try(
+            var conexao= conectionFactory.obterConexao();
+            var ps= conexao.prepareStatement(sql);
+        ){
+            ps.setString(1, dificuldade);
+            ps.setInt(2, idPergunta);
+            ps.execute();
+        }
+    }
 }
