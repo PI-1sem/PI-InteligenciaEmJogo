@@ -69,16 +69,24 @@ public class PerguntaDAO {
         var conectionFactory= new ConnectionFactoryTest();
 
         var sql= "INSERT INTO pergunta (enunciado, id_materia, nivel_dificuldade) VALUES (?, ?, ?)";
+        var sqlFinal= "SELECT LAST_INSERT_ID() AS id_pergunta";
+        var conexao= conectionFactory.obterConexao();
 
         try(
-            var conexao= conectionFactory.obterConexao();
             var ps= conexao.prepareStatement(sql);
+            var ps2= conexao.prepareStatement(sqlFinal);
         ){
             ps.setString(1, pergunta.getEnunciado());
             ps.setInt(2, pergunta.getMateria().getId());
             ps.setString(3, pergunta.getNivel());
-        }
+            ps.execute();
 
+            var rs= ps2.executeQuery();
+            if(rs.next()){
+                var idPergunta= rs.getInt("id_pergunta");
+                pergunta.setId(idPergunta);
+            }
+        }
     }
     public void editarDificuldade(String dificuldade, int idPergunta) throws Exception{
         var conectionFactory= new ConnectionFactoryTest();

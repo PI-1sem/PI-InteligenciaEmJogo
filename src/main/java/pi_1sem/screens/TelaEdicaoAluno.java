@@ -18,12 +18,12 @@ import pi_1sem.persistencia.usuarios.AlunoDAO;
  *
  * @author charl
  */
-public class UsuarioEditar extends javax.swing.JFrame {
+public class TelaEdicaoAluno extends javax.swing.JFrame {
 
     /**
      * Creates new form Usuario
      */
-    public UsuarioEditar() {
+    public TelaEdicaoAluno() {
         initComponents();
         listarAlunos();
         capturarAltercoes();
@@ -58,7 +58,7 @@ public class UsuarioEditar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(71, 71, 215));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,7 +104,7 @@ public class UsuarioEditar extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jLabel6.setText("Senha : ");
 
-        adicionarAlunoButton.setBackground(new java.awt.Color(71, 71, 215));
+        adicionarAlunoButton.setBackground(new java.awt.Color(0, 102, 255));
         adicionarAlunoButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         adicionarAlunoButton.setForeground(new java.awt.Color(255, 255, 255));
         adicionarAlunoButton.setText("+    Adicionar Aluno ");
@@ -117,7 +117,7 @@ public class UsuarioEditar extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel7.setText("Editar Aluno ");
 
-        excluirButton.setBackground(new java.awt.Color(71, 71, 215));
+        excluirButton.setBackground(new java.awt.Color(255, 51, 51));
         excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         excluirButton.setForeground(new java.awt.Color(255, 255, 255));
         excluirButton.setText("Excluir ");
@@ -127,9 +127,8 @@ public class UsuarioEditar extends javax.swing.JFrame {
             }
         });
 
-        voltarButton.setBackground(new java.awt.Color(255, 51, 51));
+        voltarButton.setBackground(new java.awt.Color(146, 198, 243));
         voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        voltarButton.setForeground(new java.awt.Color(255, 255, 255));
         voltarButton.setText("Voltar ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -317,13 +316,13 @@ public class UsuarioEditar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsuarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsuarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsuarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsuarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -331,7 +330,7 @@ public class UsuarioEditar extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new UsuarioEditar().setVisible(true);
+                new TelaEdicaoAluno().setVisible(true);
             }
         });
     }

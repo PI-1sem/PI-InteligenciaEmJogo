@@ -38,12 +38,12 @@ import pi_1sem.persistencia.jogo.PerguntaDAO;
  *
  * @author charl
  */
-public class EditarPergunta extends javax.swing.JFrame {
+public class TelaEdicaoPergunta extends javax.swing.JFrame {
     private String filtroAtual = "Todas";
     /**
      * Creates new form EditarPergunta
      */
-    public EditarPergunta() {
+    public TelaEdicaoPergunta() {
         initComponents();
         listarPerguntas(this.filtroAtual);
         capturarAltercoes();
@@ -232,20 +232,21 @@ public class EditarPergunta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void adicionarPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarPerguntaButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adicionarPerguntaButtonActionPerformed
+    private void adicionarPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        new TelaAdcionarPergunta().setVisible(true);
+        this.dispose();
+    }
 
     public void excluirPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {
         var resposta= JOptionPane.showConfirmDialog(null, "Deseja excluir a pergunta e suas alternativas?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
 
         if(resposta == JOptionPane.OK_OPTION){
             try{
-                var perguntadao = new PerguntaDAO();
+                var perguntaDao = new PerguntaDAO();
                 var alternativaDao = new AlternativaDAO();
     
                 var idPergunta= pegarCampoId();
-                perguntadao.excluirPergunta(idPergunta);
+                perguntaDao.excluirPergunta(idPergunta);
 
                 List<Integer> idsAlternativa = Arrays.asList(pegarCampoIdAlternativa('A'), pegarCampoIdAlternativa('B'), pegarCampoIdAlternativa('C'), pegarCampoIdAlternativa('D'));
 
@@ -279,20 +280,20 @@ public class EditarPergunta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditarPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditarPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditarPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarPergunta().setVisible(true);
+                new TelaEdicaoPergunta().setVisible(true);
             }
         });
     }

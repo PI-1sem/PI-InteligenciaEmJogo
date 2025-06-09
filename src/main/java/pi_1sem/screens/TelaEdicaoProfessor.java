@@ -17,12 +17,12 @@ import pi_1sem.persistencia.usuarios.AdministradorDAO;
  *
  * @author charl
  */
-public class AdministradorEditar extends javax.swing.JFrame {
+public class TelaEdicaoProfessor extends javax.swing.JFrame {
 
     /**
      * Creates new form Administrador
      */
-    public AdministradorEditar() {
+    public TelaEdicaoProfessor() {
         initComponents();
         listarAdministradores();
         capturarAltercoes();
@@ -59,7 +59,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(71, 71, 215));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,7 +121,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jLabel9.setText("Senha");
 
 
-        adicionarProfessorButton.setBackground(new java.awt.Color(71, 71, 215));
+        adicionarProfessorButton.setBackground(new java.awt.Color(0, 102, 255));
         adicionarProfessorButton.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         adicionarProfessorButton.setForeground(new java.awt.Color(255, 255, 255));
         adicionarProfessorButton.setText("+ adcionar professor");
@@ -171,9 +171,8 @@ public class AdministradorEditar extends javax.swing.JFrame {
             .addGap(0, 98, Short.MAX_VALUE)
         );
 
-        voltarButton.setBackground(new java.awt.Color(241, 22, 22));
+        voltarButton.setBackground(new java.awt.Color(146, 198, 243));
         voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        voltarButton.setForeground(new java.awt.Color(255, 255, 255));
         voltarButton.setText("Voltar");
         voltarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +180,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
             }
         });
 
-        excluirButton.setBackground(new java.awt.Color(71, 71, 215));
+        excluirButton.setBackground(new java.awt.Color(255, 51, 51));
         excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         excluirButton.setForeground(new java.awt.Color(255, 255, 255));
         excluirButton.setText("Excluir");
@@ -369,13 +368,13 @@ public class AdministradorEditar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdministradorEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdministradorEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdministradorEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdministradorEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -383,7 +382,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdministradorEditar().setVisible(true);
+                new TelaEdicaoProfessor().setVisible(true);
             }
         });
     }

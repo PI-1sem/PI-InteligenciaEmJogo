@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 
 import pi_1sem.modelo.jogo.Alternativa;
 import pi_1sem.modelo.jogo.Materia;
@@ -28,12 +26,12 @@ import pi_1sem.persistencia.usuarios.UsuarioDAO;
  *
  * @author charl
  */
-public class AdcionarPergunta1 extends javax.swing.JFrame {
+public class TelaAdcionarPergunta extends javax.swing.JFrame {
 
     /**
      * Creates new form EditarPergunta
      */
-    public AdcionarPergunta1() {
+    public TelaAdcionarPergunta() {
         initComponents();
     }
 
@@ -54,6 +52,7 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         alternativaBRadioButton = new javax.swing.JRadioButton();
         escolherMateriaComboBox = new javax.swing.JComboBox<>();
         alternativaCTextField = new javax.swing.JTextField();
+        escolherDificuldadeComboBox = new javax.swing.JComboBox<>();
         alternativaBTextField = new javax.swing.JTextField();
         alternativaDTextField = new javax.swing.JTextField();
         alternativaATextField = new javax.swing.JTextField();
@@ -63,6 +62,7 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         perguntaTextField = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -118,6 +118,11 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         
         getContentPane().add(alternativaCTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 260, 30));
 
+        escolherDificuldadeComboBox.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
+        escolherDificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "fácil", "médio", "difícil"}));
+            
+        getContentPane().add(escolherDificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 500, 130, 40));
+
         alternativaBTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         alternativaBTextField.setBorder(null);
         
@@ -132,6 +137,10 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         alternativaATextField.setBorder(null);
         
         getContentPane().add(alternativaATextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 260, 30));
+
+        jLabel13.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
+        jLabel13.setText("Dificuldade:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, -1, 40));
 
         alterantivasButtonGroup.add(alternativaDRadioButton);
         alternativaDRadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -347,11 +356,25 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
                     return;
                 }
             }
+
+            List<Boolean> opcoesAlternativaCorreta = Arrays.asList(alternativaARadioButton.isSelected(), alternativaBRadioButton.isSelected(),alternativaCRadioButton.isSelected(),alternativaDRadioButton.isSelected());
+            
+            var temVerdadiro= false;
+            for(boolean i : opcoesAlternativaCorreta){
+                if (i == true){
+                    temVerdadiro= true;
+                }
+            }
+
+            if(temVerdadiro == false){
+                JOptionPane.showMessageDialog(null, "Selecione uma alternativa para ser a correta, clique na bolinha");
+                return;
+            }
             
             var materia = new Materia((String)escolherMateriaComboBox.getSelectedItem());
             materia.atribuiId();
         
-            var nivel= (String) escolherNivelComboBox.getSelectedItem();
+            var nivel= (String) escolherDificuldadeComboBox.getSelectedItem();
         
             var pergunta = new Pergunta(perguntaEAlternativas[0], materia, nivel);
     
@@ -372,24 +395,14 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         
                 for (int i = 1; i < 5; i++){
                     var novaAlternativa= new Alternativa(letras[i-1], perguntaEAlternativas[i]);
-                    alternativas.add(novaAlternativa);
-                    alternativaDao.adicionarAlternativa(alternativas);
+                    alternativas.add(novaAlternativa); 
                 }
+                alternativaDao.adicionarAlternativa(alternativas);
             }
             catch(Exception e){
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Erro ao adicionar alternativas");
             }    
-            
-            List<Boolean> opcoesAlternativaCorreta = Arrays.asList(alternativaARadioButton.isSelected(), alternativaBRadioButton.isSelected(),alternativaCRadioButton.isSelected(),alternativaDRadioButton.isSelected());
-    
-            for(int i= 0; i < opcoesAlternativaCorreta.size(); i++){
-                
-                if (opcoesAlternativaCorreta.get(i) == false && i == 3){
-                    JOptionPane.showMessageDialog(null, "Selecione uma alternativa para ser a correta");
-                    return;
-                }
-            }
     
             List<PerguntaAlternativa> perguntaAlternativas = new ArrayList<>();
             for (int i = 0; i < 4; i++){
@@ -409,7 +422,7 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
     }
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//
-        new EditarPergunta().setVisible(true);
+        new TelaEdicaoPergunta().setVisible(true);
         this.dispose();
     }
     /**
@@ -429,13 +442,13 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdcionarPergunta1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAdcionarPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdcionarPergunta1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAdcionarPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdcionarPergunta1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAdcionarPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdcionarPergunta1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAdcionarPergunta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -443,7 +456,7 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdcionarPergunta1().setVisible(true);
+                new TelaAdcionarPergunta().setVisible(true);
             }
         });
     }
@@ -451,6 +464,7 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup alterantivasButtonGroup;
     private javax.swing.JComboBox<String> escolherMateriaComboBox;
+    private javax.swing.JComboBox<String> escolherDificuldadeComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -458,6 +472,7 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

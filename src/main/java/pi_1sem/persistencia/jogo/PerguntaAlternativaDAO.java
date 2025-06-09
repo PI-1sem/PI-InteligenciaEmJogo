@@ -103,11 +103,11 @@ public class PerguntaAlternativaDAO {
         var conectionFactory= new ConnectionFactoryTest();
 
         var sql="INSERT INTO pergunta_alternativa (id_pergunta, id_alternativa, correta) VALUES (?, ?, ?)";
+        var conexao= conectionFactory.obterConexao();
 
         for (PerguntaAlternativa perguntaAlterantivaNova : perguntaAlternativasNovas) {
             try(
                 
-                var conexao= conectionFactory.obterConexao();
                 var ps= conexao.prepareStatement(sql);
             ){
                 ps.setInt(1, perguntaAlterantivaNova.getPergunta().getId());
@@ -115,6 +115,7 @@ public class PerguntaAlternativaDAO {
                 ps.setInt(3, perguntaAlterantivaNova.isCorreta() ? 1 : 0);
                 ps.execute();
             }
-        }   
+        }
+        conexao.close();  
     }
 }
