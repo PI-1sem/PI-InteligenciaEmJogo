@@ -76,6 +76,11 @@ public class RankingApp extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setHeaderValue("Posição");
+            jTable2.getColumnModel().getColumn(1).setHeaderValue("Nome");
+            jTable2.getColumnModel().getColumn(2).setHeaderValue("E-mail");
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
