@@ -33,8 +33,8 @@ public class Parar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -49,10 +49,10 @@ public class Parar extends javax.swing.JFrame {
                 voltarAoMenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(voltarAoMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 280, 40));
+        getContentPane().add(voltarAoMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, 280, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\botão checkPoint 2.png")); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, 70));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, 70));
 
         jPanel3.setBackground(new java.awt.Color(44, 59, 162));
 
@@ -68,6 +68,15 @@ public class Parar extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Saldo Obtido :");
 
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("SEU PROGESSO");
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("4/12");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -75,44 +84,47 @@ public class Parar extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(196, 196, 196)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addComponent(jLabel1))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7)))
-                .addContainerGap(252, Short.MAX_VALUE))
+                        .addGap(156, 156, 156)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(260, 260, 260)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addComponent(jLabel3)))))
+                .addContainerGap(323, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addGap(68, 68, 68)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1)
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6))))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 770));
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("4/12");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("SEU PROGESSO");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, -1, 86));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
