@@ -67,12 +67,12 @@ public class QuizCompleto extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Saldo obitido : ");
 
-        jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(82, 224, 72));
+        jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(36, 206, 36));
         jLabel7.setText("R$ 10.000,00");
 
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\AB.png")); // NOI18N
@@ -137,7 +137,7 @@ public class QuizCompleto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, 1100, 560));
