@@ -26,8 +26,6 @@ public class Parar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        voltarAoMenuButton = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -35,24 +33,10 @@ public class Parar extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        voltarAoMenuButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        voltarAoMenuButton.setBackground(new java.awt.Color(214, 123, 45));
-        voltarAoMenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
-        voltarAoMenuButton.setForeground(new java.awt.Color(255, 255, 255));
-        voltarAoMenuButton.setText("VOLTAR AO MENU");
-        voltarAoMenuButton.setBorder(null);
-        voltarAoMenuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarAoMenuButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltarAoMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, 280, 40));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\botão checkPoint 2.png")); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, 70));
 
         jPanel3.setBackground(new java.awt.Color(44, 59, 162));
 
@@ -77,6 +61,17 @@ public class Parar extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("4/12");
 
+        voltarAoMenuButton.setBackground(new java.awt.Color(214, 123, 45));
+        voltarAoMenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
+        voltarAoMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        voltarAoMenuButton.setText("VOLTAR AO MENU");
+        voltarAoMenuButton.setBorder(null);
+        voltarAoMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarAoMenuButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -84,23 +79,27 @@ public class Parar extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jLabel1))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(142, 142, 142)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(260, 260, 260)
-                                .addComponent(jLabel4))
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(170, 170, 170)
-                                .addComponent(jLabel3)))))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(274, 274, 274)
+                                        .addComponent(jLabel4))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(184, 184, 184)
+                                        .addComponent(jLabel3))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(159, 159, 159)
+                                        .addComponent(voltarAoMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(313, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -113,18 +112,20 @@ public class Parar extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4))
+                        .addComponent(jLabel4)
+                        .addGap(27, 27, 27)
+                        .addComponent(voltarAoMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
+                        .addGap(140, 140, 140)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(135, 135, 135)
+                        .addGap(110, 110, 110)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6))))
-                .addContainerGap(138, Short.MAX_VALUE))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 760));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,7 +174,6 @@ public class Parar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
