@@ -58,11 +58,11 @@
                                       <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jButton2" min="-2" pref="208" max="-2" attributes="0"/>
+                                          <Component id="matematicaButton" min="-2" pref="208" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButton3" min="-2" pref="208" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="jButton1" min="-2" pref="208" max="-2" attributes="0"/>
+                                          <Component id="quimicaButton" min="-2" pref="208" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Component id="biologiaButton" min="-2" pref="208" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -72,7 +72,7 @@
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="149" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="153" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -112,6 +112,11 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="voltarButton" min="-2" pref="194" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -155,9 +160,9 @@
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton2" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="jButton3" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="matematicaButton" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="quimicaButton" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="biologiaButton" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -165,7 +170,9 @@
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="103" max="32767" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <Component id="voltarButton" min="-2" pref="42" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -187,7 +194,7 @@
             <Property name="text" type="java.lang.String" value="MATERIAS ESCOLARES"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="biologiaButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c2" green="df" red="ea" type="rgb"/>
@@ -198,7 +205,7 @@
             <Property name="text" type="java.lang.String" value="Biologia"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="matematicaButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c2" green="df" red="ea" type="rgb"/>
@@ -209,7 +216,7 @@
             <Property name="text" type="java.lang.String" value="Matematica"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="quimicaButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c2" green="df" red="ea" type="rgb"/>
@@ -302,6 +309,17 @@
               <Font name="Franklin Gothic Medium" size="14" style="2"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Saldo atual : 10.000.000,00"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="voltarButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f3" green="c6" red="92" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Franklin Gothic Medium" size="18" style="2"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
         </Component>
       </SubComponents>

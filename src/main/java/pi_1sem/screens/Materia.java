@@ -29,9 +29,9 @@ public class Materia extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        biologiaButton = new javax.swing.JButton();
+        matematicaButton = new javax.swing.JButton();
+        quimicaButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -43,6 +43,7 @@ public class Materia extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        voltarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,17 +55,17 @@ public class Materia extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 48)); // NOI18N
         jLabel2.setText("MATERIAS ESCOLARES");
 
-        jButton1.setBackground(new java.awt.Color(234, 223, 194));
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton1.setText("Biologia");
+        biologiaButton.setBackground(new java.awt.Color(234, 223, 194));
+        biologiaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        biologiaButton.setText("Biologia");
 
-        jButton2.setBackground(new java.awt.Color(234, 223, 194));
-        jButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton2.setText("Matematica");
+        matematicaButton.setBackground(new java.awt.Color(234, 223, 194));
+        matematicaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        matematicaButton.setText("Matematica");
 
-        jButton3.setBackground(new java.awt.Color(234, 223, 194));
-        jButton3.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton3.setText("Quimica");
+        quimicaButton.setBackground(new java.awt.Color(234, 223, 194));
+        quimicaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        quimicaButton.setText("Quimica");
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel4.setText("Olá! Eu sou o Richard, seu guia do quiz. ");
@@ -95,6 +96,10 @@ public class Materia extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jLabel14.setText("Saldo atual : 10.000.000,00");
 
+        voltarButton.setBackground(new java.awt.Color(146, 198, 243));
+        voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        voltarButton.setText("Voltar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,16 +116,16 @@ public class Materia extends javax.swing.JFrame {
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel6)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(matematicaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(quimicaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(biologiaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel13)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(78, 78, 78)
                                 .addComponent(jLabel12)))
-                        .addGap(0, 149, Short.MAX_VALUE))
+                        .addGap(0, 153, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,6 +154,10 @@ public class Materia extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,14 +193,16 @@ public class Materia extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(matematicaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(quimicaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(biologiaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,9 +257,7 @@ public class Materia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton biologiaButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -263,5 +272,8 @@ public class Materia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton matematicaButton;
+    private javax.swing.JButton quimicaButton;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

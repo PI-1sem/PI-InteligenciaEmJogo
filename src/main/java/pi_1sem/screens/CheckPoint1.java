@@ -26,7 +26,7 @@ public class CheckPoint1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        continuarButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -39,17 +39,17 @@ public class CheckPoint1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(214, 123, 45));
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("CONTINUAR");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        continuarButton.setBackground(new java.awt.Color(214, 123, 45));
+        continuarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        continuarButton.setForeground(new java.awt.Color(255, 255, 255));
+        continuarButton.setText("CONTINUAR");
+        continuarButton.setBorder(null);
+        continuarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                continuarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 290, 60));
+        getContentPane().add(continuarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 290, 60));
 
         jPanel2.setBackground(new java.awt.Color(44, 59, 162));
 
@@ -135,9 +135,9 @@ public class CheckPoint1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void continuarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_continuarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,7 +175,7 @@ public class CheckPoint1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton continuarButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
