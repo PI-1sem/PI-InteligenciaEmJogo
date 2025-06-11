@@ -34,7 +34,7 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         opcaoBRadioButton = new javax.swing.JRadioButton();
         escolherMateriaComboBox = new javax.swing.JComboBox<>();
         opcaoCTextField = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        dificuldadeComboBox = new javax.swing.JComboBox<>();
         opcaoBTextField = new javax.swing.JTextField();
         opcaoDTextField = new javax.swing.JTextField();
         opcaoATextField = new javax.swing.JTextField();
@@ -93,14 +93,14 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         });
         getContentPane().add(opcaoCTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 260, 30));
 
-        jComboBox1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Médio", "Dificil", "" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        dificuldadeComboBox.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
+        dificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facil", "Médio", "Dificil", "" }));
+        dificuldadeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                dificuldadeComboBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 130, 40));
+        getContentPane().add(dificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 130, 40));
 
         opcaoBTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         opcaoBTextField.setBorder(null);
@@ -321,9 +321,9 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void dificuldadeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dificuldadeComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_dificuldadeComboBoxActionPerformed
     private void salvarPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
     }
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
@@ -366,8 +366,8 @@ public class AdcionarPergunta1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> dificuldadeComboBox;
     private javax.swing.JComboBox<String> escolherMateriaComboBox;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

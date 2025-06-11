@@ -28,7 +28,7 @@ public class EditarPergunta extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        editarPerguntaTable = new javax.swing.JTable();
         excluirButton = new javax.swing.JButton();
         adcionarPerguntaButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -43,9 +43,9 @@ public class EditarPergunta extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        editarPerguntaTable.setBackground(new java.awt.Color(204, 204, 204));
+        editarPerguntaTable.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        editarPerguntaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -53,7 +53,7 @@ public class EditarPergunta extends javax.swing.JFrame {
                 "ID Pergunta", "Enuciado", "Opção A", "Opção B", "Opção C", "Opção D", "Dificuldade", "Materia"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(editarPerguntaTable);
 
         excluirButton.setBackground(new java.awt.Color(255, 51, 51));
         excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -238,6 +238,7 @@ public class EditarPergunta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adcionarPerguntaButton;
+    private javax.swing.JTable editarPerguntaTable;
     private javax.swing.JButton excluirButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -247,7 +248,6 @@ public class EditarPergunta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

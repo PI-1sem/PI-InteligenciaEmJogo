@@ -26,8 +26,8 @@ public class JogarAdm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        edicoesButton = new javax.swing.JButton();
+        rankingButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -37,15 +37,15 @@ public class JogarAdm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(246, 227, 196));
-        jButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
-        jButton2.setText("Edições");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 170, 60));
+        edicoesButton.setBackground(new java.awt.Color(246, 227, 196));
+        edicoesButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
+        edicoesButton.setText("Edições");
+        getContentPane().add(edicoesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 170, 60));
 
-        jButton4.setBackground(new java.awt.Color(246, 227, 196));
-        jButton4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
-        jButton4.setText("Ranking");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 160, 60));
+        rankingButton.setBackground(new java.awt.Color(246, 227, 196));
+        rankingButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
+        rankingButton.setText("Ranking");
+        getContentPane().add(rankingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 160, 60));
 
         jButton1.setBackground(new java.awt.Color(51, 102, 255));
         jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 36)); // NOI18N
@@ -107,12 +107,12 @@ public class JogarAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton edicoesButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton rankingButton;
     // End of variables declaration//GEN-END:variables
 }
