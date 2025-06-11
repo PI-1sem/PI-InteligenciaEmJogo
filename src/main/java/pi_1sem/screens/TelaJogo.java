@@ -231,98 +231,98 @@ public class TelaJogo extends javax.swing.JFrame {
     }
 
     private void dicaButtonActionPerformed(java.awt.event.ActionEvent evt, List<String> base, Partida partida){
-        // var opcoesDica= partida.getOpcoesDicas();
+        var opcoesDica= partida.getOpcoesDicas();
 
-        // int escolha = JOptionPane.showOptionDialog(
-        // this, 
-        // "Escolha o tipo de dica que deseja usar:", 
-        // "Tipos de Dica", 
-        // JOptionPane.DEFAULT_OPTION, 
-        // JOptionPane.QUESTION_MESSAGE, 
-        // null, 
-        // opcoesDica,
-        // null
-        // );
-        // if (escolha == -1) {
-        //     return;
-        // }
-        // if (opcoesDica[escolha].equals("Pular pergunta")){
-        //     if (partida.getOpcoesDicas().length == 2){
-        //         partida.setOpcoesDicas(new Object[]{"Eliminação por sorte"});
-        //     }
-        //     else if (partida.getOpcoesDicas().length == 1){
-        //         partida.setOpcoesDicas(null);
-        //     }
-        //     JOptionPane.showMessageDialog(this, "Você pulou a pergunta!");
+        int escolha = JOptionPane.showOptionDialog(
+        this, 
+        "Escolha o tipo de dica que deseja usar:", 
+        "Tipos de Dica", 
+        JOptionPane.DEFAULT_OPTION, 
+        JOptionPane.QUESTION_MESSAGE, 
+        null, 
+        opcoesDica,
+        null
+        );
+        if (escolha == -1) {
+            return;
+        }
+        if (opcoesDica[escolha].equals("Pular pergunta")){
+            if (partida.getOpcoesDicas().length == 2){
+                partida.setOpcoesDicas(new Object[]{"Eliminação por sorte"});
+            }
+            else if (partida.getOpcoesDicas().length == 1){
+                partida.setOpcoesDicas(null);
+            }
+            JOptionPane.showMessageDialog(this, "Você pulou a pergunta!");
 
-        //     proximaPergunta(partida);
+            proximaPergunta(partida);
             
-        // }
+        }
 
-        // if (opcoesDica[escolha].equals("Eliminação por sorte")){
-        //     if (partida.getOpcoesDicas().length == 2){
-        //         partida.setOpcoesDicas(new Object[]{"Pular pergunta"});
-        //     }
-        //     else if (partida.getOpcoesDicas().length == 1){
-        //         partida.setOpcoesDicas(null);
-        //     }
-        //     // 1. Obter a resposta correta
-        //     String respostaCorreta = base.get(5);
+        if (opcoesDica[escolha].equals("Eliminação por sorte")){
+            if (partida.getOpcoesDicas().length == 2){
+                partida.setOpcoesDicas(new Object[]{"Pular pergunta"});
+            }
+            else if (partida.getOpcoesDicas().length == 1){
+                partida.setOpcoesDicas(null);
+            }
+            // 1. Obter a resposta correta
+            String respostaCorreta = base.get(5);
             
-        //     // 2. Lista de todas as alternativas erradas e visíveis
-        //     List<JToggleButton> alternativasErradas = new ArrayList<>();
+            // 2. Lista de todas as alternativas erradas e visíveis
+            List<JToggleButton> alternativasErradas = new ArrayList<>();
             
-        //     // Verificar cada botão
-        //     JToggleButton[] todosBotoes = {
-        //         alternativaAToggleButton, 
-        //         alternativaBToggleButton, 
-        //         alternativaCToggleButton, 
-        //         alternativaDToggleButton
-        //     };
+            // Verificar cada botão
+            JToggleButton[] todosBotoes = {
+                alternativaAToggleButton, 
+                alternativaBToggleButton, 
+                alternativaCToggleButton, 
+                alternativaDToggleButton
+            };
             
-        //     for (JToggleButton botao : todosBotoes) {
-        //         if (!botao.getText().equals(respostaCorreta)) {
-        //             alternativasErradas.add(botao);
-        //         }
-        //     }
+            for (JToggleButton botao : todosBotoes) {
+                if (!botao.getText().equals(respostaCorreta)) {
+                    alternativasErradas.add(botao);
+                }
+            }
             
-        //     // 3. Sortear quantas alternativas serão removidas (0-3)
-        //     int numeroParaRemover = (int) (Math.random() * 4); // Gera 0, 1, 2 ou 3
+            // 3. Sortear quantas alternativas serão removidas (0-3)
+            int numeroParaRemover = (int) (Math.random() * 4); // Gera 0, 1, 2 ou 3
             
-        //     // 4. Embaralhar a lista de alternativas erradas
-        //     Collections.shuffle(alternativasErradas);
+            // 4. Embaralhar a lista de alternativas erradas
+            Collections.shuffle(alternativasErradas);
             
-        //     // 5. Remover as alternativas selecionadas
-        //     for (int i = 0; i < numeroParaRemover && i < alternativasErradas.size(); i++) {
-        //         alternativasErradas.get(i).setVisible(false);
-        //     }
+            // 5. Remover as alternativas selecionadas
+            for (int i = 0; i < numeroParaRemover && i < alternativasErradas.size(); i++) {
+                alternativasErradas.get(i).setVisible(false);
+            }
             
-        //     // 6. Atualizar a interface
-        //     revalidate();
-        //     repaint();
+            // 6. Atualizar a interface
+            revalidate();
+            repaint();
             
-        //     // 7. Feedback para o usuário
-        //     String mensagem;
-        //     switch (numeroParaRemover) {
-        //         case 0:
-        //             mensagem = "A dica não removeu nenhuma alternativa errada. Boa sorte!";
-        //             break;
-        //         case 1:
-        //             mensagem = "Dica usada! 1 opção errada foi removida.";
-        //             break;
-        //         default:
-        //             mensagem = "Dica usada! " + numeroParaRemover + " opções erradas foram removidas.";
-        //             break;
-        //     }
+            // 7. Feedback para o usuário
+            String mensagem;
+            switch (numeroParaRemover) {
+                case 0:
+                    mensagem = "A dica não removeu nenhuma alternativa errada. Boa sorte!";
+                    break;
+                case 1:
+                    mensagem = "Dica usada! 1 opção errada foi removida.";
+                    break;
+                default:
+                    mensagem = "Dica usada! " + numeroParaRemover + " opções erradas foram removidas.";
+                    break;
+            }
             
-        //     JOptionPane.showMessageDialog(this, 
-        //         mensagem,
-        //         "Dica", 
-        //         JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                mensagem,
+                "Dica", 
+                JOptionPane.INFORMATION_MESSAGE);
     
-        //     dicaButton.setEnabled(false);
+            dicaButton.setEnabled(false);
 
-        // }
+        }
 
     }
 
