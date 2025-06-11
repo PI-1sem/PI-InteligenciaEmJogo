@@ -5,10 +5,11 @@ import java.util.List;
 
 import pi_1sem.modelo.jogo.Materia;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 public class MateriaDAO {
     public List<Materia> listarMaterias() throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "SELECT nome FROM materia";
         var todasMaterias= new ArrayList<Materia>();
         try(

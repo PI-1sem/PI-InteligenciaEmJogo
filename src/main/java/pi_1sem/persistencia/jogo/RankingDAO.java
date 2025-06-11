@@ -6,11 +6,12 @@ import java.util.List;
 
 import pi_1sem.modelo.jogo.Ranking;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 public class RankingDAO {
     public List<Ranking> exibirRanking() throws Exception{
         var rankingFinal= new ArrayList<Ranking>();
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "select RANK() OVER (ORDER BY pontuacao_total DESC)  as 'Posição', nome, email, pontuacao_total from usuario where nivel_acesso='aluno' ORDER BY 'Posição'";
         
         try(

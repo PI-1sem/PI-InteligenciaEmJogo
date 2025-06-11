@@ -7,11 +7,12 @@ import pi_1sem.modelo.jogo.Materia;
 import pi_1sem.modelo.jogo.Pergunta;
 import pi_1sem.modelo.jogo.PerguntaAlternativa;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 
 public class PerguntaDAO {
    public List<PerguntaAlternativa> bancoDeQuestoes(String nivel, Materia materia) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "SELECT p.enunciado, p.nivel_dificuldade, m.nome as materia, a.letra, a.texto, pa.correta FROM pergunta_alternativa pa JOIN pergunta p ON pa.id_pergunta= p.id_pergunta JOIN materia m ON p.id_materia = m.id_materia JOIN alternativa a ON pa.id_alternativa= a.id_alternativa WHERE p.nivel_dificuldade=? AND m.nome=?";
         var todasPerguntas= new ArrayList<PerguntaAlternativa>();
         try(
@@ -39,7 +40,7 @@ public class PerguntaDAO {
     }
 
     public void editarPergunta(String enunciado, int idPergunta) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
 
         var sql= "UPDATE pergunta p JOIN pergunta_alternativa USING (id_pergunta) JOIN alternativa a USING (id_alternativa) SET p.enunciado=? WHERE p.id_pergunta=?";
         
@@ -53,7 +54,7 @@ public class PerguntaDAO {
         }
     }
     public void excluirPergunta(int idPergunta) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
 
         var sql= "DELETE FROM pergunta WHERE id_pergunta=?";
 
@@ -66,7 +67,7 @@ public class PerguntaDAO {
         }
     }
     public void adicionarPergunta(Pergunta pergunta)throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
 
         var sql= "INSERT INTO pergunta (enunciado, id_materia, nivel_dificuldade) VALUES (?, ?, ?)";
         var sqlFinal= "SELECT LAST_INSERT_ID() AS id_pergunta";
@@ -89,7 +90,7 @@ public class PerguntaDAO {
         }
     }
     public void editarDificuldade(String dificuldade, int idPergunta) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
 
         var sql= "UPDATE pergunta SET nivel_dificuldade=? WHERE id_pergunta=?";
         

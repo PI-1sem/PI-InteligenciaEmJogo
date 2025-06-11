@@ -4,13 +4,14 @@ import javax.swing.JOptionPane;
 
 import pi_1sem.modelo.participantes.Usuario;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 public class LoginDAO {
 
     public Usuario existe (Usuario usuario) throws Exception{
         var sql= "SELECT id_usuario, nivel_acesso, pontuacao_total FROM usuario WHERE email=? AND senha=?";
         try(
-            var conexao= new ConnectionFactoryTest().obterConexao();
+            var conexao= new ConnectionFactory().obterConexao();
             var ps= conexao.prepareCall(sql);
             
         ){

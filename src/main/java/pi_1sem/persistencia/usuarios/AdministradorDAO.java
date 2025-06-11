@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 import pi_1sem.modelo.participantes.Administrador;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 public class AdministradorDAO {
     public void cadastrar(Administrador administrador) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "INSERT INTO usuario (nome, email, senha, nivel_acesso) VALUES(?, ?, ?, 'admin')";
 
         try(
@@ -23,7 +24,7 @@ public class AdministradorDAO {
     }
     
     public void remover(Integer id) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "DELETE FROM usuario WHERE id_usuario= ? and nivel_acesso= 'admin'";
         
         try(
@@ -38,7 +39,7 @@ public class AdministradorDAO {
     }
 
     public void atualizarNome(String nome, int id) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "UPDATE usuario SET nome= ? WHERE id_usuario= ? and nivel_acesso= 'admin'";
         
         try(
@@ -51,7 +52,7 @@ public class AdministradorDAO {
         }
     }
     public void atualizarEmail(String email, int id) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "UPDATE usuario SET email= ? WHERE id_usuario= ? and nivel_acesso= 'admin'";
 
         try(
@@ -65,7 +66,7 @@ public class AdministradorDAO {
         }
     }
     public void atualizarSenha(String senha, int id) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "UPDATE usuario SET senha= ? WHERE id_usuario= ? and nivel_acesso= 'admin'";
         try(
             var conexao= conectionFactory.obterConexao();
@@ -79,7 +80,7 @@ public class AdministradorDAO {
     }
 
     public ArrayList<Administrador> listar()throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "SELECT id_usuario, nome, email, senha FROM usuario WHERE nivel_acesso= 'admin'";
         ArrayList<Administrador> administradores= new ArrayList<>();
         

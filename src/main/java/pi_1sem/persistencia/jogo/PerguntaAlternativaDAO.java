@@ -8,12 +8,13 @@ import pi_1sem.modelo.jogo.Materia;
 import pi_1sem.modelo.jogo.Pergunta;
 import pi_1sem.modelo.jogo.PerguntaAlternativa;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 
 
 public class PerguntaAlternativaDAO {
     public  List<PerguntaAlternativa> listarPerguntasAlternativas() throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql="SELECT p.id_pergunta, p.enunciado, p.nivel_dificuldade, m.nome as materia, a.id_alternativa, a.letra, a.texto, pa.correta FROM pergunta_alternativa pa JOIN pergunta p ON pa.id_pergunta= p.id_pergunta JOIN materia m ON p.id_materia = m.id_materia JOIN alternativa a ON pa.id_alternativa= a.id_alternativa ORDER BY p.nivel_dificuldade, p.id_pergunta, a.letra";
         var todasPerguntasAlternativas= new ArrayList<PerguntaAlternativa>();
         try(
@@ -42,7 +43,7 @@ public class PerguntaAlternativaDAO {
         }
     }
     public  List<PerguntaAlternativa> listarPerguntasAlternativasExpecificas(String nomeMateria) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql="SELECT p.id_pergunta, p.enunciado, p.nivel_dificuldade, m.nome as materia, a.id_alternativa, a.letra, a.texto, pa.correta FROM pergunta_alternativa pa JOIN pergunta p ON pa.id_pergunta= p.id_pergunta JOIN materia m ON p.id_materia = m.id_materia JOIN alternativa a ON pa.id_alternativa= a.id_alternativa WHERE m.nome = ? ORDER BY p.nivel_dificuldade, p.id_pergunta, a.letra";
         var todasPerguntasAlternativas= new ArrayList<PerguntaAlternativa>();
         try(
@@ -72,7 +73,7 @@ public class PerguntaAlternativaDAO {
         }
     }
     public void removerAlternativaCorreta(int idPergunta, int idAntigaAlternativaCorreta) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
 
         var sql="UPDATE pergunta_alternativa SET correta= 0 WHERE id_pergunta= ? AND id_alternativa= ?";
 
@@ -86,7 +87,7 @@ public class PerguntaAlternativaDAO {
         }
     }
     public void adicionarAlternativaCorreta(int idPergunta, int idNovaAlternativaCorreta) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
 
         var sql="UPDATE pergunta_alternativa SET correta= 1 WHERE id_pergunta= ? AND id_alternativa= ?";
 
@@ -100,7 +101,7 @@ public class PerguntaAlternativaDAO {
         }
     }
     public void adicionarPerguntaAlternativa(List<PerguntaAlternativa> perguntaAlternativasNovas) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
 
         var sql="INSERT INTO pergunta_alternativa (id_pergunta, id_alternativa, correta) VALUES (?, ?, ?)";
         var conexao= conectionFactory.obterConexao();
