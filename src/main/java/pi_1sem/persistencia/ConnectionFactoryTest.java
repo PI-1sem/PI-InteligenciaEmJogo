@@ -7,10 +7,10 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class ConnectionFactoryTest {
     Dotenv dotenv = Dotenv.load();
-    private String host= "mysql-pi-pi1sem.l.aivencloud.com";
-    private String port= "24011";
+    private String host= "localhost";
+    private String port= "3306";
     private String db= "inteligencia_em_jogo";
-    private String user= "avnadmin";
+    private String user= "root";
     private String password= dotenv.get("senhaTeste");
     
     public Connection obterConexao() throws Exception{

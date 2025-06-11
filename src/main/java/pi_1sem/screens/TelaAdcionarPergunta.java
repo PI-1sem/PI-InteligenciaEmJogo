@@ -10,9 +10,9 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import pi_1sem.modelo.jogo.Pergunta;
 import pi_1sem.modelo.jogo.Alternativa;
 import pi_1sem.modelo.jogo.Materia;
-import pi_1sem.modelo.jogo.Pergunta;
 import pi_1sem.modelo.jogo.PerguntaAlternativa;
 import pi_1sem.modelo.participantes.Usuario;
 import pi_1sem.persistencia.jogo.AlternativaDAO;
@@ -20,7 +20,6 @@ import pi_1sem.persistencia.jogo.MateriaDAO;
 import pi_1sem.persistencia.jogo.PerguntaAlternativaDAO;
 import pi_1sem.persistencia.jogo.PerguntaDAO;
 import pi_1sem.persistencia.usuarios.UsuarioDAO;
-
 
 /**
  *
@@ -33,6 +32,8 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
      */
     public TelaAdcionarPergunta() {
         initComponents();
+        setLocationRelativeTo(null);
+        setSize(1277,653);
     }
 
     /**
@@ -48,7 +49,7 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         popupMenu1 = new java.awt.PopupMenu();
         popupMenu2 = new java.awt.PopupMenu();
-        alterantivasButtonGroup = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         alternativaBRadioButton = new javax.swing.JRadioButton();
         escolherMateriaComboBox = new javax.swing.JComboBox<>();
         alternativaCTextField = new javax.swing.JTextField();
@@ -57,19 +58,18 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
         alternativaDTextField = new javax.swing.JTextField();
         alternativaATextField = new javax.swing.JTextField();
         alternativaDRadioButton = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
         alternativaARadioButton = new javax.swing.JRadioButton();
         alternativaCRadioButton = new javax.swing.JRadioButton();
         perguntaTextField = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -91,7 +91,7 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        alterantivasButtonGroup.add(alternativaBRadioButton);
+        buttonGroup1.add(alternativaBRadioButton);
         alternativaBRadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         alternativaBRadioButton.setText("Alternativa B");
         getContentPane().add(alternativaBRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
@@ -115,13 +115,13 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
 
         alternativaCTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         alternativaCTextField.setBorder(null);
-        
+
         getContentPane().add(alternativaCTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 260, 30));
 
         escolherDificuldadeComboBox.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
-        escolherDificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "fácil", "médio", "difícil"}));
-            
-        getContentPane().add(escolherDificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 500, 130, 40));
+        escolherDificuldadeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "fácil", "médio", "dificil", "" }));
+        
+        getContentPane().add(escolherDificuldadeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 130, 40));
 
         alternativaBTextField.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         alternativaBTextField.setBorder(null);
@@ -138,22 +138,22 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
         
         getContentPane().add(alternativaATextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 260, 30));
 
-        jLabel13.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
-        jLabel13.setText("Dificuldade:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, -1, 40));
-
-        alterantivasButtonGroup.add(alternativaDRadioButton);
+        buttonGroup1.add(alternativaDRadioButton);
         alternativaDRadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         alternativaDRadioButton.setText("Alternativa D");
         getContentPane().add(alternativaDRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
 
-        alterantivasButtonGroup.add(alternativaARadioButton);
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
+        jLabel4.setText("Dificuldade:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, -1, 40));
+
+        buttonGroup1.add(alternativaARadioButton);
         alternativaARadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         alternativaARadioButton.setText("Alternativa A");
         
         getContentPane().add(alternativaARadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        alterantivasButtonGroup.add(alternativaCRadioButton);
+        buttonGroup1.add(alternativaCRadioButton);
         alternativaCRadioButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         alternativaCRadioButton.setText("Alternativa C");
         getContentPane().add(alternativaCRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 383, -1, 60));
@@ -170,32 +170,33 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("POLIEDRO");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("src//main//java//pi_1sem//images//usuario_adm_5.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon("src//main//java//pi_1sem//images//pessoa_icone.png")); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText(retornaNome());
+        jLabel11.setText("Nome: "+ retornaNome());
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText(String.format(""+Usuario.usuarioLogado.getId()));
+        jLabel12.setText("Id: " + Usuario.usuarioLogado.getId());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel12)
+                        .addGap(98, 98, 98))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 599, Short.MAX_VALUE)
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel12)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 654, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addGap(79, 79, 79)))
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -207,7 +208,7 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -215,7 +216,7 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
                         .addGap(31, 31, 31))))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 90));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 90));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("src//main//java//pi_1sem//images//tela_de_editar_4.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 570, 360));
@@ -225,10 +226,7 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel4.setText("Editar pergunta");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("src//main//java//pi_1sem//images//rd_sem_fundo.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("src//main//java//pi_1sem//images//rd sem fundo.png")); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 36)); // NOI18N
         jLabel8.setText("Adicionar Pergunta");
@@ -245,14 +243,13 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 419, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192))
+                .addContainerGap(529, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(181, 181, 181))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,15 +259,11 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(58, 58, 58)))
-                .addContainerGap())
+                .addComponent(jLabel5)
+                .addGap(34, 34, 34))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1200, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1280, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -282,15 +275,16 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
         adicionarPerguntaButton.setFocusPainted(false);
         adicionarPerguntaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adicionarPerguntaButtonActionPerformed(evt);
+                adicionarPerguntaActionPerformed(evt);
             }
         });
+
         voltarButton.setBackground(new java.awt.Color(146, 198, 243));
         voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         voltarButton.setText("Voltar");
         voltarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarButtonActionPerformed(evt);
+               voltarActionPerformed(evt);
             }
         });
 
@@ -301,21 +295,21 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(adicionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 829, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 880, Short.MAX_VALUE)
                 .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGap(46, 46, 46))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adicionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(311, Short.MAX_VALUE))
+                    .addComponent(adicionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 1200, -1));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 1280, 120));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -338,7 +332,7 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void adicionarPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void adicionarPerguntaActionPerformed(java.awt.event.ActionEvent evt) { 
         var resposta= JOptionPane.showConfirmDialog(null, "Deseja adicionar a pergunta e suas alternativas?" , "Tem certeza disso?",JOptionPane.OK_CANCEL_OPTION );
 
         if(resposta == JOptionPane.OK_OPTION){
@@ -420,8 +414,7 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
             }
         }
     }
-
-    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {  
         new TelaEdicaoPergunta().setVisible(true);
         this.dispose();
     }
@@ -462,7 +455,7 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup alterantivasButtonGroup;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> escolherMateriaComboBox;
     private javax.swing.JComboBox<String> escolherDificuldadeComboBox;
     private javax.swing.JLabel jLabel1;
@@ -472,7 +465,6 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -497,7 +489,6 @@ public class TelaAdcionarPergunta extends javax.swing.JFrame {
     private javax.swing.JButton adicionarPerguntaButton;
     private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
-    
     private String retornaNome(){
         try {
             var usuarioDao= new UsuarioDAO();

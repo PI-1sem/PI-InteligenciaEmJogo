@@ -25,7 +25,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
         configurarPlaceholders();
-        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -98,11 +98,11 @@ public class TelaLogin extends javax.swing.JFrame {
             }
             else{
                 if(usuarioLogado.getNivelAcesso().equals("admin")){
-                    new TelaInicioADM().setVisible(true);
+                    new TelaInicioProfessor().setVisible(true);
                     dispose();
                 }
                 else if(usuarioLogado.getNivelAcesso().equals("aluno")){
-                    new Jogar().setVisible(true);
+                    new TelaInicioAluno().setVisible(true);
                     dispose();
                 }
             }

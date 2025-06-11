@@ -8,7 +8,7 @@ import pi_1sem.modelo.jogo.Materia;
 import pi_1sem.modelo.jogo.Pergunta;
 import pi_1sem.modelo.jogo.PerguntaAlternativa;
 import pi_1sem.persistencia.ConnectionFactoryTest;
-import pi_1sem.persistencia.ConnectionFactory;
+
 
 
 public class PerguntaAlternativaDAO {

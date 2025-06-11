@@ -1,5 +1,10 @@
 package pi_1sem.modelo.jogo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Ranking {
     private int posicao;
     private String nome;

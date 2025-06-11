@@ -2,11 +2,9 @@ package pi_1sem.persistencia.jogo;
 
 import pi_1sem.persistencia.ConnectionFactoryTest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pi_1sem.modelo.jogo.Alternativa;
-import pi_1sem.persistencia.ConnectionFactory;
 
 public class AlternativaDAO {
     public void editarAlternativa(Alternativa alternativa, int idPergunta) throws Exception{

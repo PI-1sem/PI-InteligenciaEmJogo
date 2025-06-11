@@ -3,8 +3,8 @@ package pi_1sem.persistencia.usuarios;
 import java.util.ArrayList;
 
 import pi_1sem.modelo.participantes.Aluno;
-import pi_1sem.persistencia.ConnectionFactory;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+
 
 public class AlunoDAO {
     public void cadastrar(Aluno aluno) throws Exception{

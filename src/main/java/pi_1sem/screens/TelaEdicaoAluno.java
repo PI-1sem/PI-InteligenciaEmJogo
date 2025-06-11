@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
+import pi_1sem.modelo.participantes.Usuario;
 
 import pi_1sem.modelo.participantes.Aluno;
 import pi_1sem.persistencia.usuarios.AlunoDAO;
-
+import pi_1sem.persistencia.usuarios.UsuarioDAO;
 
 /**
  *
@@ -27,6 +28,8 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         initComponents();
         listarAlunos();
         capturarAltercoes();
+        setLocationRelativeTo(null);
+        setSize(1300,700);
     }
 
     /**
@@ -50,11 +53,13 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         emailTextField = new javax.swing.JTextField();
         nomeTextField = new javax.swing.JTextField();
         senhaTextField = new javax.swing.JTextField();
-        adicionarAlunoButton = new javax.swing.JButton();
+        adcionarAlunoButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         excluirButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,7 +71,6 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Alunos");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -104,18 +108,18 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 14)); // NOI18N
         jLabel6.setText("Senha : ");
 
-        adicionarAlunoButton.setBackground(new java.awt.Color(0, 102, 255));
-        adicionarAlunoButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        adicionarAlunoButton.setForeground(new java.awt.Color(255, 255, 255));
-        adicionarAlunoButton.setText("+    Adicionar Aluno ");
-        adicionarAlunoButton.addActionListener(new java.awt.event.ActionListener() {
+        adcionarAlunoButton.setBackground(new java.awt.Color(0, 102, 255));
+        adcionarAlunoButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        adcionarAlunoButton.setForeground(new java.awt.Color(255, 255, 255));
+        adcionarAlunoButton.setText("+    Adcionar Aluno ");
+        adcionarAlunoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adicionarAlunoButtonActionPerformed(evt);
+                adcionarAlunoButtonActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel7.setText("Editar Aluno ");
+        jLabel7.setText("Adcionar Aluno ");
 
         excluirButton.setBackground(new java.awt.Color(255, 51, 51));
         excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
@@ -129,7 +133,13 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
 
         voltarButton.setBackground(new java.awt.Color(146, 198, 243));
         voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        voltarButton.setForeground(new java.awt.Color(255, 255, 255));
         voltarButton.setText("Voltar ");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,25 +152,26 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 814, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(adicionarAlunoButton)
-                                .addGap(57, 57, 57)
+                                .addComponent(adcionarAlunoButton)
+                                .addGap(61, 61, 61)
                                 .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14))
+                        .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
             .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
@@ -176,21 +187,33 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(adcionarAlunoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 21, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adicionarAlunoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(senhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(voltarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(excluirButton, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addGap(23, 23, 23))
+                    .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\usuario adm 2.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("src//main//java//pi_1sem//images//pessoa_icone.png")); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Nome: " + retornaNome());
+
+        jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Id: "+ Usuario.usuarioLogado.getId());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,45 +222,56 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel3)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 749, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(358, 358, 358))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8))
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel3)
+                        .addGap(17, 17, 17))))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void adicionarAlunoButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void adcionarAlunoButtonActionPerformed(java.awt.event.ActionEvent evt) {
         var resposta= JOptionPane.showConfirmDialog(null, "Deseja adicionar o Aluno?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
         if(resposta == JOptionPane.OK_OPTION){
             String [] campos={
@@ -276,7 +310,7 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar o aluno");
             } 
         }
-    }//GEN-LAST:event_adicionarAlunoButtonActionPerformed
+    }
 
     private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {
         var resposta= JOptionPane.showConfirmDialog(null, "Deseja excluir o Aluno?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
@@ -297,7 +331,13 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
 
         }
     }
-    //GEN-LAST:event_excluirButtonActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        new TelaOpcoesEditar().setVisible(true);
+        this.dispose();
+    }
+        
+//GEN-LAST:event_excluirButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,15 +371,15 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
             @Override
             public void run() {
                 new TelaEdicaoAluno().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton adicionarAlunoButton;
+    private javax.swing.JButton adcionarAlunoButton;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JButton excluirButton;
-    private javax.swing.JButton voltarButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -347,14 +387,29 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JTextField senhaTextField;
     private javax.swing.JTable alunosTable;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
+    private String retornaNome(){
+        try {
+            var usuarioDao= new UsuarioDAO();
+            var usuarioNome= usuarioDao.pegarNome();
 
+            return usuarioNome;
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao retornat nome de usuario");
+            return null;
+        }
+    }
     private void listarAlunos() {
         try {
             var alunoDAO= new AlunoDAO();
@@ -385,7 +440,6 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
 
         return idSelecionado;
     }
-
     private void capturarAltercoes(){
         var model = (DefaultTableModel) alunosTable.getModel();
     
@@ -401,7 +455,7 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         int col = e.getColumn();
         
         if (row < 0 || row >= alunosTable.getRowCount()) return;
-    
+
         var valorAlterado = alunosTable.getModel().getValueAt(row, col).toString();
         var id = Integer.parseInt(alunosTable.getModel().getValueAt(row, 0).toString());
 

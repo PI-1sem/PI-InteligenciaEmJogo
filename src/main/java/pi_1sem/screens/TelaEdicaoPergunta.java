@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,13 +27,16 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import pi_1sem.modelo.jogo.Pergunta;
 import pi_1sem.modelo.jogo.Alternativa;
 import pi_1sem.modelo.jogo.Materia;
+import pi_1sem.modelo.jogo.PerguntaAlternativa;
+import pi_1sem.modelo.participantes.Usuario;
+import pi_1sem.persistencia.jogo.AlternativaDAO;
 import pi_1sem.persistencia.jogo.MateriaDAO;
 import pi_1sem.persistencia.jogo.PerguntaAlternativaDAO;
-import pi_1sem.modelo.jogo.PerguntaAlternativa;
-import pi_1sem.persistencia.jogo.AlternativaDAO;
 import pi_1sem.persistencia.jogo.PerguntaDAO;
+import pi_1sem.persistencia.usuarios.UsuarioDAO;
 
 /**
  *
@@ -47,6 +51,9 @@ public class TelaEdicaoPergunta extends javax.swing.JFrame {
         initComponents();
         listarPerguntas(this.filtroAtual);
         capturarAltercoes();
+        setLocationRelativeTo(null);
+        setSize(1277,653);
+        
     }
 
     /**
@@ -61,11 +68,15 @@ public class TelaEdicaoPergunta extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         todasPerguntasTable = new javax.swing.JTable();
-        excluirPerguntaButton = new javax.swing.JButton();
-        adicionarPerguntaButton = new javax.swing.JButton();
+        excluirButton = new javax.swing.JButton();
+        adcionarPerguntaButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        voltarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,24 +139,24 @@ public class TelaEdicaoPergunta extends javax.swing.JFrame {
             }
         });
 
-        excluirPerguntaButton.setBackground(new java.awt.Color(255, 51, 51));
-        excluirPerguntaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        excluirPerguntaButton.setForeground(new java.awt.Color(255, 255, 255));
-        excluirPerguntaButton.setText("Excluir ");
-        excluirPerguntaButton.setBorder(null);
-        excluirPerguntaButton.addActionListener(new java.awt.event.ActionListener() {
+        excluirButton.setBackground(new java.awt.Color(255, 51, 51));
+        excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        excluirButton.setForeground(new java.awt.Color(255, 255, 255));
+        excluirButton.setText("Excluir ");
+        excluirButton.setBorder(null);
+        excluirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirPerguntaButtonActionPerformed(evt);
+                excluirButtonActionPerformed(evt);
             }
         });
 
-        adicionarPerguntaButton.setBackground(new java.awt.Color(0, 102, 255));
-        adicionarPerguntaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        adicionarPerguntaButton.setForeground(new java.awt.Color(255, 255, 255));
-        adicionarPerguntaButton.setText("Adicionar Pergunta");
-        adicionarPerguntaButton.addActionListener(new java.awt.event.ActionListener() {
+        adcionarPerguntaButton.setBackground(new java.awt.Color(0, 102, 255));
+        adcionarPerguntaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        adcionarPerguntaButton.setForeground(new java.awt.Color(255, 255, 255));
+        adcionarPerguntaButton.setText("Adicionar Pergunta");
+        adcionarPerguntaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adicionarPerguntaButtonActionPerformed(evt);
+                adcionarPerguntaButtonActionPerformed(evt);
             }
         });
 
@@ -156,6 +167,16 @@ public class TelaEdicaoPergunta extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("POLIEDRO");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon("src//main//java//pi_1sem//images//pessoa_icone.png")); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Nome: "+ retornaNome());
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Id: "+ Usuario.usuarioLogado.getId());
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -163,18 +184,49 @@ public class TelaEdicaoPergunta extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 740, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(14, 14, 14))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         jLabel2.setText("Editar Pergunta");
+
+        voltarButton.setBackground(new java.awt.Color(146, 198, 243));
+        voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        voltarButton.setForeground(new java.awt.Color(51, 51, 51));
+        voltarButton.setText("Voltar");
+        voltarButton.setBorder(null);
+        voltarButton.setFocusPainted(false);
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -185,31 +237,33 @@ public class TelaEdicaoPergunta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE)
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(excluirPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(adicionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(adcionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel2)
                 .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(excluirPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adicionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                    .addComponent(adcionarPerguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,26 +272,27 @@ public class TelaEdicaoPergunta extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void adicionarPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void adcionarPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {
         new TelaAdcionarPergunta().setVisible(true);
         this.dispose();
     }
 
-    public void excluirPerguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        new TelaOpcoesEditar().setVisible(true);
+        this.dispose();
+    }
+
+     public void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {
         var resposta= JOptionPane.showConfirmDialog(null, "Deseja excluir a pergunta e suas alternativas?", "Tem certeza disso?", JOptionPane.OK_CANCEL_OPTION);
 
         if(resposta == JOptionPane.OK_OPTION){
@@ -299,16 +354,32 @@ public class TelaEdicaoPergunta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton excluirPerguntaButton;
-    private javax.swing.JButton adicionarPerguntaButton;
+    private javax.swing.JButton adcionarPerguntaButton;
+    private javax.swing.JTable todasPerguntasTable;
+    private javax.swing.JButton excluirButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable todasPerguntasTable;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
+    private String retornaNome(){
+        try {
+            var usuarioDao= new UsuarioDAO();
+            var usuarioNome= usuarioDao.pegarNome();
 
+            return usuarioNome;
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao retornat nome de usuario");
+            return null;
+        }
+    }
     private Integer pegarCampoIdAlternativa(char letra){
         int col=0;
         switch (letra) {
