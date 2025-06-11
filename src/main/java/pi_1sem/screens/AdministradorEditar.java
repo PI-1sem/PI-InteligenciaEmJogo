@@ -46,7 +46,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ProfessoresTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
         excluirButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -223,14 +223,14 @@ public class AdministradorEditar extends javax.swing.JFrame {
             .addGap(0, 98, Short.MAX_VALUE)
         );
 
-        jButton2.setBackground(new java.awt.Color(146, 198, 243));
-        jButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
-        jButton2.setText("Voltar");
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        voltarButton.setBackground(new java.awt.Color(146, 198, 243));
+        voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        voltarButton.setForeground(new java.awt.Color(51, 51, 51));
+        voltarButton.setText("Voltar");
+        voltarButton.setFocusPainted(false);
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                voltarButtonActionPerformed(evt);
             }
         });
 
@@ -271,7 +271,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(105, 105, 105))))
@@ -311,7 +311,7 @@ public class AdministradorEditar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -379,12 +379,12 @@ public class AdministradorEditar extends javax.swing.JFrame {
                 }
     }//GEN-LAST:event_excluirButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
 new OpcoesEditar().setVisible(true);
         
         // Fecha o frame atual
     this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void senhaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTextFieldActionPerformed
         // TODO add your handling code here:
@@ -431,7 +431,6 @@ new OpcoesEditar().setVisible(true);
     private javax.swing.JTable ProfessoresTable;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JButton excluirButton;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -446,5 +445,6 @@ new OpcoesEditar().setVisible(true);
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JTextField senhaTextField;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

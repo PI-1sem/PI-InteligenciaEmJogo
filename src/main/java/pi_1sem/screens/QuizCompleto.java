@@ -31,7 +31,7 @@ public class QuizCompleto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        voltarParaMenuButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -53,14 +53,14 @@ public class QuizCompleto extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\charl\\Downloads\\PI Mauá\\rd com trofeu 3.png")); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(214, 123, 45));
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("VOLTAR PARA MENU");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        voltarParaMenuButton.setBackground(new java.awt.Color(214, 123, 45));
+        voltarParaMenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 24)); // NOI18N
+        voltarParaMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        voltarParaMenuButton.setText("VOLTAR PARA MENU");
+        voltarParaMenuButton.setBorder(null);
+        voltarParaMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                voltarParaMenuButtonActionPerformed(evt);
             }
         });
 
@@ -104,7 +104,7 @@ public class QuizCompleto extends javax.swing.JFrame {
                                         .addComponent(jLabel2))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(156, 156, 156)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(voltarParaMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(384, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,7 +121,7 @@ public class QuizCompleto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(voltarParaMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -137,9 +137,9 @@ public class QuizCompleto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void voltarParaMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarParaMenuButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_voltarParaMenuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,7 +177,6 @@ public class QuizCompleto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -186,5 +185,6 @@ public class QuizCompleto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton voltarParaMenuButton;
     // End of variables declaration//GEN-END:variables
 }

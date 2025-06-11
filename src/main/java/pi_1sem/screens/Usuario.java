@@ -43,8 +43,8 @@ public class Usuario extends javax.swing.JFrame {
         senhaAlunoTextField = new javax.swing.JTextField();
         adcionarAlunoButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        excluirButton = new javax.swing.JButton();
+        voltarButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -101,20 +101,20 @@ public class Usuario extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel7.setText("Adcionar Aluno ");
 
-        jButton2.setBackground(new java.awt.Color(255, 51, 51));
-        jButton2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Excluir ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        excluirButton.setBackground(new java.awt.Color(255, 51, 51));
+        excluirButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        excluirButton.setForeground(new java.awt.Color(255, 255, 255));
+        excluirButton.setText("Excluir ");
+        excluirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                excluirButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(146, 198, 243));
-        jButton3.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Voltar ");
+        voltarButton.setBackground(new java.awt.Color(146, 198, 243));
+        voltarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        voltarButton.setForeground(new java.awt.Color(255, 255, 255));
+        voltarButton.setText("Voltar ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -143,9 +143,9 @@ public class Usuario extends javax.swing.JFrame {
                             .addComponent(senhaAlunoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))))
             .addComponent(jScrollPane1)
         );
@@ -175,8 +175,8 @@ public class Usuario extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(excluirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
@@ -274,7 +274,7 @@ public class Usuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_adcionarAlunoButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
         // TODO add your handling code here:
         int linhaSelecionada = tabelaAlunoTable.getSelectedRow();
         if (linhaSelecionada == 1){
@@ -288,7 +288,7 @@ public class Usuario extends javax.swing.JFrame {
                 }
     }   
         
-//GEN-LAST:event_jButton2ActionPerformed
+//GEN-LAST:event_excluirButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,8 +330,7 @@ public class Usuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adcionarAlunoButton;
     private javax.swing.JTextField emailAlunoTextField;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton excluirButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -347,5 +346,6 @@ public class Usuario extends javax.swing.JFrame {
     private javax.swing.JTextField nomeAlunoTextField;
     private javax.swing.JTextField senhaAlunoTextField;
     private javax.swing.JTable tabelaAlunoTable;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }
