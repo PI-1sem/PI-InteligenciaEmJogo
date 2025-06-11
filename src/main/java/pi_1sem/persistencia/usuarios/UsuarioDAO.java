@@ -2,12 +2,13 @@ package pi_1sem.persistencia.usuarios;
 
 import pi_1sem.modelo.participantes.Usuario;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 public class UsuarioDAO {
     public Integer pegarPontuacao() throws Exception{
         var sql= "SELECT pontuacao_total FROM usuario WHERE id_usuario=? and nivel_acesso=?";
         try(
-            var conexao= new ConnectionFactoryTest().obterConexao();
+            var conexao= new ConnectionFactory().obterConexao();
             var ps= conexao.prepareCall(sql);
 
         ){
@@ -29,7 +30,7 @@ public class UsuarioDAO {
     public String pegarNome() throws Exception{
         var sql= "SELECT nome FROM usuario WHERE id_usuario=? and nivel_acesso=?";
         try(
-            var conexao= new ConnectionFactoryTest().obterConexao();
+            var conexao= new ConnectionFactory().obterConexao();
             var ps= conexao.prepareCall(sql);
         ){
             ps.setInt(1, Usuario.usuarioLogado.getId());
@@ -50,7 +51,7 @@ public class UsuarioDAO {
     public void atualizarPontuacao(int pontuacao) throws Exception{
         var sql= "UPDATE usuario SET pontuacao_total=? WHERE id_usuario=? and nivel_acesso=?";
         try(
-            var conexao= new ConnectionFactoryTest().obterConexao();
+            var conexao= new ConnectionFactory().obterConexao();
             var ps= conexao.prepareCall(sql);
         ){
             ps.setDouble(1, pontuacao);

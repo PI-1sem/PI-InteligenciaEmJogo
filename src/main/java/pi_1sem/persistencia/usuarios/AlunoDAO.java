@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import pi_1sem.modelo.participantes.Aluno;
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 
 public class AlunoDAO {
     public void cadastrar(Aluno aluno) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "INSERT INTO usuario(nome, email, senha, nivel_acesso) VALUES(?, ?, ?, 'aluno')";
 
         try(
@@ -23,7 +24,7 @@ public class AlunoDAO {
         }
     }
     public void remover(Integer id)throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "DELETE FROM usuario WHERE id_usuario= ? and nivel_acesso= 'aluno'";
         
         try(
@@ -37,7 +38,7 @@ public class AlunoDAO {
         }
     }
     public void atualizarNome(String nome, int id) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "UPDATE usuario SET nome= ? WHERE id_usuario= ? and nivel_acesso= 'aluno'";
         
         try(
@@ -50,7 +51,7 @@ public class AlunoDAO {
         }
     }
     public void atualizarEmail(String email, int id) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "UPDATE usuario SET email= ? WHERE id_usuario= ? and nivel_acesso= 'aluno'";
 
         try(
@@ -64,7 +65,7 @@ public class AlunoDAO {
         }
     }
     public void atualizarSenha(String senha, int id) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "UPDATE usuario SET senha= ? WHERE id_usuario= ? and nivel_acesso= 'aluno'";
         try(
             var conexao= conectionFactory.obterConexao();
@@ -77,7 +78,7 @@ public class AlunoDAO {
         }
     }
     public ArrayList<Aluno> listar() throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "SELECT id_usuario, nome, email, senha FROM usuario WHERE nivel_acesso= 'aluno'";
         ArrayList<Aluno> alunos= new ArrayList<>();
         

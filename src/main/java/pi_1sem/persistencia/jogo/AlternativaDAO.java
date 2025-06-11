@@ -1,6 +1,7 @@
 package pi_1sem.persistencia.jogo;
 
 import pi_1sem.persistencia.ConnectionFactoryTest;
+import pi_1sem.persistencia.ConnectionFactory;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import pi_1sem.modelo.jogo.Alternativa;
 
 public class AlternativaDAO {
     public void editarAlternativa(Alternativa alternativa, int idPergunta) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
 
         var sql= "UPDATE alternativa a JOIN pergunta_alternativa pa USING (id_alternativa) JOIN pergunta p USING (id_pergunta) SET a.texto=? WHERE pa.id_pergunta= ? AND pa.id_alternativa=?";
         
@@ -23,7 +24,7 @@ public class AlternativaDAO {
         }
     }
     public void adicionarAlternativa(List<Alternativa> alternativas) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "INSERT INTO alternativa (letra, texto) VALUES (?, ?)";
         var sqlFinal= "SELECT LAST_INSERT_ID() AS id_alternativa";
         var conexao= conectionFactory.obterConexao();
@@ -46,7 +47,7 @@ public class AlternativaDAO {
         conexao.close();
     }
     public void excluirAlternativas(List<Integer> idsAlternativa) throws Exception{
-        var conectionFactory= new ConnectionFactoryTest();
+        var conectionFactory= new ConnectionFactory();
         var sql= "DELETE FROM alternativa WHERE id_alternativa=?";
         var conexao= conectionFactory.obterConexao();
 
