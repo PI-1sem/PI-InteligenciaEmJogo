@@ -333,7 +333,7 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
     }
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        new TelaOpcoesEditar().setVisible(true);
+        new TelaInicioProfessor().setVisible(true);
         this.dispose();
     }
         

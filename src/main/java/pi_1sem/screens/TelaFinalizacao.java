@@ -62,7 +62,7 @@ public class TelaFinalizacao extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("SEU PROGESSO");
+        jLabel3.setText("SEU PROGRESSO");
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 48)); // NOI18N
