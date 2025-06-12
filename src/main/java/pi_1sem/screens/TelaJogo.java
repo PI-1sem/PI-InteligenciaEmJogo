@@ -27,7 +27,7 @@ public class TelaJogo extends javax.swing.JFrame {
      * Creates new form Perguntas1_2
      */
     public TelaJogo(Partida partida) {
-        List<String>base= perguntaSelecionada(partida);
+        List<String> base= perguntaSelecionada(partida);
         setarPontuacao(partida);
         initComponents(base, partida);
         pararButton.setEnabled(partida.getPosicao() >= 2);
@@ -453,9 +453,16 @@ public class TelaJogo extends javax.swing.JFrame {
         }
         else if (partida.getPosicao() <= 8){
             nivel = "médio";
+            if(partida.getPosicao() == 5){
+                partida.getPerguntasSorteadas().clear();
+            }
+            
         }
         else if (partida.getPosicao() <= 12){
             nivel = "difícil";
+            if(partida.getPosicao() == 9){
+                partida.getPerguntasSorteadas().clear();
+            }
         }
         else{
             nivel = null;

@@ -1,7 +1,7 @@
 package pi_1sem.persistencia.jogo;
 
-import pi_1sem.persistencia.ConnectionFactoryTest;
 import pi_1sem.persistencia.ConnectionFactory;
+import pi_1sem.persistencia.ConnectionFactoryTest;
 
 import java.util.List;
 
