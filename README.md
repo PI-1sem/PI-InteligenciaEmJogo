@@ -14,6 +14,8 @@ Enzo Toro - Implementação Inicial das Classes de Modelo.
 
 Diego Alonso - Banco de Dados e Hospedagem no Aiven.
 
+Wesley Daglio - Modelagem do projeto.
+
 🎯 Sobre o Projeto Inteligência em Jogo é uma aplicação interativa desenvolvida para alunos do Colégio Poliedro revisarem conceitos aprendidos em aula de forma divertida e desafiadora. Inspirado no clássico "Show do Milhão", este jogo transforma o aprendizado em uma experiência emocionante, onde conhecimento se traduz em pontuação e conquistas!
 
 ✨ Recursos Principais Sistema de Níveis Progressivos com dificuldade crescente
